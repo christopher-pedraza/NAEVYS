@@ -1,10 +1,13 @@
-# comentario 1
-a
-b
+#
+# nombre_columna, indice_columna
+#
 
-# comentario 2
-c
-d
 
-# comentario 3
-e
+# Columna 1
+Col1, 1
+
+# Columna 2
+Col2, 3
+
+# Columna 3
+Col3, 2

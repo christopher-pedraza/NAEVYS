@@ -12,6 +12,8 @@ public class TextFiles {
 			// Mientras que la linea leida no sea nula (ultima linea del archivo de texto),
 			// se iterara
 			while (line != null) {
+				line = line.replaceAll("\\s+","");
+				
 				// Si la linea tiene una longitud mayor a 0 (no esta vacia)
 				if (line.length() > 0) {
 					// Si la linea no comienza con un
