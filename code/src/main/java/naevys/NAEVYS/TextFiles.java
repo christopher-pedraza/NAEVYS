@@ -5,15 +5,15 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class TextFiles {
-	public Headers readFile(String fileName) {
+	public Headers[] readFile(String fileName) {
 		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
 			String line = br.readLine();
 
 			// Mientras que la linea leida no sea nula (ultima linea del archivo de texto),
 			// se iterara
 			while (line != null) {
-				line = line.replaceAll("\\s+","");
-				
+				line = line.replaceAll("\\s+", "");
+
 				// Si la linea tiene una longitud mayor a 0 (no esta vacia)
 				if (line.length() > 0) {
 					// Si la linea no comienza con un
@@ -30,21 +30,23 @@ public class TextFiles {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	
-	private void processLine(String[] lineData) {
+
+	private Headers processLine(String[] lineData) {
 		if (lineData.length == Constants.TF.INPUT_LINE_SIZE) {
-			System.out.println(2);
-			for (String i: lineData) {
-				System.out.println(i);
-			}
+			String colName = lineData[0];
+			int colIndex = Integer.parseInt(lineData[1]);
+			return new Headers(colName, colIndex);
 		} else if (lineData.length == Constants.TF.OUTPUT_LINE_SIZE) {
-			System.out.println(4);
-			for (String i: lineData) {
-				System.out.println(i);
-			}
+			String colName = lineData[0];
+			int colIndex = Integer.parseInt(lineData[1]) - 1;
+			char id = lineData[2].charAt(0);
+			String value = lineData[3];
+			return new Headers(colName, colIndex, id, value);
 		}
+
+		return null;
 	}
 }
