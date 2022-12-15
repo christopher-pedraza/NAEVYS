@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class TextFiles {
-	public Headers[] readFile(String fileName) {
+	public Header[] readFile(String fileName) {
 		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
 			String line = br.readLine();
 
@@ -34,17 +34,17 @@ public class TextFiles {
 		return null;
 	}
 
-	private Headers processLine(String[] lineData) {
+	private Header processLine(String[] lineData) {
 		if (lineData.length == Constants.TF.INPUT_LINE_SIZE) {
 			String colName = lineData[0];
 			int colIndex = Integer.parseInt(lineData[1]);
-			return new Headers(colName, colIndex);
+			return new Header(colName, colIndex);
 		} else if (lineData.length == Constants.TF.OUTPUT_LINE_SIZE) {
 			String colName = lineData[0];
 			int colIndex = Integer.parseInt(lineData[1]) - 1;
 			char id = lineData[2].charAt(0);
 			String value = lineData[3];
-			return new Headers(colName, colIndex, id, value);
+			return new Header(colName, colIndex, id, value);
 		}
 
 		return null;

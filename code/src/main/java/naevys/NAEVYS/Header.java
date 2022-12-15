@@ -5,7 +5,7 @@ package naevys.NAEVYS;
  * archivo fuente al igual que las columnas que se generaran en el archivo de
  * salida
  */
-public class Headers {
+public class Header {
 	private String colName;
 	// TODO: Indice de la columna (el programa checara si corresponde a la columna
 	// con el nombre descrito en colName, sino, iterara hasta buscar la columna
@@ -20,7 +20,7 @@ public class Headers {
 	 * @param id identificador sobre el tipo de columna de la que se trata
 	 * @param value valor o referencia que se colocara en la columna
 	 */
-	public Headers(String colName, int colIndex, char id, String value) {
+	public Header(String colName, int colIndex, char id, String value) {
 		this.colName = colName;
 		this.colIndex = colIndex;
 		this.id = id;
@@ -31,7 +31,7 @@ public class Headers {
 	 * @param colName nombre de la columna
 	 * @param colIndex indice donde se deberia encontra la columna con el nombre colName
 	 */
-	public Headers(String colName, int colIndex) {
+	public Header(String colName, int colIndex) {
 		this.colName = colName;
 		this.colIndex = colIndex;
 		this.id = ' ';
