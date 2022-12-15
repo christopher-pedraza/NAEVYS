@@ -26,6 +26,17 @@ public class Headers {
 		this.id = id;
 		this.value = value;
 	}
+	
+	/**
+	 * @param colName nombre de la columna
+	 * @param colIndex indice donde se deberia encontra la columna con el nombre colName
+	 */
+	public Headers(String colName, int colIndex) {
+		this.colName = colName;
+		this.colIndex = colIndex;
+		this.id = ' ';
+		this.value = "";
+	}
 
 	/**
 	 * @return the colIndex

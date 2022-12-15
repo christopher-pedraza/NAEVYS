@@ -7,7 +7,4 @@
 Col1, 1
 
 # Columna 2
-Col2, 3
-
-# Columna 3
-Col3, 2
+Col2, 3, R, Col1

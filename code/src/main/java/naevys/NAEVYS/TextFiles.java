@@ -18,7 +18,8 @@ public class TextFiles {
 				if (line.length() > 0) {
 					// Si la linea no comienza con un
 					if (line.charAt(0) != Constants.TF.COMMENT_SIGN) {
-						System.out.println(line);
+						String[] lineData = line.split(",");
+						processLine(lineData);
 					}
 				}
 				// Leer la siguiente linea
@@ -31,5 +32,19 @@ public class TextFiles {
 		}
 		
 		return null;
+	}
+	
+	private void processLine(String[] lineData) {
+		if (lineData.length == Constants.TF.INPUT_LINE_SIZE) {
+			System.out.println(2);
+			for (String i: lineData) {
+				System.out.println(i);
+			}
+		} else if (lineData.length == Constants.TF.OUTPUT_LINE_SIZE) {
+			System.out.println(4);
+			for (String i: lineData) {
+				System.out.println(i);
+			}
+		}
 	}
 }
