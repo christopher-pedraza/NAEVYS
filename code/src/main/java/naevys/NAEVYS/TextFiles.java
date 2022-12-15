@@ -6,26 +6,33 @@ import java.io.IOException;
 
 public class TextFiles {
 	public Header[] readFile(String fileName) {
+		int fileSize = getFileSize(fileName);
+		int currentLine = 0;
+		
 		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-			String line = br.readLine();
-
+			Header[] headers = new Header[fileSize];
+			
 			// Mientras que la linea leida no sea nula (ultima linea del archivo de texto),
 			// se iterara
+			String line = br.readLine();
 			while (line != null) {
 				line = line.replaceAll("\\s+", "");
 
 				// Si la linea tiene una longitud mayor a 0 (no esta vacia)
 				if (line.length() > 0) {
-					// Si la linea no comienza con un
+					// Si la linea no comienza con un signo de comentario
 					if (line.charAt(0) != Constants.TF.COMMENT_SIGN) {
 						String[] lineData = line.split(",");
-						processLine(lineData);
+						headers[currentLine] = processLine(lineData);
+						currentLine++;
 					}
 				}
 				// Leer la siguiente linea
 				line = br.readLine();
 			}
-
+			br.close();
+			
+			return headers;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -34,6 +41,34 @@ public class TextFiles {
 		return null;
 	}
 
+	
+	private int getFileSize(String fileName) {
+		int fileSize = 0;
+		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+			// Determinar el tamaño del archivo
+			// Mientras que la linea leida no sea nula (ultima linea del archivo de texto),
+			// se iterara
+			String line = br.readLine();
+			while (line != null) {
+				// Si la linea tiene una longitud mayor a 0 (no esta vacia)
+				if (line.length() > 0) {
+					// Si la linea no comienza con un signo de comentario
+					if (line.charAt(0) != Constants.TF.COMMENT_SIGN) {
+						fileSize++;
+					}
+				}
+				// Leer la siguiente linea
+				line = br.readLine();
+			}
+			br.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return fileSize;
+	}
+	
 	private Header processLine(String[] lineData) {
 		if (lineData.length == Constants.TF.INPUT_LINE_SIZE) {
 			String colName = lineData[0];
@@ -41,7 +76,7 @@ public class TextFiles {
 			return new Header(colName, colIndex);
 		} else if (lineData.length == Constants.TF.OUTPUT_LINE_SIZE) {
 			String colName = lineData[0];
-			int colIndex = Integer.parseInt(lineData[1]) - 1;
+			int colIndex = Integer.parseInt(lineData[1]);
 			char id = lineData[2].charAt(0);
 			String value = lineData[3];
 			return new Header(colName, colIndex, id, value);

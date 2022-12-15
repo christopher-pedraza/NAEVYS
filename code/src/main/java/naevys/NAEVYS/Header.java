@@ -22,7 +22,7 @@ public class Header {
 	 */
 	public Header(String colName, int colIndex, char id, String value) {
 		this.colName = colName;
-		this.colIndex = colIndex;
+		this.colIndex = colIndex - 1;
 		this.id = id;
 		this.value = value;
 	}
@@ -33,7 +33,7 @@ public class Header {
 	 */
 	public Header(String colName, int colIndex) {
 		this.colName = colName;
-		this.colIndex = colIndex;
+		this.colIndex = colIndex - 1;
 		this.id = ' ';
 		this.value = "";
 	}
@@ -70,6 +70,6 @@ public class Header {
 	 * @param colIndex the colIndex to set
 	 */
 	public void setColIndex(int colIndex) {
-		this.colIndex = colIndex;
+		this.colIndex = colIndex - 1;
 	}
 }
