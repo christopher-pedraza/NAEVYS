@@ -1,18 +1,12 @@
 package naevys.NAEVYS;
 
 public class Headers {
-	/*
-	 *  Atributos
-	 */
 	private String colName;
 	private char dataType;
 	// Indice de la columna (el programa checara si corresponde a la columna con el
 	// nombre descrito en colName, sino, iterara hasta buscar la columna correcta)
 	private int colIndex;
-	
-	/*
-	 *  Constructor
-	 */
+
 	/**
 	 * @param colName
 	 * @param dataType
@@ -23,10 +17,7 @@ public class Headers {
 		this.dataType = dataType;
 		this.colIndex = colIndex;
 	}
-	
-	/*
-	 *  Setters & Getters
-	 */
+
 	/**
 	 * @return the colName
 	 */
