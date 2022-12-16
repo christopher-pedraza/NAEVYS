@@ -15,32 +15,23 @@ public class Header {
 	private int colIndex;
 	private char id;
 	private String value;
+	private int valueIndex;
 
 	/**
-	 * @param colName  nombre de la columna
-	 * @param colIndex indice donde se deberia encontra la columna con el nombre
-	 *                 colName
-	 * @param id       identificador sobre el tipo de columna de la que se trata
-	 * @param value    valor o referencia que se colocara en la columna
-	 * @param color    color del titulo de la columna
+	 * @param colName    nombre de la columna
+	 * @param colIndex   indice donde se deberia encontra la columna con el nombre
+	 *                   colName
+	 * @param id         identificador sobre el tipo de columna de la que se trata
+	 * @param value      valor o referencia que se colocara en la columna
+	 * @param color      color del titulo de la columna
+	 * @param valueIndex indice de la columna de valor en caso de ser una referencia
 	 */
-	public Header(String colName, int colIndex, char id, String value) {
+	public Header(String colName, int colIndex, char id, String value, int valueIndex) {
 		this.colName = colName;
 		this.colIndex = colIndex - 1;
 		this.id = id;
 		this.value = value;
-	}
-
-	/**
-	 * @param colName  nombre de la columna
-	 * @param colIndex indice donde se deberia encontra la columna con el nombre
-	 *                 colName
-	 */
-	public Header(String colName, int colIndex) {
-		this.colName = colName;
-		this.colIndex = colIndex - 1;
-		this.id = ' ';
-		this.value = "";
+		this.valueIndex = valueIndex;
 	}
 
 	/**
@@ -69,6 +60,13 @@ public class Header {
 	 */
 	public String getValue() {
 		return value;
+	}
+	
+	/**
+	 * @return the valueIndex
+	 */
+	public int getValueIndex() {
+		return valueIndex;
 	}
 
 	/**
