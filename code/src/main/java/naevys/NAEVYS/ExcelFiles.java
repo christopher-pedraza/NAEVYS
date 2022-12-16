@@ -14,12 +14,13 @@ import java.util.stream.Stream;
 import org.dhatim.fastexcel.Color;
 import org.dhatim.fastexcel.Workbook;
 import org.dhatim.fastexcel.Worksheet;
+import org.dhatim.fastexcel.reader.CellType;
 import org.dhatim.fastexcel.reader.ReadableWorkbook;
 import org.dhatim.fastexcel.reader.Row;
 import org.dhatim.fastexcel.reader.Sheet;
 
 public class ExcelFiles {
-	
+
 	public static int col, row;
 
 //	public static void main(String[] args) throws IOException {
@@ -35,10 +36,9 @@ public class ExcelFiles {
 //		ws.style(0, 0).bold().fillColor(Color.AMETHYST).set();
 //		wb.finish();
 //	}
-	
+
 	public void convertExcel(String fileDir, Header[] inputHeaders, Header[] outputHeaders) {
 
-		
 		try (InputStream is = new FileInputStream(fileDir);
 				ReadableWorkbook inWb = new ReadableWorkbook(is);
 				OutputStream os = new FileOutputStream("output.xlsx")) {
@@ -51,10 +51,33 @@ public class ExcelFiles {
 			try (Stream<Row> rows = sheet.openStream()) {
 				col = 0;
 				row = 0;
-				
+
 				rows.forEach(r -> {
 					r.forEach(c -> {
-						outWs.value(row, col, c.getValue().toString());
+						// if (c.getType() == CellType.STRING) {}
+						switch (c.getType()) {
+							case STRING: {
+								outWs.value(row, col, c.asString());
+								break;
+							}
+							case BOOLEAN: {
+								outWs.value(row, col, c.asBoolean());
+								break;
+							}
+							case NUMBER: {
+								outWs.value(row, col, c.asNumber());
+								break;
+							}
+							case FORMULA: {
+								outWs.formula(row, col, c.getFormula());
+								break;
+							}
+							default: {
+								outWs.value(row, col, " ");
+								break;
+							}
+						}
+						// outWs.value(row, col, c.getValue().toString());
 						System.out.println("[" + row + "," + col + "] " + c.getValue().toString());
 						col++;
 					});
