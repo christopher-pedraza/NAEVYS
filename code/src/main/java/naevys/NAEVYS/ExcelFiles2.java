@@ -50,10 +50,37 @@ public class ExcelFiles2 {
 
 				rows.forEach(r -> {
 					for (int i = 0; i < outputHeaders.length; i++) {
-						Cell c = r.getCell(outputHeaders[i].getColIndex());
+						col = outputHeaders[i].getColIndex();
 						
-						if (outputHeaders[i].getId() == 'R') {
+						if (row == 0) {
+							outWs.value(row, col, outputHeaders[i].getColName());
+						}
+						
+						else if (outputHeaders[i].getId() == 'R') {
+							Cell c = r.getCell(outputHeaders[i].getValueIndex());
 							
+							switch (c.getType()) {
+								case STRING: {
+									outWs.value(row, col, c.asString());
+									break;
+								}
+								case BOOLEAN: {
+									outWs.value(row, col, c.asBoolean());
+									break;
+								}
+								case NUMBER: {
+									outWs.value(row, col, c.asNumber());
+									break;
+								}
+								case FORMULA: {
+									outWs.formula(row, col, c.getFormula());
+									break;
+								}
+								default: {
+									outWs.value(row, col, " ");
+									break;
+								}
+							}
 						}
 						else if (outputHeaders[i].getId() == 'S') {
 							

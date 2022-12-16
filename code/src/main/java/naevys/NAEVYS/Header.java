@@ -89,4 +89,11 @@ public class Header {
 	public void setColIndex(int colIndex) {
 		this.colIndex = colIndex - 1;
 	}
+	
+	/**
+	 * @param colIndex the colIndex to set
+	 */
+	public void setValueIndex(int valueIndex) {
+		this.valueIndex = valueIndex - 1;
+	}
 }
