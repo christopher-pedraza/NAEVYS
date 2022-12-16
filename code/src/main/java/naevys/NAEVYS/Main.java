@@ -13,8 +13,12 @@ public class Main {
 		}
 		
 		Header[] inputHeaders = new Header[2];
+		inputHeaders[0] = new Header("Col1", 1);
+		inputHeaders[1] = new Header("Col7", 7);
 		
 		Header[] outputHeaders = new Header[2];
+		outputHeaders[0] = new Header("Out Col 7", 1, 'R', "Col7");
+		outputHeaders[1] = new Header("Out Col 1", 2, 'R', "Col1");
 		
 		ef.convertExcel("input.xlsx", inputHeaders, outputHeaders);
 	}

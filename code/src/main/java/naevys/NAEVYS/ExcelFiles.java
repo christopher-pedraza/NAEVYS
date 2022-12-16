@@ -19,6 +19,8 @@ import org.dhatim.fastexcel.reader.Row;
 import org.dhatim.fastexcel.reader.Sheet;
 
 public class ExcelFiles {
+	
+	public static int col, row;
 
 //	public static void main(String[] args) throws IOException {
 //		OutputStream os = new FileOutputStream("test.xlsx");
@@ -33,11 +35,13 @@ public class ExcelFiles {
 //		ws.style(0, 0).bold().fillColor(Color.AMETHYST).set();
 //		wb.finish();
 //	}
-
+	
 	public void convertExcel(String fileDir, Header[] inputHeaders, Header[] outputHeaders) {
+
+		
 		try (InputStream is = new FileInputStream(fileDir);
 				ReadableWorkbook inWb = new ReadableWorkbook(is);
-				OutputStream os = new FileOutputStream("test.xlsx")) {
+				OutputStream os = new FileOutputStream("output.xlsx")) {
 			// Output workbook
 			Workbook outWb = new Workbook(os, Constants.EF.APPLICATION_NAME, Constants.EF.APPLICATION_VERSION);
 			Worksheet outWs = outWb.newWorksheet(Constants.EF.OUTPUT_SHEET_1_NAME);
@@ -45,10 +49,17 @@ public class ExcelFiles {
 			// Input workbook
 			Sheet sheet = inWb.getFirstSheet();
 			try (Stream<Row> rows = sheet.openStream()) {
+				col = 0;
+				row = 0;
+				
 				rows.forEach(r -> {
 					r.forEach(c -> {
-						System.out.println(c.getValue());
+						outWs.value(row, col, c.getValue().toString());
+						System.out.println("[" + row + "," + col + "] " + c.getValue().toString());
+						col++;
 					});
+					col = 0;
+					row++;
 				});
 			}
 

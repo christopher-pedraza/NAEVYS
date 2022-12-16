@@ -11,6 +11,6 @@ public class Constants {
 	public class EF {
 		public static final String OUTPUT_SHEET_1_NAME = "Datos";
 		public static final String APPLICATION_NAME = "NAEVYS";
-		public static final String APPLICATION_VERSION = "NAEVYS";
+		public static final String APPLICATION_VERSION = "1.0";
 	}
 }
