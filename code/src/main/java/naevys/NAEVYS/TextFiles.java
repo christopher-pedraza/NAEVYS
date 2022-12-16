@@ -69,15 +69,18 @@ public class TextFiles {
 	}
 
 	private Header processLine(String[] lineData) {
-		if (lineData.length == Constants.TF.INPUT_LINE_SIZE) {
-			String colName = lineData[0];
-			int colIndex = Integer.parseInt(lineData[1]);
-			return new Header(colName, colIndex);
-		} else if (lineData.length == Constants.TF.OUTPUT_LINE_SIZE) {
+		if (lineData.length == Constants.TF.NORMAL_LINE_SIZE) {
 			String colName = lineData[0];
 			int colIndex = Integer.parseInt(lineData[1]);
 			char id = lineData[2].charAt(0);
 			String value = lineData[3];
+			return new Header(colName, colIndex, id, value);
+		} else if (lineData.length == Constants.TF.REFERENCE_LINE_SIZE) {
+			String colName = lineData[0];
+			int colIndex = Integer.parseInt(lineData[1]);
+			char id = lineData[2].charAt(0);
+			String value = lineData[3];
+			int valueIndex = Integer.parseInt(lineData[4]);
 			return new Header(colName, colIndex, id, value);
 		}
 
