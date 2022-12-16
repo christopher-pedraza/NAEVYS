@@ -23,7 +23,6 @@ public class Header {
 	 *                   colName
 	 * @param id         identificador sobre el tipo de columna de la que se trata
 	 * @param value      valor o referencia que se colocara en la columna
-	 * @param color      color del titulo de la columna
 	 * @param valueIndex indice de la columna de valor en caso de ser una referencia
 	 */
 	public Header(String colName, int colIndex, char id, String value, int valueIndex) {
@@ -40,7 +39,6 @@ public class Header {
 	 *                   colName
 	 * @param id         identificador sobre el tipo de columna de la que se trata
 	 * @param value      valor o referencia que se colocara en la columna
-	 * @param color      color del titulo de la columna
 	 */
 	public Header(String colName, int colIndex, char id, String value) {
 		this.colName = colName;

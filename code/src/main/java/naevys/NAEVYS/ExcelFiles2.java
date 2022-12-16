@@ -33,7 +33,7 @@ public class ExcelFiles2 {
 //		wb.finish();
 //	}
 
-	public void convertExcel(String fileDir, Header[] inputHeaders, Header[] outputHeaders) {
+	public void convertExcel(String fileDir, Header[] outputHeaders) {
 
 		try (InputStream is = new FileInputStream(fileDir);
 				ReadableWorkbook inWb = new ReadableWorkbook(is);
