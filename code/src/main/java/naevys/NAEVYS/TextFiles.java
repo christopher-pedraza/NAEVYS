@@ -22,7 +22,7 @@ public class TextFiles {
 				if (line.length() > 0) {
 					// Si la linea no comienza con un signo de comentario
 					if (line.charAt(0) != Constants.TF.COMMENT_SIGN) {
-						String[] lineData = line.split(",");
+						String[] lineData = line.split(Constants.TF.CONFIG_DIVIDER);
 						headers[currentLine] = processLine(lineData);
 						currentLine++;
 					}
@@ -81,7 +81,7 @@ public class TextFiles {
 			char id = lineData[2].charAt(0);
 			String value = lineData[3];
 			int valueIndex = Integer.parseInt(lineData[4]);
-			return new Header(colName, colIndex, id, value);
+			return new Header(colName, colIndex, id, value, valueIndex);
 		}
 
 		return null;
