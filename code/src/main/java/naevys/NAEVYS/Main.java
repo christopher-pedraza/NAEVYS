@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		TextFiles tf = new TextFiles();
-		ExcelFiles2 ef = new ExcelFiles2();
+		ExcelFiles ef = new ExcelFiles();
 		/*
 		Header[] headers = tf.readFile(Constants.TF.INPUT_FILE_NAME);
 

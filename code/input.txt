@@ -1,22 +1,21 @@
 #
-# INPUT
-#
-# nombre_columna, indice_columna (1-basado, es decir, 1 aqui es la primer columna de excel)
-#
-
-
-Col1, 1
-
-
-#
 # OUTPUT
 #
-# nombre_columna, indice_columna (1-basado), identificador, valor (referencia a columna, formula o valor estatico)
+# nombre_columna, indice_columna (1-basado), identificador, valor, indice_valor
+#
+# nombre_columna:
+#	Nombre de la columna donde se guardaran los datos
+# indice_columna:
+#	Indice de la columna donde se guardaran los datos
 # id: 
 #	R: valor es una referencia (nombre) de otra columna; ej. "Col1"
 #	S: valor es un dato estatico; ej. "15"
 #	F: valor es una formula; ej. "SUM(A1:A10)"
+# indice_valor:
+#	Indice donde se encuentra la columna de referencia. Si el identificador no es R, no se necesita especificar
 #
 
 
-Col2, 3, R, Col1
+Output 7, 1, R, Col7, 7
+
+Output 1, 3, R, Col1, 1

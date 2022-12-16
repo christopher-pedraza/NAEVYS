@@ -6,15 +6,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.stream.Stream;
 
-import org.dhatim.fastexcel.Color;
 import org.dhatim.fastexcel.Workbook;
 import org.dhatim.fastexcel.Worksheet;
-import org.dhatim.fastexcel.reader.CellType;
+import org.dhatim.fastexcel.reader.Cell;
 import org.dhatim.fastexcel.reader.ReadableWorkbook;
 import org.dhatim.fastexcel.reader.Row;
 import org.dhatim.fastexcel.reader.Sheet;
@@ -37,7 +33,7 @@ public class ExcelFiles {
 //		wb.finish();
 //	}
 
-	public void convertExcel(String fileDir, Header[] inputHeaders, Header[] outputHeaders) {
+	public void convertExcel(String fileDir, Header[] outputHeaders) {
 
 		try (InputStream is = new FileInputStream(fileDir);
 				ReadableWorkbook inWb = new ReadableWorkbook(is);
@@ -53,35 +49,47 @@ public class ExcelFiles {
 				row = 0;
 
 				rows.forEach(r -> {
-					r.forEach(c -> {
-						// if (c.getType() == CellType.STRING) {}
-						switch (c.getType()) {
-							case STRING: {
-								outWs.value(row, col, c.asString());
-								break;
-							}
-							case BOOLEAN: {
-								outWs.value(row, col, c.asBoolean());
-								break;
-							}
-							case NUMBER: {
-								outWs.value(row, col, c.asNumber());
-								break;
-							}
-							case FORMULA: {
-								outWs.formula(row, col, c.getFormula());
-								break;
-							}
-							default: {
-								outWs.value(row, col, " ");
-								break;
+					for (int i = 0; i < outputHeaders.length; i++) {
+						col = outputHeaders[i].getColIndex();
+						
+						if (row == 0) {
+							outWs.value(row, col, outputHeaders[i].getColName());
+						}
+						
+						else if (outputHeaders[i].getId() == 'R') {
+							Cell c = r.getCell(outputHeaders[i].getValueIndex());
+							
+							switch (c.getType()) {
+								case STRING: {
+									outWs.value(row, col, c.asString());
+									break;
+								}
+								case BOOLEAN: {
+									outWs.value(row, col, c.asBoolean());
+									break;
+								}
+								case NUMBER: {
+									outWs.value(row, col, c.asNumber());
+									break;
+								}
+								case FORMULA: {
+									outWs.formula(row, col, c.getFormula());
+									break;
+								}
+								default: {
+									outWs.value(row, col, " ");
+									break;
+								}
 							}
 						}
-						// outWs.value(row, col, c.getValue().toString());
-						System.out.println("[" + row + "," + col + "] " + c.getValue().toString());
-						col++;
-					});
-					col = 0;
+						else if (outputHeaders[i].getId() == 'S') {
+							
+						}
+						else if (outputHeaders[i].getId() == 'F') {
+							
+						}
+					}
+					
 					row++;
 				});
 			}
@@ -95,9 +103,5 @@ public class ExcelFiles {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	
-	private void writeExcel() {
-		
 	}
 }
