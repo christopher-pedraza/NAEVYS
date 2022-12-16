@@ -8,10 +8,10 @@ public class TextFiles {
 	public Header[] readFile(String fileName) {
 		int fileSize = getFileSize(fileName);
 		int currentLine = 0;
-		
+
 		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
 			Header[] headers = new Header[fileSize];
-			
+
 			// Mientras que la linea leida no sea nula (ultima linea del archivo de texto),
 			// se iterara
 			String line = br.readLine();
@@ -31,7 +31,7 @@ public class TextFiles {
 				line = br.readLine();
 			}
 			br.close();
-			
+
 			return headers;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -41,7 +41,6 @@ public class TextFiles {
 		return null;
 	}
 
-	
 	private int getFileSize(String fileName) {
 		int fileSize = 0;
 		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
@@ -65,10 +64,10 @@ public class TextFiles {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return fileSize;
 	}
-	
+
 	private Header processLine(String[] lineData) {
 		if (lineData.length == Constants.TF.INPUT_LINE_SIZE) {
 			String colName = lineData[0];

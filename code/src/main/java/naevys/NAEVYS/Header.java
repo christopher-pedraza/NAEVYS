@@ -1,5 +1,7 @@
 package naevys.NAEVYS;
 
+// TODO: agregar archivo de Style.txt donde se puedan crear estilos para aplicar a celdas
+
 /**
  * Clase utilizada para guardar los datos de las columnas que seran leidas del
  * archivo fuente al igual que las columnas que se generaran en el archivo de
@@ -13,12 +15,14 @@ public class Header {
 	private int colIndex;
 	private char id;
 	private String value;
-	
+
 	/**
-	 * @param colName nombre de la columna
-	 * @param colIndex indice donde se deberia encontra la columna con el nombre colName
-	 * @param id identificador sobre el tipo de columna de la que se trata
-	 * @param value valor o referencia que se colocara en la columna
+	 * @param colName  nombre de la columna
+	 * @param colIndex indice donde se deberia encontra la columna con el nombre
+	 *                 colName
+	 * @param id       identificador sobre el tipo de columna de la que se trata
+	 * @param value    valor o referencia que se colocara en la columna
+	 * @param color    color del titulo de la columna
 	 */
 	public Header(String colName, int colIndex, char id, String value) {
 		this.colName = colName;
@@ -26,10 +30,11 @@ public class Header {
 		this.id = id;
 		this.value = value;
 	}
-	
+
 	/**
-	 * @param colName nombre de la columna
-	 * @param colIndex indice donde se deberia encontra la columna con el nombre colName
+	 * @param colName  nombre de la columna
+	 * @param colIndex indice donde se deberia encontra la columna con el nombre
+	 *                 colName
 	 */
 	public Header(String colName, int colIndex) {
 		this.colName = colName;
@@ -58,7 +63,7 @@ public class Header {
 	public char getId() {
 		return id;
 	}
-	
+
 	/**
 	 * @return the value
 	 */
