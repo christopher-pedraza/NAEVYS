@@ -51,45 +51,52 @@ public class ExcelFiles {
 				rows.forEach(r -> {
 					for (int i = 0; i < outputHeaders.length; i++) {
 						col = outputHeaders[i].getColIndex();
-						
+
 						if (row == 0) {
 							outWs.value(row, col, outputHeaders[i].getColName());
 						}
-						
+
 						else if (outputHeaders[i].getId() == 'R') {
-							Cell c = r.getCell(outputHeaders[i].getValueIndex());
-							
-							switch (c.getType()) {
-								case STRING: {
-									outWs.value(row, col, c.asString());
-									break;
-								}
-								case BOOLEAN: {
-									outWs.value(row, col, c.asBoolean());
-									break;
-								}
-								case NUMBER: {
-									outWs.value(row, col, c.asNumber());
-									break;
-								}
-								case FORMULA: {
-									outWs.formula(row, col, c.getFormula());
-									break;
-								}
-								default: {
-									outWs.value(row, col, " ");
-									break;
+							if (r.getCell(outputHeaders[i].getValueIndex()).getValue().toString().equals(outputHeaders[i]
+									.getValue())) {
+								r.forEach(headerCol -> {
+									if (outputHeaders[i].getValue().equals(" ")) {
+										// TODO: Checar todas las celdas en la fila y si se encuentra el titulo se actualiza el indice de valueIndex
+									}
+								});
+							} else {
+								Cell c = r.getCell(outputHeaders[i].getValueIndex());
+
+								switch (c.getType()) {
+									case STRING: {
+										outWs.value(row, col, c.asString());
+										break;
+									}
+									case BOOLEAN: {
+										outWs.value(row, col, c.asBoolean());
+										break;
+									}
+									case NUMBER: {
+										outWs.value(row, col, c.asNumber());
+										break;
+									}
+									case FORMULA: {
+										outWs.formula(row, col, c.getFormula());
+										break;
+									}
+									default: {
+										outWs.value(row, col, " ");
+										break;
+									}
 								}
 							}
-						}
-						else if (outputHeaders[i].getId() == 'S') {
-							
-						}
-						else if (outputHeaders[i].getId() == 'F') {
-							
+						} else if (outputHeaders[i].getId() == 'S') {
+
+						} else if (outputHeaders[i].getId() == 'F') {
+
 						}
 					}
-					
+
 					row++;
 				});
 			}
