@@ -94,9 +94,13 @@ public class ExcelFiles {
 								}
 							}
 						} else if (outputHeaders[i].getId() == 'S') {
-							outWs.value(row, col, outputHeaders[i].getValue());
+							if (isNumeric(outputHeaders[i].getValue())) {
+								outWs.value(row, col, Double.parseDouble(outputHeaders[i].getValue()));
+							} else {
+								outWs.value(row, col, outputHeaders[i].getValue());
+							}
 						} else if (outputHeaders[i].getId() == 'F') {
-
+							
 						}
 					}
 
