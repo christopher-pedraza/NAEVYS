@@ -54,40 +54,43 @@ public class ExcelFiles {
 
 						if (row == 0) {
 							outWs.value(row, col, outputHeaders[i].getColName());
+
+							// Correccion de indice de las columnas especificado en el Header
+							if (outputHeaders[i].getId() == 'R') {
+								if (!r.getCell(outputHeaders[i].getValueIndex()).getValue().toString()
+										.equals(outputHeaders[i].getValue())) {
+									for (int j = 0; j < r.getCellCount(); j++) {
+										if (outputHeaders[i].getValue().equals(r.getCell(j).getValue().toString())) {
+											outputHeaders[i].setValueIndex(j + 1);
+										}
+									}
+								}
+							}
 						}
 
 						else if (outputHeaders[i].getId() == 'R') {
-							if (r.getCell(outputHeaders[i].getValueIndex()).getValue().toString().equals(outputHeaders[i]
-									.getValue())) {
-								r.forEach(headerCol -> {
-									if (outputHeaders[i].getValue().equals(" ")) {
-										// TODO: Checar todas las celdas en la fila y si se encuentra el titulo se actualiza el indice de valueIndex
-									}
-								});
-							} else {
-								Cell c = r.getCell(outputHeaders[i].getValueIndex());
+							Cell c = r.getCell(outputHeaders[i].getValueIndex());
 
-								switch (c.getType()) {
-									case STRING: {
-										outWs.value(row, col, c.asString());
-										break;
-									}
-									case BOOLEAN: {
-										outWs.value(row, col, c.asBoolean());
-										break;
-									}
-									case NUMBER: {
-										outWs.value(row, col, c.asNumber());
-										break;
-									}
-									case FORMULA: {
-										outWs.formula(row, col, c.getFormula());
-										break;
-									}
-									default: {
-										outWs.value(row, col, " ");
-										break;
-									}
+							switch (c.getType()) {
+								case STRING: {
+									outWs.value(row, col, c.asString());
+									break;
+								}
+								case BOOLEAN: {
+									outWs.value(row, col, c.asBoolean());
+									break;
+								}
+								case NUMBER: {
+									outWs.value(row, col, c.asNumber());
+									break;
+								}
+								case FORMULA: {
+									outWs.formula(row, col, c.getFormula());
+									break;
+								}
+								default: {
+									outWs.value(row, col, " ");
+									break;
 								}
 							}
 						} else if (outputHeaders[i].getId() == 'S') {
