@@ -94,7 +94,7 @@ public class ExcelFiles {
 								}
 							}
 						} else if (outputHeaders[i].getId() == 'S') {
-
+							outWs.value(row, col, outputHeaders[i].getValue());
 						} else if (outputHeaders[i].getId() == 'F') {
 
 						}
@@ -114,4 +114,13 @@ public class ExcelFiles {
 			e.printStackTrace();
 		}
 	}
+	
+	public static boolean isNumeric(String str) { 
+		  try {  
+		    Double.parseDouble(str);  
+		    return true;
+		  } catch(NumberFormatException e){  
+		    return false;  
+		  }  
+		}
 }
