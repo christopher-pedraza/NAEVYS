@@ -70,7 +70,9 @@ public class ExcelFiles {
 
 						else if (outputHeaders[i].getId() == 'R') {
 							Cell c = r.getCell(outputHeaders[i].getValueIndex());
-
+							
+							
+							
 							switch (c.getType()) {
 								case STRING: {
 									outWs.value(row, col, c.asString());
@@ -100,7 +102,11 @@ public class ExcelFiles {
 								outWs.value(row, col, outputHeaders[i].getValue());
 							}
 						} else if (outputHeaders[i].getId() == 'F') {
-							outWs.formula(row, col, outputHeaders[i].getValue());
+							String formula = outputHeaders[i].getValue();
+							if (formula.contains(Constants.EF.FORMULA_PLACEHOLDER)) {
+								formula = formula.replaceAll(Constants.EF.FORMULA_PLACEHOLDER, Integer.toString(row+1));
+							}
+							outWs.formula(row, col, formula);
 						}
 					}
 

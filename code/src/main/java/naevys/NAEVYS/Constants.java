@@ -13,5 +13,6 @@ public class Constants {
 		public static final String OUTPUT_SHEET_1_NAME = "Datos";
 		public static final String APPLICATION_NAME = "NAEVYS";
 		public static final String APPLICATION_VERSION = "1.0";
+		public static final String FORMULA_PLACEHOLDER = "#";
 	}
 }

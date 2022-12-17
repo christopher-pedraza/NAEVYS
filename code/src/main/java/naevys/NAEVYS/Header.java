@@ -9,9 +9,6 @@ package naevys.NAEVYS;
  */
 public class Header {
 	private String colName;
-	// TODO: Indice de la columna (el programa checara si corresponde a la columna
-	// con el nombre descrito en colName, sino, iterara hasta buscar la columna
-	// correcta)
 	private int colIndex;
 	private char id;
 	private String value;
