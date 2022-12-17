@@ -100,7 +100,7 @@ public class ExcelFiles {
 								outWs.value(row, col, outputHeaders[i].getValue());
 							}
 						} else if (outputHeaders[i].getId() == 'F') {
-							
+							outWs.formula(row, col, outputHeaders[i].getValue());
 						}
 					}
 

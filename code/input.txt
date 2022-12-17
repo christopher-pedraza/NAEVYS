@@ -23,3 +23,5 @@ Output_1, 2, R, Col1, 5
 Output_2, 3, R, Col2, 3
 
 Output_2, 4, S, 6
+
+Output_2, 5, F, SUM(C2:C7)
