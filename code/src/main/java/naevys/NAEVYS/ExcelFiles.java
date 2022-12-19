@@ -20,6 +20,12 @@ import org.dhatim.fastexcel.reader.ReadableWorkbook;
 import org.dhatim.fastexcel.reader.Row;
 import org.dhatim.fastexcel.reader.Sheet;
 
+/**
+ * Clase que maneja las interacciones del programa con archivos de Excel, ya sea
+ * para leerlos o imprimir en estos
+ * 
+ * @author Christopher Gabriel Pedraza Pohlenz
+ */
 public class ExcelFiles {
 	// Variables de control especificando la fila y columna actual. Se actualizan
 	// los valores en cada iteracion
