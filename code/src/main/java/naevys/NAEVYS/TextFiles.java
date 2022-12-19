@@ -5,6 +5,23 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class TextFiles {
+
+	/**
+	 * <h1><i>readFile</i></h1>
+	 * <p>
+	 * </p>
+	 * <p style="margin-left: 10px">
+	 * <code> public readFile(String fileName)</code>
+	 * </p>
+	 * <p>
+	 * Funcion para leer el archivo de texto con las configuraciones del archivo de
+	 * Excel que se exportara.
+	 * </p>
+	 * 
+	 * @param fileName Direccion del archivo de configuracion
+	 * @return <b>headers</b> Arreglo de objetos Header con las configuraciones de
+	 *         todas las columnas para el archivo de Excel que se exportara
+	 */
 	public Header[] readFile(String fileName) {
 		int fileSize = getFileSize(fileName);
 		int currentLine = 0;
@@ -41,6 +58,22 @@ public class TextFiles {
 		return null;
 	}
 
+	/**
+	 * <h1><i>getFileSize</i></h1>
+	 * <p>
+	 * </p>
+	 * <p style="margin-left: 10px">
+	 * <code> public getFileSize(String fileName)</code>
+	 * </p>
+	 * <p>
+	 * Funcion para obtener el tamaño del archivo de configuraciones quitando los
+	 * comentarios y lineas vacias.
+	 * </p>
+	 * 
+	 * @param fileName Direccion del archivo de configuracion
+	 * @return <b>fileSize</b> Cantidad de lineas con datos que contiene el archivo
+	 *         de configuraciones
+	 */
 	private int getFileSize(String fileName) {
 		int fileSize = 0;
 		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
@@ -68,6 +101,23 @@ public class TextFiles {
 		return fileSize;
 	}
 
+	/**
+	 * <h1><i>processLine</i></h1>
+	 * <p>
+	 * </p>
+	 * <p style="margin-left: 10px">
+	 * <code> public processLine(String[] lineData)</code>
+	 * </p>
+	 * <p>
+	 * Funcion para crear un objeto de Header usando la configuracion de 1 linea del
+	 * archivo de configuraciones.
+	 * </p>
+	 * 
+	 * @param lineData Arreglo con cada dato de configuracion de una linea del
+	 *                 archivo de configuraciones
+	 * @return Un objeto Header con los datos de configuracion especificados en la
+	 *         linea recibida
+	 */
 	private Header processLine(String[] lineData) {
 		if (lineData.length == Constants.TF.NORMAL_LINE_SIZE) {
 			String colName = lineData[0];
