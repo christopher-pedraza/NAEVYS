@@ -33,9 +33,16 @@ public class ExcelFiles {
 	private static int row = 0;
 
 	/**
+	 * <h1><i>convertExcel</i></h1>
+	 * <p></p>
+	 * <p style="margin-left: 10px">
+	 * <code> public convertExcel(String inputFileDir, String outputFileDir, Header[] outputHeaders)</code>
+	 * </p>
+	 * <p>
 	 * Funcion para abrir un archivo de Excel de entrada, leer las columnas
 	 * especificadas por los headers e imprimir los valores en un nuevo archivo de
 	 * salida
+	 * </p>
 	 * 
 	 * @param inputFileDir  direccion del archivo de entrada
 	 * @param outputFileDir direccion del archivo de salida
@@ -221,7 +228,14 @@ public class ExcelFiles {
 	}
 
 	/**
+	 * <h1><i>isNumeric</i></h1>
+	 * <p></p>
+	 * <p style="margin-left: 10px">
+	 * <code> public isNumeric(String str)</code>
+	 * </p>
+	 * <p>
 	 * Funcion para determinar si el string recibido se puede convertir a un numero
+	 * </p>
 	 * 
 	 * @param str texto que se checara si se puede convertir en un numero (que puede
 	 *            contener punto flotante)
