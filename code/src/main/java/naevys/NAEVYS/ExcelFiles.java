@@ -12,6 +12,8 @@ import java.io.OutputStream;
 // Para abrir un flujo de la hoja de calculo de Excel
 import java.util.stream.Stream;
 
+import org.dhatim.fastexcel.BorderSide;
+import org.dhatim.fastexcel.BorderStyle;
 // Importaciones de FastExcel
 import org.dhatim.fastexcel.Workbook;
 import org.dhatim.fastexcel.Worksheet;
@@ -60,7 +62,7 @@ public class ExcelFiles {
 			Workbook outWb = new Workbook(os, Constants.EF.APPLICATION_NAME, Constants.EF.APPLICATION_VERSION);
 			// En el libro de Excel previo se crea una hoja de calculo
 			Worksheet outWs = outWb.newWorksheet(Constants.EF.OUTPUT_SHEET_1_NAME);
-
+			
 			// Input workbook
 			// Obtiene la primer hoja del archivo de Excel especificado por inputFileDir
 			Sheet sheet = inWb.getFirstSheet();
@@ -85,6 +87,7 @@ public class ExcelFiles {
 							// Se imprime en la columna correspondiente (especificada por colIndex) y en la
 							// primera fila el nombre de la columna especificado por el usuario
 							outWs.value(row, col, outputHeaders[i].getColName());
+							outWs.style(row, col).horizontalAlignment("center").set();
 
 							// En caso de que se trate de un valor por referencia, se tendra que determinar
 							// si los indices especificados en el archivo corresponden al nombre
