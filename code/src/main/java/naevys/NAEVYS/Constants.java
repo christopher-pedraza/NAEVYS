@@ -13,6 +13,10 @@ public class Constants {
 		public static final String OUTPUT_SHEET_1_NAME = "Datos";
 		public static final String APPLICATION_NAME = "NAEVYS";
 		public static final String APPLICATION_VERSION = "1.0";
-		public static final String FORMULA_PLACEHOLDER = "#";
+		public static final String FORMULA_CURRENT_ROW_PLACEHOLDER = "#";
+		public static final String DEFAULT_CELL_PLACEHOLDER = " ";
+		public static final char REFERENCE_ID = 'R';
+		public static final char FORMULA_ID = 'F';
+		public static final char STATIC_ID = 'S';
 	}
 }
