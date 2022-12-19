@@ -241,7 +241,7 @@ public class ExcelFiles {
 	 * 
 	 * @param str texto que se checara si se puede convertir en un numero (que puede
 	 *            contener punto flotante)
-	 * @return Verdadero/Falso si se puede convertir a un numero
+	 * @return <b>Verdadero/Falso</b> si se puede convertir a un numero
 	 */
 	public static boolean isNumeric(String str) {
 		// Intenta convertir el texto a un numero con punto flotante. Si lo logra,

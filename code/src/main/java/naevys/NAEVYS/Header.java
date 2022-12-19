@@ -75,23 +75,23 @@ public class Header {
 	}
 
 	/**
-	 * @return {@code colIndex} Indice donde se imprimira la columna en el archivo
-	 *         de salida
+	 * @return <b>colIndex</b> Indice donde se imprimira la columna en el archivo de
+	 *         salida
 	 */
 	public int getColIndex() {
 		return colIndex;
 	}
 
 	/**
-	 * @return {@code colName} Nombre de la columna que se imprimira en el archivo
-	 *         de salida
+	 * @return <b>colName</b> Nombre de la columna que se imprimira en el archivo de
+	 *         salida
 	 */
 	public String getColName() {
 		return colName;
 	}
 
 	/**
-	 * @return {@code id} Identificador sobre el tipo de columna de la que se trata
+	 * @return <b>id</b> Identificador sobre el tipo de columna de la que se trata
 	 *         (referencia, formula, estatico)
 	 */
 	public char getId() {
@@ -99,15 +99,16 @@ public class Header {
 	}
 
 	/**
-	 * @param {@code value} Valor (estatico o formula) o referencia (nombre de la
-	 * columna que se leera del archivo de entrada) que se colocara en la columna
+	 * @param value Valor (estatico o formula) o referencia (nombre de la columna
+	 *              que se leera del archivo de entrada) que se colocara en la
+	 *              columna
 	 */
 	public String getValue() {
 		return value;
 	}
 
 	/**
-	 * @return {@code ValueIndex} Indice de la columna que se leera del archivo de
+	 * @return <b>ValueIndex</b> Indice de la columna que se leera del archivo de
 	 *         entrada. Toma prioridad el nombre de la columna expresado en 'value'
 	 *         en caso de que no corresponda el indice
 	 */
