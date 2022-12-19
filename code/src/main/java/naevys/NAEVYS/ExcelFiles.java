@@ -12,8 +12,6 @@ import java.io.OutputStream;
 // Para abrir un flujo de la hoja de calculo de Excel
 import java.util.stream.Stream;
 
-import org.dhatim.fastexcel.BorderSide;
-import org.dhatim.fastexcel.BorderStyle;
 // Importaciones de FastExcel
 import org.dhatim.fastexcel.Workbook;
 import org.dhatim.fastexcel.Worksheet;
