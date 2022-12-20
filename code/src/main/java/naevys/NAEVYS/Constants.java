@@ -27,6 +27,11 @@ public class Constants {
 		 */
 		public static final String INPUT_FILE_NAME = "input.txt";
 		/**
+		 * Nombre del archivo que contiene las constantes que se imprimiran en el
+		 * archivo de salida
+		 */
+		public static final String CONSTANTS_FILE_NAME = "constants.txt";
+		/**
 		 * Tamaño de las lineas de configuracion que hacen referencia a una columna con
 		 * valores por referencia
 		 */

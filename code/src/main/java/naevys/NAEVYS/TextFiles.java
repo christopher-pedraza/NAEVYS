@@ -13,6 +13,13 @@ import java.io.IOException;
  * @author Christopher Gabriel Pedraza Pohlenz
  */
 public class TextFiles {
+	// Declara un arreglo de objetos Header para guardar las configuraciones de las
+	// columnas para el archivo de salida
+	private Header[] headers;
+	// Declara un arreglo de objetos ExcelConstant para guardar las constantes que
+	// se imprimiran en el archivo de salida
+	private ExcelConstant[] constants;
+
 	/**
 	 * <h1><i>readHeaderFile</i></h1>
 	 * <p style="margin-left: 10px">
@@ -27,19 +34,15 @@ public class TextFiles {
 	 * @return <b>headers</b> Arreglo de objetos Header con las configuraciones de
 	 *         todas las columnas para el archivo de Excel que se exportara
 	 */
-	public Header[] readHeaderFile(String fileName) {
-		// Obtiene la cantidad de lineas con datos de configuracion en el archivo
-		int fileSize = getFileSize(fileName);
+	public void readFile(String fileName) {
+		initializeArray(fileName);
+
 		// Variable para llevar registro de las lineas de configuracion leidas
 		int currentLine = 0;
 
 		// Abre el archivo de texto en la direccion especificada por el parametro
 		// fileName
 		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-			// Declara un arreglo de objetos Header para guardar las configuraciones de las
-			// columnas para el archivo de salida
-			Header[] headers = new Header[fileSize];
-
 			// Mientras que la linea leida no sea nula (ultima linea del archivo de texto),
 			// se iterara. Se lee primero una linea fuera del ciclo por si acaso el archivo
 			// esta completamente vacio
@@ -59,9 +62,12 @@ public class TextFiles {
 						// "Nombre,2" guardaria en el arreglo cada elemento en una casilla por separado:
 						// lineData[0]="Nombre", lineData[1]="2"
 						String[] lineData = line.split(Constants.TF.CONFIG_DIVIDER);
+
 						// Manda este arreglo de strings al metodo 'processLine' donde se creara un
-						// objeto de Header. Este se agregara al arreglo de objetos 'headers'
-						headers[currentLine] = processHeaderLine(lineData);
+						// objeto de Header/ExcelConstant. Este se agregara al arreglo de objetos
+						// 'headers'/'constants'
+						processLine(fileName, lineData, currentLine);
+
 						// Aumenta la linea actual que es equivalente a la cantidad de lineas de
 						// configuracion (ignorando comentarios y lineas vacias) leidas
 						currentLine++;
@@ -72,20 +78,45 @@ public class TextFiles {
 			}
 			// Cierra el archivo
 			br.close();
-
-			// Se regresa el arreglo de headers que contiene todas las configuraciones de
-			// las columnas del archivo de salida descritas por el archivo de
-			// configuraciones
-			return headers;
 		}
 		// TODO: Resolucion de errores
 		catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
 
-		// Si por alguna razon llega aqui, signfica que hubo un error y se regresa null
-		return null;
+	/**
+	 * <h1><i>getHeaderArray</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public getHeaderArray()</code>
+	 * </p>
+	 * <p>
+	 * Funcion para obtener el arreglo de objetos Header con las configuraciones de
+	 * las columnas.
+	 * </p>
+	 * 
+	 * @return <b>headers</b> Arreglo con las configuraciones de las columnas del
+	 *         archivo de salida
+	 */
+	public Header[] getHeaderArray() {
+		return headers;
+	}
+
+	/**
+	 * <h1><i>getConstantsArray</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public getConstantsArray()</code>
+	 * </p>
+	 * <p>
+	 * Funcion para obtener el arreglo de objetos ExcelConstant con los datos de las
+	 * constantes del archivo de salida
+	 * </p>
+	 * 
+	 * @return <b>constants</b> Arreglo con las constantes
+	 */
+	public ExcelConstant[] getConstantsArray() {
+		return constants;
 	}
 
 	/**
@@ -146,6 +177,30 @@ public class TextFiles {
 	}
 
 	/**
+	 * <h1><i>processLine</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public processLine(String fileName, String[] lineData)</code>
+	 * </p>
+	 * <p>
+	 * Funcion que decide con que funcion procesar la linea. Dependiendo del nombre
+	 * del archivo puede procesarlo como un objeto de Header o de ExcelConstant.
+	 * </p>
+	 * 
+	 * @param fileName Direccion del archivo de configuracion
+	 * @param lineData Arreglo con cada dato de configuracion de una linea del
+	 *                 archivo de configuraciones
+	 */
+	private void processLine(String fileName, String[] lineData, int index) {
+		// Dependiendo del archivo que se esta procesando es el arreglo que se
+		// inicializara
+		if (fileName.contains(Constants.TF.INPUT_FILE_NAME)) {
+			headers[index] = processHeaderLine(lineData);
+		} else if (fileName.contains(Constants.TF.CONSTANTS_FILE_NAME)) {
+			constants[index] = processConstantLine(lineData);
+		}
+	}
+
+	/**
 	 * <h1><i>processHeaderLine</i></h1>
 	 * <p style="margin-left: 10px">
 	 * <code> public processHeaderLine(String[] lineData)</code>
@@ -198,5 +253,46 @@ public class TextFiles {
 
 		// Si llego aqui es que hubo un error y se regresa null
 		return null;
+	}
+
+	/**
+	 * <h1><i>processConstantLine</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public processConstantLine(String[] lineData)</code>
+	 * </p>
+	 * <p>
+	 * Funcion para crear un objeto de ExcelConstant usando los datos de la
+	 * constante del archivo de configuracion
+	 * </p>
+	 * 
+	 * @param lineData Arreglo con cada dato de configuracion de una linea del
+	 *                 archivo de configuraciones
+	 * @return Un objeto ExcelConstant con los datos de la constante
+	 */
+	private ExcelConstant processConstantLine(String[] lineData) {
+		// Nombre de la columna donde se pondra la constante
+		String colName = lineData[0];
+		// Nombre que tendra la celda con el valor de la constante
+		String constantName = lineData[1];
+		// Nombre que tendra la celda con el valor de la constante
+		double value = Double.parseDouble(lineData[2]);
+
+		// Se crea el objeto de ExcelConstant usando los parametros de la linea
+		return new ExcelConstant(colName, constantName, value);
+	}
+
+	private void initializeArray(String fileName) {
+		// Obtiene la cantidad de lineas con datos de configuracion en el archivo
+		int fileSize = getFileSize(fileName);
+
+		// Dependiendo del archivo que se esta procesando es el arreglo que se
+		// inicializara
+		if (fileName.contains(Constants.TF.INPUT_FILE_NAME)) {
+			// Se inicializa el arreglo con las configuraciones de las columnas
+			headers = new Header[fileSize];
+		} else if (fileName.contains(Constants.TF.CONSTANTS_FILE_NAME)) {
+			// Se inicializa el arreglo con las constantes
+			constants = new ExcelConstant[fileSize];
+		}
 	}
 }

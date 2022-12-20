@@ -6,7 +6,7 @@ package naevys.NAEVYS;
  * 
  * @author Christopher Gabriel Pedraza Pohlenz
  */
-public class ExcelConstants {
+public class ExcelConstant {
 	/**
 	 * Nombre de la columna que contendra el valor de la constante
 	 */
@@ -26,7 +26,7 @@ public class ExcelConstants {
 	 * @param constantName Nombre de la celda que contendra el valor de la constante
 	 * @param value        Valor de la constante
 	 */
-	public ExcelConstants(String colName, String constantName, double value) {
+	public ExcelConstant(String colName, String constantName, double value) {
 		this.colName = colName;
 		this.constantName = cleanName(constantName);
 		this.value = value;
