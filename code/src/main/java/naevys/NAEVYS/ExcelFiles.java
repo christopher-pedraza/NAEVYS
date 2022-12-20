@@ -35,19 +35,21 @@ public class ExcelFiles {
 	/**
 	 * <h1><i>convertExcel</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public convertExcel(String inputFileDir, String outputFileDir, Header[] outputHeaders)</code>
+	 * <code> public convertExcel(String inputFileDir, String outputFileDir, Header[] outputHeaders, ExcelConstant[] constants)</code>
 	 * </p>
 	 * <p>
-	 * Funcion para abrir un archivo de Excel de entrada, leer las columnas
-	 * especificadas por los headers e imprimir los valores en un nuevo archivo de
-	 * salida.
+	 * Funcion para crear un nuevo archivo de Excel usando datos de otro archivo
+	 * fuente al igual que otros valores especificados en los archivos de
+	 * configuracion
 	 * </p>
 	 * 
-	 * @param inputFileDir  direccion del archivo de entrada
-	 * @param outputFileDir direccion del archivo de salida
-	 * @param outputHeaders especificaciones de las columnas que se exportaran
+	 * @param inputFileDir  Direccion del archivo de entrada
+	 * @param outputFileDir Direccion del archivo de salida
+	 * @param outputHeaders Especificaciones de las columnas que se exportaran
+	 * @param constants     Especificaciones de las constantes que se exportaran
 	 */
-	public void convertExcel(String inputFileDir, String outputFileDir, Header[] outputHeaders, ExcelConstant[] constants) {
+	public void convertExcel(String inputFileDir, String outputFileDir, Header[] outputHeaders,
+			ExcelConstant[] constants) {
 		// Abre el archivo de Excel de entrada y crea uno de salida
 		try (InputStream is = new FileInputStream(inputFileDir);
 				ReadableWorkbook inWb = new ReadableWorkbook(is);
@@ -74,7 +76,22 @@ public class ExcelFiles {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * <h1><i>writeDataWorksheet</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public writeDataWorksheet(ReadableWorkbook inWb, Workbook outWb, Header[] outputHeaders)</code>
+	 * </p>
+	 * <p>
+	 * Funcion para abrir un archivo de Excel de entrada, leer las columnas
+	 * especificadas por los headers e imprimir los valores en un nuevo archivo de
+	 * salida.
+	 * </p>
+	 * 
+	 * @param inWb          Libro que se leera para obtener los datos
+	 * @param outWb         Libro donde se escribiran los datos
+	 * @param outputHeaders Especificaciones de las columnas que se exportaran
+	 */
 	private void writeDataWorksheet(ReadableWorkbook inWb, Workbook outWb, Header[] outputHeaders) throws IOException {
 		// En el libro de Excel previo se crea una hoja de calculo
 		Worksheet outWs = outWb.newWorksheet(Constants.EF.OUTPUT_SHEET_2_NAME);
@@ -240,7 +257,7 @@ public class ExcelFiles {
 			});
 		}
 		// TODO: Dar formato a las celdas antes de cerrar el libro
-		
+
 		// Cerrar hoja de calculo del libro de salida. No se pueden hacer modificaciones
 		// en otra hoja cuando se hace flush hasta que se llame a finish()
 		outWs.finish();
