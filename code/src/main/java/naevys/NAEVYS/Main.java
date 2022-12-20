@@ -12,6 +12,6 @@ public class Main {
 		tf.readFile(Constants.TF.CONSTANTS_FILE_NAME);
 		ExcelConstant[] constants = tf.getConstantsArray();
 
-		ef.convertExcel("input.xlsx", "output.xlsx", headers);
+		ef.convertExcel("input.xlsx", "output.xlsx", headers, constants);
 	}
 }
