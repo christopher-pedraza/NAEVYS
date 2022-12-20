@@ -48,6 +48,11 @@ public class Constants {
 		 * Nombre de la hoja de calculo que contendra todos los datos del archivo de
 		 * salida
 		 */
+		public static final String OUTPUT_SHEET_2_NAME = "Tarifas";
+		/**
+		 * Nombre de la hoja de calculo que contendra todos los datos del archivo de
+		 * salida
+		 */
 		public static final String OUTPUT_SHEET_1_NAME = "Datos";
 		/**
 		 * Nombre de la aplicacion que genero el archivo de Excel de salida

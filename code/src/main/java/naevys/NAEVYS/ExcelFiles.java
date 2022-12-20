@@ -59,7 +59,7 @@ public class ExcelFiles {
 			// Crea un libro de Excel nuevo
 			Workbook outWb = new Workbook(os, Constants.EF.APPLICATION_NAME, Constants.EF.APPLICATION_VERSION);
 			// En el libro de Excel previo se crea una hoja de calculo
-			Worksheet outWs = outWb.newWorksheet(Constants.EF.OUTPUT_SHEET_1_NAME);
+			Worksheet outWs = outWb.newWorksheet(Constants.EF.OUTPUT_SHEET_2_NAME);
 
 			// Input workbook
 			// Obtiene la primer hoja del archivo de Excel especificado por inputFileDir
