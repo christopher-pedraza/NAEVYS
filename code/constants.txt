@@ -1,3 +1,11 @@
+#
+# Estructura: 
+# Nombre_columna, nombre_celda
+#
+# Notas: 
+# 	nombre_celda solo puede contener letras, numeros y guiones bajos (_)
+#
+
 TIENDA_Margen_1: 0.5
 
 MAYORISTA_Margen_2: 0.3
