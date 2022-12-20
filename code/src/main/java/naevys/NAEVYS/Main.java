@@ -6,7 +6,7 @@ public class Main {
 		TextFiles tf = new TextFiles();
 		ExcelFiles ef = new ExcelFiles();
 
-		Header[] headers = tf.readFile(Constants.TF.INPUT_FILE_NAME);
+		Header[] headers = tf.readHeaderFile(Constants.TF.INPUT_FILE_NAME);
 
 		ef.convertExcel("input.xlsx", "output.xlsx", headers);
 	}

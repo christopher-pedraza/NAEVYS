@@ -14,9 +14,9 @@ import java.io.IOException;
  */
 public class TextFiles {
 	/**
-	 * <h1><i>readFile</i></h1>
+	 * <h1><i>readHeaderFile</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public readFile(String fileName)</code>
+	 * <code> public readHeaderFile(String fileName)</code>
 	 * </p>
 	 * <p>
 	 * Funcion para leer el archivo de texto con las configuraciones del archivo de
@@ -27,7 +27,7 @@ public class TextFiles {
 	 * @return <b>headers</b> Arreglo de objetos Header con las configuraciones de
 	 *         todas las columnas para el archivo de Excel que se exportara
 	 */
-	public Header[] readFile(String fileName) {
+	public Header[] readHeaderFile(String fileName) {
 		// Obtiene la cantidad de lineas con datos de configuracion en el archivo
 		int fileSize = getFileSize(fileName);
 		// Variable para llevar registro de las lineas de configuracion leidas
@@ -61,7 +61,7 @@ public class TextFiles {
 						String[] lineData = line.split(Constants.TF.CONFIG_DIVIDER);
 						// Manda este arreglo de strings al metodo 'processLine' donde se creara un
 						// objeto de Header. Este se agregara al arreglo de objetos 'headers'
-						headers[currentLine] = processLine(lineData);
+						headers[currentLine] = processHeaderLine(lineData);
 						// Aumenta la linea actual que es equivalente a la cantidad de lineas de
 						// configuracion (ignorando comentarios y lineas vacias) leidas
 						currentLine++;
@@ -146,9 +146,9 @@ public class TextFiles {
 	}
 
 	/**
-	 * <h1><i>processLine</i></h1>
+	 * <h1><i>processHeaderLine</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public processLine(String[] lineData)</code>
+	 * <code> public processHeaderLine(String[] lineData)</code>
 	 * </p>
 	 * <p>
 	 * Funcion para crear un objeto de Header usando la configuracion de 1 linea del
@@ -160,7 +160,7 @@ public class TextFiles {
 	 * @return Un objeto Header con los datos de configuracion especificados en la
 	 *         linea recibida
 	 */
-	private Header processLine(String[] lineData) {
+	private Header processHeaderLine(String[] lineData) {
 		// Las lineas con la configuracion para columnas con valores por referencia
 		// tienen 1 parametro mas que las demas que es el indice de dicha columna. Por
 		// lo anterior, aqui se hace la distincion
