@@ -221,6 +221,11 @@ public class ExcelFiles {
 					}
 				});
 			}
+			// TODO: Dar formato a las celdas antes de cerrar el libro
+			
+			// Cerrar hoja de calculo del libro de salida. No se pueden hacer modificaciones
+			// en otra hoja cuando se hace flush hasta que se llame a finish()
+			outWs.finish();
 
 			// Se cierra el archivo de entrada y se escriben los cambios al archivo de
 			// salida
