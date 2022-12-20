@@ -8,7 +8,7 @@ public class Main {
 
 		Header[] headers = tf.readFile(Constants.TF.INPUT_FILE_NAME);
 
-		ef.convertExcel("D:/Folders/Desktop/Consulta20220929_224718.xlsx", "output.xlsx", headers);
+		ef.convertExcel("input.xlsx", "output.xlsx", headers);
 	}
 
 }
