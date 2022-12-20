@@ -34,7 +34,7 @@ public class ExcelConstants {
 
 	/**
 	 * <h1><i>cleanName</i></h1>
-	 * <p style="margin-left: 10px; margin-top: 15px; margin-bottom: 15px">
+	 * <p style="margin-left: 10px">
 	 * <code> public cleanName(String str)</code>
 	 * <p>
 	 * Funcion para remover cualquier caracter invalido (que no sea Alfanumerico o

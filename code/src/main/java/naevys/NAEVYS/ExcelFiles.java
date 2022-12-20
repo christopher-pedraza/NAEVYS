@@ -34,8 +34,6 @@ public class ExcelFiles {
 
 	/**
 	 * <h1><i>convertExcel</i></h1>
-	 * <p>
-	 * </p>
 	 * <p style="margin-left: 10px">
 	 * <code> public convertExcel(String inputFileDir, String outputFileDir, Header[] outputHeaders)</code>
 	 * </p>
@@ -245,8 +243,6 @@ public class ExcelFiles {
 
 	/**
 	 * <h1><i>isNumeric</i></h1>
-	 * <p>
-	 * </p>
 	 * <p style="margin-left: 10px">
 	 * <code> public isNumeric(String str)</code>
 	 * </p>

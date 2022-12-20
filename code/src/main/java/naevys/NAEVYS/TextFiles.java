@@ -15,8 +15,6 @@ import java.io.IOException;
 public class TextFiles {
 	/**
 	 * <h1><i>readFile</i></h1>
-	 * <p>
-	 * </p>
 	 * <p style="margin-left: 10px">
 	 * <code> public readFile(String fileName)</code>
 	 * </p>
@@ -92,8 +90,6 @@ public class TextFiles {
 
 	/**
 	 * <h1><i>getFileSize</i></h1>
-	 * <p>
-	 * </p>
 	 * <p style="margin-left: 10px">
 	 * <code> public getFileSize(String fileName)</code>
 	 * </p>
@@ -151,8 +147,6 @@ public class TextFiles {
 
 	/**
 	 * <h1><i>processLine</i></h1>
-	 * <p>
-	 * </p>
 	 * <p style="margin-left: 10px">
 	 * <code> public processLine(String[] lineData)</code>
 	 * </p>
