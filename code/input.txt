@@ -16,16 +16,24 @@
 #
 
 
-Output_7, 1, R, Col7, 7
+Situacion, 1, R, SIT, 1
 
-Output_1, 2, R, Col1, 5
+NIF, 2, R, NIF, 4
 
-Output_2, 3, R, Col2, 3
+Nombre, 3, R, NOMBRE, 5
 
-Output_2, 4, S, 6
+COD_EAN13, 4, R, COD_EAN13, 7
 
-Output_2, 5, F, SUM(C2:C7)
+Codigo_Proveedor, 5, R, COD_PROV, 8
 
-Output_2, 6, F, C#+D#
+Codigo, 6, R, CODIGO, 10
 
-formulas_papa, 7, F, (C#/D#)+5*2
+Descripcion, 7, R, DESCRIPCIO, 11
+
+Existencia, 8, R, EXISTENCIA, 12
+
+Costo, 9, R, COSTE_REPOSICION, 25
+
+Precio_Venta, 10, R, PRECIOV, 14
+
+Margen_España, 11, F, 1 - ($I$# / $J$#)
