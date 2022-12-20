@@ -33,6 +33,29 @@ public class ExcelConstants {
 	}
 
 	/**
+	 * @return <b>colName</b> Nombre de la columna que contendra el valor de la
+	 *         constante
+	 */
+	public String getColName() {
+		return colName;
+	}
+
+	/**
+	 * @return <b>constantName</b> Nombre de la celda que contendra el valor de la
+	 *         constante
+	 */
+	public String getConstantName() {
+		return constantName;
+	}
+
+	/**
+	 * @return <b>value</b> Valor de la constante
+	 */
+	public double getValue() {
+		return value;
+	}
+
+	/**
 	 * <h1><i>cleanName</i></h1>
 	 * <p style="margin-left: 10px">
 	 * <code> public cleanName(String str)</code>
@@ -42,9 +65,10 @@ public class ExcelConstants {
 	 * </p>
 	 * 
 	 * @param str Nombre de la celda que tiene que ser limpiado
+	 * @return Nombre sin caracteres invalidos
 	 */
 	private String cleanName(String str) {
-		return str;
+		return str.replaceAll("[^A-Za-z0-9_]", "");
 	}
 
 }
