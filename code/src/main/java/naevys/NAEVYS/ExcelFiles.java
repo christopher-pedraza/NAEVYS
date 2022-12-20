@@ -35,7 +35,7 @@ public class ExcelFiles {
 	/**
 	 * <h1><i>convertExcel</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public convertExcel(String inputFileDir, String outputFileDir, Header[] outputHeaders, ExcelConstant[] constants)</code>
+	 * <code> public convertExcel(String inputFileDir, String outputFileDir, Header[] outputHeaders, ExcelConstant[] exConstants)</code>
 	 * </p>
 	 * <p>
 	 * Funcion para crear un nuevo archivo de Excel usando datos de otro archivo
@@ -46,10 +46,10 @@ public class ExcelFiles {
 	 * @param inputFileDir  Direccion del archivo de entrada
 	 * @param outputFileDir Direccion del archivo de salida
 	 * @param outputHeaders Especificaciones de las columnas que se exportaran
-	 * @param constants     Especificaciones de las constantes que se exportaran
+	 * @param exConstants   Especificaciones de las constantes que se exportaran
 	 */
 	public void convertExcel(String inputFileDir, String outputFileDir, Header[] outputHeaders,
-			ExcelConstant[] constants) {
+			ExcelConstant[] exConstants) {
 		// Abre el archivo de Excel de entrada y crea uno de salida
 		try (InputStream is = new FileInputStream(inputFileDir);
 				ReadableWorkbook inWb = new ReadableWorkbook(is);
@@ -59,6 +59,8 @@ public class ExcelFiles {
 			// Crea un libro de Excel nuevo
 			Workbook outWb = new Workbook(os, Constants.EF.APPLICATION_NAME, Constants.EF.APPLICATION_VERSION);
 
+			// Escribe la hoja de las tarifas y de constantes
+			writeConstantsWorksheet(outWb, exConstants);
 			writeDataWorksheet(inWb, outWb, outputHeaders);
 
 			// Se cierra el archivo de entrada y se escriben los cambios al archivo de
@@ -257,6 +259,37 @@ public class ExcelFiles {
 			});
 		}
 		// TODO: Dar formato a las celdas antes de cerrar el libro
+
+		// Cerrar hoja de calculo del libro de salida. No se pueden hacer modificaciones
+		// en otra hoja cuando se hace flush hasta que se llame a finish()
+		outWs.finish();
+	}
+
+	/**
+	 * <h1><i>writeConstantsWorksheet</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public writeConstantsWorksheet(Workbook outWb, ExcelConstant[] exConstants)</code>
+	 * </p>
+	 * <p>
+	 * Funcion para imprimir los valores de las constantes en una nueva hoja del
+	 * archivo de Excel.
+	 * </p>
+	 * 
+	 * @param outWb       Libro donde se escribiran los datos
+	 * @param exConstants Especificaciones de las constantes que se exportaran
+	 * @throws IOException 
+	 */
+	private void writeConstantsWorksheet(Workbook outWb, ExcelConstant[] exConstants) throws IOException {
+		// En el libro de Excel se crea una hoja de calculo
+		Worksheet outWs = outWb.newWorksheet(Constants.EF.OUTPUT_SHEET_1_NAME);
+
+		col = 0;
+		for (ExcelConstant constant : exConstants) {
+			outWs.value(0, col, constant.getColName());
+			outWs.value(1, col, constant.getValue());
+			outWs.range(1, col, 1, col).setName(constant.getConstantName());;
+			col++;
+		}
 
 		// Cerrar hoja de calculo del libro de salida. No se pueden hacer modificaciones
 		// en otra hoja cuando se hace flush hasta que se llame a finish()
