@@ -236,6 +236,17 @@ public class ExcelFiles {
 							formula = formula.replaceAll(Constants.EF.FORMULA_CURRENT_ROW_PLACEHOLDER,
 									Integer.toString(row + 1));
 						}
+
+						// Se checa si el string contiene el placeholder de la hoja de constantes. De
+						// esta manera se puede hacer formulas usando constantes. Por ejemplo: "1 +
+						// @variable" seria equivalente a "1 + Datos!variable"
+						if (formula.contains(Constants.EF.FORMULA_CONSTANTS_PLACEHOLDER)) {
+							// Se reemplaza el placeholder por el indice de la fila + 1. Se le suma 1 porque
+							// las filas estan numeradas basadas en 0, por lo que la fila 1 seria 0.
+							formula = formula.replaceAll(Constants.EF.FORMULA_CONSTANTS_PLACEHOLDER,
+									Constants.EF.OUTPUT_SHEET_1_NAME + "!");
+						}
+
 						// Una vez que ya se hicieron las modificaciones (o no en caso de que no
 						// contenia ningun placeholder), se imprime en la celda del archivo de salida
 						outWs.formula(row, col, formula);
@@ -277,7 +288,7 @@ public class ExcelFiles {
 	 * 
 	 * @param outWb       Libro donde se escribiran los datos
 	 * @param exConstants Especificaciones de las constantes que se exportaran
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	private void writeConstantsWorksheet(Workbook outWb, ExcelConstant[] exConstants) throws IOException {
 		// En el libro de Excel se crea una hoja de calculo
@@ -287,7 +298,8 @@ public class ExcelFiles {
 		for (ExcelConstant constant : exConstants) {
 			outWs.value(0, col, constant.getColName());
 			outWs.value(1, col, constant.getValue());
-			outWs.range(1, col, 1, col).setName(constant.getConstantName());;
+			outWs.range(1, col, 1, col).setName(constant.getConstantName());
+			;
 			col++;
 		}
 

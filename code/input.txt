@@ -37,3 +37,11 @@ Costo, 9, R, COSTE_REPOSICION, 25
 Precio_Venta, 10, R, PRECIOV, 14
 
 Margen_España, 11, F, 1 - ($I$# / $J$#)
+
+CCM_USD, 12, F, I# / (1 - @tienda_margen_1) * @tipo_cambio_dolares_euro
+
+CCM2_USD_Mayorista, 13, F, I# / (1 - @mayorista_margen_2) * @tipo_cambio_dolares_euro
+
+CCMF_USD, 14, F, I# / (1 - @tienda_margen_1) * (1 + @tienda_flete_1) * @tipo_cambio_dolares_euro
+
+CCMF2_USD_Mayorista, 15, F, I# / (1 - @mayorista_margen_2) * (1 + @mayorista_flete_2) * @tipo_cambio_dolares_euro
