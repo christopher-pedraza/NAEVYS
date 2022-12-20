@@ -60,7 +60,7 @@ public class ExcelFiles {
 			Workbook outWb = new Workbook(os, Constants.EF.APPLICATION_NAME, Constants.EF.APPLICATION_VERSION);
 			// En el libro de Excel previo se crea una hoja de calculo
 			Worksheet outWs = outWb.newWorksheet(Constants.EF.OUTPUT_SHEET_1_NAME);
-			
+
 			// Input workbook
 			// Obtiene la primer hoja del archivo de Excel especificado por inputFileDir
 			Sheet sheet = inWb.getFirstSheet();
@@ -209,6 +209,16 @@ public class ExcelFiles {
 					// archivo de entrada correspondan con las filas donde se esta escribiendo en el
 					// archivo de salida
 					row++;
+
+					// Escribe las filas en memoria al output stream del libro de Excel. Es
+					// recomendable llamar a este metodo periodicamente en caso de que se trabaje
+					// que grandes cantidades de datos para no sobrecargar la memoria
+					try {
+						outWs.flush();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				});
 			}
 
