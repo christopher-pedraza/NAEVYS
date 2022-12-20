@@ -9,5 +9,3 @@ MAYORISTA_Flete_2: 0.4
 Tipo_Cambio_Dolares/Euro: 0.995845
 
 Tipo_Cambio_MXN/Dolar: 20.318949
-
-CCMF-USD-MEsp_Tienda_usando_margen_España: =+IF($U2*(1+Datos!$A$2-Datos!$B$2)<Tarifas!R2,Tarifas!R2,$U2*(1+Datos!$A$2-Datos!$B$2))
