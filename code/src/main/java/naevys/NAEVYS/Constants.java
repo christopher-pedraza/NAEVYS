@@ -20,7 +20,7 @@ public class Constants {
 		/**
 		 * Signo que divide los terminos de una linea de configuracion
 		 */
-		public static final String CONFIG_DIVIDER = ",";
+		public static final String CONFIG_DIVIDER = "[|]";
 		/**
 		 * Nombre del archivo que contiene las configuraciones del archivo de salida de
 		 * Excel

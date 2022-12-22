@@ -1,7 +1,7 @@
 #
 # OUTPUT
 #
-# nombre_columna, indice_columna (1-basado), identificador, valor, indice_valor
+# nombre_columna | indice_columna (1-basado) | identificador | valor | indice_valor
 #
 # nombre_columna:
 #	Nombre de la columna donde se guardaran los datos
@@ -12,36 +12,40 @@
 #	S: valor es un dato estatico; ej. "15"
 #	F: valor es una formula; ej. "SUM(A1:A10)"
 # indice_valor:
-#	Indice donde se encuentra la columna de referencia. Si el identificador no es R, no se necesita especificar
+#	Indice donde se encuentra la columna de referencia. Si el identificador no es R | no se necesita especificar
 #
 
 
-Situacion, 1, R, SIT, 1
+Situacion | 1 | R | SIT | 1
 
-NIF, 2, R, NIF, 4
+NIF | 2 | R | NIF | 4
 
-Nombre, 3, R, NOMBRE, 5
+Nombre | 3 | R | NOMBRE | 5
 
-COD_EAN13, 4, R, COD_EAN13, 7
+COD_EAN13 | 4 | R | COD_EAN13 | 7
 
-Codigo_Proveedor, 5, R, COD_PROV, 8
+Codigo_Proveedor | 5 | R | COD_PROV | 8
 
-Codigo, 6, R, CODIGO, 10
+Codigo | 6 | R | CODIGO | 10
 
-Descripcion, 7, R, DESCRIPCIO, 11
+Descripcion | 7 | R | DESCRIPCIO | 11
 
-Existencia, 8, R, EXISTENCIA, 12
+Existencia | 8 | R | EXISTENCIA | 12
 
-Costo, 9, R, COSTE_REPOSICION, 25
+Costo | 9 | R | COSTE_REPOSICION | 25
 
-Precio_Venta, 10, R, PRECIOV, 14
+Precio_Venta | 10 | R | PRECIOV | 14
 
-Margen_España, 11, F, 1 - ($I$# / $J$#)
+Margen_España | 11 | F | 1 - ($I# / $J#)
 
-CCM_USD, 12, F, I# / (1 - @tienda_margen_1) * @tipo_cambio_dolares_euro
+CCM_USD | 12 | F | I# / (1 - @tienda_margen_1) * @tipo_cambio_dolares_euro
 
-CCM2_USD_Mayorista, 13, F, I# / (1 - @mayorista_margen_2) * @tipo_cambio_dolares_euro
+CCM2_USD_Mayorista | 13 | F | I# / (1 - @mayorista_margen_2) * @tipo_cambio_dolares_euro
 
-CCMF_USD, 14, F, I# / (1 - @tienda_margen_1) * (1 + @tienda_flete_1) * @tipo_cambio_dolares_euro
+CCMF_USD | 14 | F | I# / (1 - @tienda_margen_1) * (1 + @tienda_flete_1) * @tipo_cambio_dolares_euro
 
-CCMF2_USD_Mayorista, 15, F, I# / (1 - @mayorista_margen_2) * (1 + @mayorista_flete_2) * @tipo_cambio_dolares_euro
+CCMF2_USD_Mayorista | 15 | F | I# / (1 - @mayorista_margen_2) * (1 + @mayorista_flete_2) * @tipo_cambio_dolares_euro
+
+Prom_May_USD | 16 | F | SUM($N#, $O#) / 2
+
+ConstanteX | 18 | F | @testx

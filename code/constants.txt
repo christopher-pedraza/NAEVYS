@@ -1,19 +1,21 @@
 #
 # Estructura: 
-# Nombre_columna, nombre_celda, valor
+# Nombre_columna | nombre_celda | valor
 #
 # Notas: 
-# 	nombre_celda solo puede contener letras, numeros y guiones bajos (_)
+# 	nombre_celda solo puede contener letras | numeros y guiones bajos (_)
 #
 
-TIENDA_Margen_1, tienda_margen_1, 0.5
+TIENDA_Margen_1 | tienda_margen_1 | 0.5
 
-MAYORISTA_Margen_2, mayorista_margen_2, 0.3
+MAYORISTA_Margen_2 | mayorista_margen_2 | 0.3
 
-TIENDA_Flete_1, tienda_flete_1, 0.4
+TIENDA_Flete_1 | tienda_flete_1 | 0.4
 
-MAYORISTA_Flete_2, mayorista_flete_2, 0.4
+MAYORISTA_Flete_2 | mayorista_flete_2 | 0.4
 
-Tipo_Cambio_Dolares/Euro, tipo_cambio_dolares_euro, 0.995845
+Tipo_Cambio_Dolares/Euro | tipo_cambio_dolares_euro | 0.995845
 
-Tipo_Cambio_MXN/Dolar, tipo_cambio_mxn_dolar, 20.318949
+Tipo_Cambio_MXN/Dolar | tipo_cambio_mxn_dolar | 20.318949
+
+testx | testx | 3.1416

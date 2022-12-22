@@ -276,6 +276,8 @@ public class TextFiles {
 		String constantName = lineData[1];
 		// Nombre que tendra la celda con el valor de la constante
 		double value = Double.parseDouble(lineData[2]);
+		
+
 
 		// Se crea el objeto de ExcelConstant usando los parametros de la linea
 		return new ExcelConstant(colName, constantName, value);
