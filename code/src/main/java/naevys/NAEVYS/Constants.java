@@ -76,7 +76,7 @@ public class Constants {
 		 * Simbolo que se puede agregar a las formulas especificadas por el usuario que
 		 * tomara el valor del nombre de la hoja de calculo de las constantes
 		 */
-		public static final String FORMULA_CONSTANTS_PLACEHOLDER = "@";
+		public static final String FORMULA_CONSTANTS_PLACEHOLDER = "@@";
 		/**
 		 * Valor que se imprimira en cualquier celda que sea manejada por el caso por
 		 * defecto. Es decir, cualquier celda que tenga un error, este vacia o no se

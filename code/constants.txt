@@ -14,8 +14,6 @@ TIENDA_Flete_1 | tienda_flete_1 | 0.4
 
 MAYORISTA_Flete_2 | mayorista_flete_2 | 0.4
 
-Tipo_Cambio_Dolares/Euro | tipo_cambio_dolares_euro | 0.995845
+Tipo_Cambio_Dolares/Euro | tipo_cambio_dolares_euro | 1.067616
 
-Tipo_Cambio_MXN/Dolar | tipo_cambio_mxn_dolar | 20.318949
-
-testx | testx | 3.1416
+Tipo_Cambio_MXN/Dolar | tipo_cambio_mxn_dolar | 20.375394
