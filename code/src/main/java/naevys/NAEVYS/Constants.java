@@ -66,7 +66,7 @@ public class Constants {
 		/**
 		 * Version de la aplicacion que genero el archivo de Excel de salida
 		 */
-		public static final String APPLICATION_VERSION = "1.0";
+		public static final String APPLICATION_VERSION = "2.0.1";
 		/**
 		 * Simbolo que se puede agregar a las formulas especificadas por el usuario que
 		 * tomara el valor del indice de la fila en la que se imprime
