@@ -41,6 +41,7 @@ public class Constants {
 		// Para los enteros, se utiliza la
 		// Constantes de la clase TextFiles
 		TF.COMMENT_SIGN = prop.getProperty("NAEVYS.TF.COMMENT_SIGN").charAt(0);
+		TF.STYLE_SIGN = prop.getProperty("NAEVYS.TF.STYLE_SIGN").charAt(0);
 		TF.CONFIG_DIVIDER = prop.getProperty("NAEVYS.TF.CONFIG_DIVIDER");
 		TF.INPUT_FILE_NAME = prop.getProperty("NAEVYS.TF.INPUT_FILE_NAME");
 		TF.CONSTANTS_FILE_NAME = prop.getProperty("NAEVYS.TF.CONSTANTS_FILE_NAME");
@@ -71,6 +72,11 @@ public class Constants {
 		 * puede usar para agregar comentarios en el archivo de configuraciones
 		 */
 		public static char COMMENT_SIGN;
+		/**
+		 * Signo usado al inicio de cualquier linea que pertenece al estilo nombrado en
+		 * una linea previa que no empieza con este simbolo
+		 */
+		public static char STYLE_SIGN;
 		/**
 		 * Signo que divide los terminos de una linea de configuracion
 		 */
