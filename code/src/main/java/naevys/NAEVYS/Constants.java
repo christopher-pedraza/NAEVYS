@@ -11,23 +11,42 @@ import java.util.Properties;
  * @author Christopher Gabriel Pedraza Pohlenz
  */
 public class Constants {
+	private static final String configFileName = "app.config";
+
+	/**
+	 * <h1><i>initConstants</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public initConstants()</code>
+	 * </p>
+	 * <p>
+	 * Funcion para inicializar las constantes del programa usando los valores
+	 * introducidos en el archivo de configuracion.
+	 * </p>
+	 */
 	public static void initConstants() {
-		System.out.println("Test");
+		// Abre el archivo de configuracion para leer las propiedades declaradas en este
 		Properties prop = new Properties();
-		String fileName = "app.config";
-		try (FileInputStream fis = new FileInputStream(fileName)) {
+		try (FileInputStream fis = new FileInputStream(configFileName)) {
 			prop.load(fis);
 		} catch (FileNotFoundException ex) {
 		} catch (IOException ex) {
 		}
 
+		// Toma la propiedad del archivo de configuracion y se la asigna a cada
+		// constante del programa. Las propedades las toma como String, por lo que las
+		// constantes que son caracteres se tienen que convertir a char usando la
+		// funcion de la clase Integer: parseInt. Con esta funcion se convierte el
+		// string a un valor entero.
+		// funcion charAt(0) que toma el caracter en la primera posicion del string.
+		// Para los enteros, se utiliza la
+		// Constantes de la clase TextFiles
 		TF.COMMENT_SIGN = prop.getProperty("NAEVYS.TF.COMMENT_SIGN").charAt(0);
 		TF.CONFIG_DIVIDER = prop.getProperty("NAEVYS.TF.CONFIG_DIVIDER");
 		TF.INPUT_FILE_NAME = prop.getProperty("NAEVYS.TF.INPUT_FILE_NAME");
 		TF.CONSTANTS_FILE_NAME = prop.getProperty("NAEVYS.TF.CONSTANTS_FILE_NAME");
 		TF.REFERENCE_LINE_SIZE = Integer.parseInt(prop.getProperty("NAEVYS.TF.REFERENCE_LINE_SIZE"));
 		TF.NORMAL_LINE_SIZE = Integer.parseInt(prop.getProperty("NAEVYS.TF.NORMAL_LINE_SIZE"));
-		
+		// Constantes de la clase ExcelFiles
 		EF.OUTPUT_SHEET_2_NAME = prop.getProperty("NAEVYS.EF.OUTPUT_SHEET_2_NAME");
 		EF.OUTPUT_SHEET_1_NAME = prop.getProperty("NAEVYS.EF.OUTPUT_SHEET_1_NAME");
 		EF.APPLICATION_NAME = prop.getProperty("NAEVYS.EF.APPLICATION_NAME");
