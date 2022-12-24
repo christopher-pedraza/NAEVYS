@@ -15,7 +15,7 @@ public class Test {
 		} catch (FileNotFoundException ex) {
 		} catch (IOException ex) {
 		}
-		System.out.println(prop.getProperty("app.name"));
+		System.out.println(prop.getProperty("app2.name"));
 		System.out.println(prop.getProperty("app.version"));
 
 	}

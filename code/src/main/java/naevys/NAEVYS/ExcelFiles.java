@@ -16,6 +16,7 @@ import java.util.stream.Stream;
 import org.dhatim.fastexcel.Workbook;
 import org.dhatim.fastexcel.Worksheet;
 import org.dhatim.fastexcel.reader.Cell;
+import org.dhatim.fastexcel.reader.CellType;
 import org.dhatim.fastexcel.reader.ReadableWorkbook;
 import org.dhatim.fastexcel.reader.Row;
 import org.dhatim.fastexcel.reader.Sheet;
