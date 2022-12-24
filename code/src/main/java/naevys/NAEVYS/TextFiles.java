@@ -19,6 +19,9 @@ public class TextFiles {
 	// Declara un arreglo de objetos ExcelConstant para guardar las constantes que
 	// se imprimiran en el archivo de salida
 	private ExcelConstant[] constants;
+	// Declara un arreglo de objetos Style para guardar los estilos que se pueden
+	// aplicar en el archivo de salida
+	private Style[] styles;
 
 	/**
 	 * <h1><i>readHeaderFile</i></h1>
@@ -58,19 +61,44 @@ public class TextFiles {
 				if (line.length() > 0) {
 					// Si la linea no comienza con un signo de comentario
 					if (line.charAt(0) != Constants.TF.COMMENT_SIGN) {
-						// Divide la linea usando el signo separador. Por ejemplo, si la linea contiene:
-						// "Nombre,2" guardaria en el arreglo cada elemento en una casilla por separado:
-						// lineData[0]="Nombre", lineData[1]="2"
-						String[] lineData = line.split(Constants.TF.CONFIG_DIVIDER);
+						// Si se trata del archivo de estilos, la division en las lineas es distinta, al
+						// igual del conteo de la linea actual
+						if (fileName.contains(Constants.TF.STYLES_FILE_NAME)) {
+							// Divide la linea usando el signo separador. Por ejemplo, si la linea contiene:
+							// "Bold:True" guardaria en el arreglo cada elemento en una casilla por
+							// separado:
+							// lineData[0]="Bold", lineData[1]="True"
+							String[] lineData = line.split(Constants.TF.STYLES_DIVIDER);
 
-						// Manda este arreglo de strings al metodo 'processLine' donde se creara un
-						// objeto de Header/ExcelConstant. Este se agregara al arreglo de objetos
-						// 'headers'/'constants'
-						processLine(fileName, lineData, currentLine);
+							// Manda este arreglo de strings al metodo 'processLine' donde se creara un
+							// objeto de Header/ExcelConstant. Este se agregara al arreglo de objetos
+							// 'headers'/'constants'
+							processLine(fileName, lineData, currentLine);
 
-						// Aumenta la linea actual que es equivalente a la cantidad de lineas de
-						// configuracion (ignorando comentarios y lineas vacias) leidas
-						currentLine++;
+							// TODO: Hacer una manera para cambiar el current line solo cuando se lee un
+							// nuevo nombre de estilo y no con los atributos
+							if (lineData.length == 1) {
+								// Aumenta la linea actual que es equivalente a la cantidad de estilos
+								currentLine++;
+							}
+
+						}
+						// En cambio, si son los otros archivos
+						else {
+							// Divide la linea usando el signo separador. Por ejemplo, si la linea contiene:
+							// "Nombre,2" guardaria en el arreglo cada elemento en una casilla por separado:
+							// lineData[0]="Nombre", lineData[1]="2"
+							String[] lineData = line.split(Constants.TF.CONFIG_DIVIDER);
+
+							// Manda este arreglo de strings al metodo 'processLine' donde se creara un
+							// objeto de Header/ExcelConstant. Este se agregara al arreglo de objetos
+							// 'headers'/'constants'
+							processLine(fileName, lineData, currentLine);
+
+							// Aumenta la linea actual que es equivalente a la cantidad de lineas de
+							// configuracion (ignorando comentarios y lineas vacias) leidas
+							currentLine++;
+						}
 					}
 				}
 				// Lee la siguiente linea
@@ -120,6 +148,21 @@ public class TextFiles {
 	}
 
 	/**
+	 * <h1><i>getStylesArray</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public getStylesArray()</code>
+	 * </p>
+	 * <p>
+	 * Funcion para obtener el arreglo de objetos Style con los estilos disponibles.
+	 * </p>
+	 * 
+	 * @return <b>styles</b> Arreglo con los estilos
+	 */
+	public Style[] getStylesArray() {
+		return styles;
+	}
+
+	/**
 	 * <h1><i>getFileSize</i></h1>
 	 * <p style="margin-left: 10px">
 	 * <code> public getFileSize(String fileName)</code>
@@ -157,7 +200,13 @@ public class TextFiles {
 					if (line.charAt(0) != Constants.TF.COMMENT_SIGN) {
 						// Si se trata del archivo de estilos
 						if (fileName.contains(Constants.TF.STYLES_FILE_NAME)) {
-							
+							// Si la linea no comienza con el signo identificador de estilo
+							if (line.charAt(0) != Constants.TF.STYLE_SIGN) {
+								// Si no es comentario, esta vacia la linea o es un atributo del estilo, se
+								// aumenta la cantidad porque signfica que se trata de una linea con
+								// el nombre de estilo
+								fileSize++;
+							}
 						}
 						// Si se trata de los archivos de input o constantes
 						else {
@@ -204,6 +253,10 @@ public class TextFiles {
 			headers[index] = processHeaderLine(lineData);
 		} else if (fileName.contains(Constants.TF.CONSTANTS_FILE_NAME)) {
 			constants[index] = processConstantLine(lineData);
+		} else if (fileName.contains(Constants.TF.STYLES_FILE_NAME)) {
+			// Se le resta 1 al indce para hacer referencia al arreglo de estilos (que es 0
+			// basado)
+			styles[index] = processStyleLine(lineData, index - 1);
 		}
 	}
 
@@ -283,11 +336,36 @@ public class TextFiles {
 		String constantName = lineData[1];
 		// Nombre que tendra la celda con el valor de la constante
 		double value = Double.parseDouble(lineData[2]);
-		
-
 
 		// Se crea el objeto de ExcelConstant usando los parametros de la linea
 		return new ExcelConstant(colName, constantName, value);
+	}
+
+	/**
+	 * <h1><i>processStyleLine</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public processStyleLine(String[] lineData)</code>
+	 * </p>
+	 * <p>
+	 * Funcion para crear un objeto de Style usando los datos de estilo del archivo
+	 * de configuracion.
+	 * </p>
+	 * 
+	 * @param lineData Arreglo con cada dato de configuracion de una linea del
+	 *                 archivo de configuraciones
+	 * @return Un objeto Style con los datos del estilo
+	 */
+	private Style processStyleLine(String[] lineData, int index) {
+		// Si la linea solo tiene 1 valor, significa que se trata del nombre del estilo
+		if (lineData.length == 1) {
+			// Se crea un objeto de Style usando el nombre especificado
+			return new Style(lineData[0]);
+		}
+		// En cambio, si tiene mas se trata de los atributos del estilo
+		else {
+			styles[index].addProperty(lineData);
+			return styles[index];
+		}
 	}
 
 	private void initializeArray(String fileName) {
@@ -302,6 +380,9 @@ public class TextFiles {
 		} else if (fileName.contains(Constants.TF.CONSTANTS_FILE_NAME)) {
 			// Se inicializa el arreglo con las constantes
 			constants = new ExcelConstant[fileSize];
+		} else if (fileName.contains(Constants.TF.STYLES_FILE_NAME)) {
+			// Se inicializa el arreglo con las constantes
+			styles = new Style[fileSize];
 		}
 	}
 }

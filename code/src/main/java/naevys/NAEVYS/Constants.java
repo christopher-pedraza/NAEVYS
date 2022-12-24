@@ -43,6 +43,7 @@ public class Constants {
 		TF.COMMENT_SIGN = prop.getProperty("NAEVYS.TF.COMMENT_SIGN").charAt(0);
 		TF.STYLE_SIGN = prop.getProperty("NAEVYS.TF.STYLE_SIGN").charAt(0);
 		TF.CONFIG_DIVIDER = prop.getProperty("NAEVYS.TF.CONFIG_DIVIDER");
+		TF.STYLES_DIVIDER = prop.getProperty("NAEVYS.TF.STYLES_DIVIDER");
 		TF.INPUT_FILE_NAME = prop.getProperty("NAEVYS.TF.INPUT_FILE_NAME");
 		TF.CONSTANTS_FILE_NAME = prop.getProperty("NAEVYS.TF.CONSTANTS_FILE_NAME");
 		TF.STYLES_FILE_NAME = prop.getProperty("NAEVYS.TF.STYLES_FILE_NAME");
@@ -81,6 +82,10 @@ public class Constants {
 		 * Signo que divide los terminos de una linea de configuracion
 		 */
 		public static String CONFIG_DIVIDER;
+		/**
+		 * Signo que divide los terminos de una linea de configuracion de estilos
+		 */
+		public static String STYLES_DIVIDER;
 		/**
 		 * Nombre del archivo que contiene las configuraciones del archivo de salida de
 		 * Excel

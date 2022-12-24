@@ -13,6 +13,9 @@ public class Main {
 
 		tf.readFile(Constants.TF.CONSTANTS_FILE_NAME);
 		ExcelConstant[] constants = tf.getConstantsArray();
+		
+		tf.readFile(Constants.TF.STYLES_FILE_NAME);
+		Style[] styles = tf.getStylesArray();
 
 		ef.convertExcel("input.xlsx", "output.xlsx", headers, constants);
 	

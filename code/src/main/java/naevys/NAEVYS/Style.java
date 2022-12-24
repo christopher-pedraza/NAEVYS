@@ -147,17 +147,25 @@ public class Style {
 	/**
 	 * @param styleName Nombre con el que se puede referenciar a esta configuracion
 	 *                  de propiedades de estilo de celda
-	 * @param styleData Arreglo con las lineas leidas del archivo de configuracion
-	 *                  de estilos. Estas lineas contienen el atributo, al igual que
-	 *                  su valor
 	 */
-	public Style(String styleName, String[] styleData) {
+	public Style(String styleName) {
 		this.styleName = styleName;
+	}
 
-		for (String line : styleData) {
-			// TODO: Determinar los atributos en las lineas y asignarlos a los atributos del
-			// objeto
-		}
+	/**
+	 * <h1><i>convertExcel</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public addProperty(String line)</code>
+	 * </p>
+	 * <p>
+	 * Funcion para agregar una propiedad al estilo.
+	 * </p>
+	 * 
+	 * @param lineData Linea del archivo de configuracion de estilos con el atributo
+	 *                 y su valor
+	 */
+	public void addProperty(String[] lineData) {
+		
 	}
 
 }
