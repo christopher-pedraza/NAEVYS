@@ -65,7 +65,7 @@ public class Style {
 	 * <code>TOP, BOTTOM, RIGHT, LEFT, DIAGONAL</code>
 	 * </p>
 	 */
-	private String borderColor_border;
+	private String borderColorSide;
 	/**
 	 * Estilo del borde
 	 * 
@@ -87,7 +87,7 @@ public class Style {
 	 * <code>TOP, BOTTOM, RIGHT, LEFT, DIAGONAL</code>
 	 * </p>
 	 */
-	private String borderStyle_border;
+	private String borderStyleSide;
 	/**
 	 * Color de relleno de la celda
 	 * 
@@ -150,6 +150,15 @@ public class Style {
 	 */
 	public Style(String styleName) {
 		this.styleName = styleName;
+		this.isBold = false;
+		this.isItalic = false;
+		this.hasBorderColor = false;
+		this.hasBorderStyle = false;
+		this.hasFillColor = false;
+		this.hasFontColor = false;
+		this.hasFontName = false;
+		this.hasFontSize = false;
+		this.hasHorizontalAlignment = false;
 	}
 
 	/**
@@ -165,7 +174,52 @@ public class Style {
 	 *                 y su valor
 	 */
 	public void addProperty(String[] lineData) {
-		
-	}
+		String property = lineData[0];
+		String value = lineData[1];
 
+		if (property.equals(Constants.S.BOLD)) {
+			if (value.equals(Constants.S.TRUE)) {
+				isBold = true;
+			}
+		}
+		else if (property.equals(Constants.S.ITALIC)) {
+			if (value.equals(Constants.S.TRUE)) {
+				isItalic = true;
+			}
+		}
+		else if (property.equals(Constants.S.BORDER_COLOR)) {
+			hasBorderColor = true;
+			borderColor = value;
+		}
+		else if (property.equals(Constants.S.BORDER_COLOR_SIDE)) {
+			borderColorSide = value;
+		}
+		else if (property.equals(Constants.S.BORDER_STYLE)) {
+			hasBorderStyle = true;
+			borderStyle = value;
+		}
+		else if (property.equals(Constants.S.BORDER_STYLE_SIDE)) {
+			borderStyleSide = value;
+		}
+		else if (property.equals(Constants.S.FILL_COLOR)) {
+			hasFillColor = true;
+			fillColor = value;
+		}
+		else if (property.equals(Constants.S.FONT_COLOR)) {
+			hasFontColor = true;
+			fontColor = value;
+		}
+		else if (property.equals(Constants.S.FONT_NAME)) {
+			hasFontName = true;
+			fontName = value;
+		}
+		else if (property.equals(Constants.S.FONT_SIZE)) {
+			hasFontSize = true;
+			fontSize = Integer.parseInt(value);
+		}
+		else if (property.equals(Constants.S.HORIZONTAL_ALIGNMENT)) {
+			hasHorizontalAlignment = true;
+			horizontalAlignment = value;
+		}
+	}
 }

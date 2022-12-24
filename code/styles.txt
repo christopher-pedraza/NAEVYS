@@ -2,33 +2,33 @@
 # NOMBRE_DEL_ESTILO
 # -bold: true
 # -italic: true
-# -borderColor: 1a1a1a
-# -borderColor_Border: TOP/BOTTOM/RIGHT/LEFT/DIAGONAL
-# -borderStyle: DASH_DOT/DASH_DOT_DOT/DASHED/DOTTED/DOUBLE/HAIR/MEDIUM/MEDIUM_DASH_DOT/MEDIUM_DASH_DOT_DOT/MEDIUM_DASHED/SLANT_DASH_DOT/THICK/THIN/NONE
-# -borderStyle_Border: TOP/BOTTOM/RIGHT/LEFT/DIAGONAL
-# -fillColor: 1a1a1a
-# -fontColor: 1a1a1a
-# -fontName: Arial
-# -fontSize: 16
-# -horizontalAlignment: RIGHT/LEFT/CENTER
+# -border_color: 1a1a1a
+# -border_color_side: TOP/BOTTOM/RIGHT/LEFT/DIAGONAL
+# -border_style: DASH_DOT/DASH_DOT_DOT/DASHED/DOTTED/DOUBLE/HAIR/MEDIUM/MEDIUM_DASH_DOT/MEDIUM_DASH_DOT_DOT/MEDIUM_DASHED/SLANT_DASH_DOT/THICK/THIN/NONE
+# -border_style_side: TOP/BOTTOM/RIGHT/LEFT/DIAGONAL
+# -fill_color: 1a1a1a
+# -font_color: 1a1a1a
+# -font_name: Arial
+# -font_size: 16
+# -horizontal_alignment: RIGHT/LEFT/CENTER
 #
 
 Estilo_1
 -bold: true
 -italic: true
--borderColor: 1a1a1a
--borderColor_Border: TOP
--borderStyle: DASH_DOT
--borderStyle_Border: BOTTOM
--fillColor: 1a1a1a
--fontColor: 1a1a1a
--fontName: Arial
--fontSize: 16
--horizontalAlignment: CENTER
+-border_color: 1a1a1a
+-border_color_side: TOP
+-border_style: DASH_DOT
+-border_style_side: BOTTOM
+-fill_color: 1a1a1a
+-font_color: 1a1a1a
+-font_name: Arial
+-font_size: 16
+-horizontal_alignment: CENTER
 
 Estilo_2
 -bold: true
--fillColor: 1a1a1a
--fontName: Arial
--fontSize: 16
--horizontalAlignment: RIGHT
+-fill_color: 1a1a1a
+-font_name: Arial
+-font_size: 16
+-horizontal_alignment: RIGHT
