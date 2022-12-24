@@ -44,6 +44,7 @@ public class Constants {
 		TF.CONFIG_DIVIDER = prop.getProperty("NAEVYS.TF.CONFIG_DIVIDER");
 		TF.INPUT_FILE_NAME = prop.getProperty("NAEVYS.TF.INPUT_FILE_NAME");
 		TF.CONSTANTS_FILE_NAME = prop.getProperty("NAEVYS.TF.CONSTANTS_FILE_NAME");
+		TF.STYLES_FILE_NAME = prop.getProperty("NAEVYS.TF.STYLES_FILE_NAME");
 		TF.REFERENCE_LINE_SIZE = Integer.parseInt(prop.getProperty("NAEVYS.TF.REFERENCE_LINE_SIZE"));
 		TF.NORMAL_LINE_SIZE = Integer.parseInt(prop.getProperty("NAEVYS.TF.NORMAL_LINE_SIZE"));
 		// Constantes de la clase ExcelFiles
@@ -84,6 +85,11 @@ public class Constants {
 		 * archivo de salida
 		 */
 		public static String CONSTANTS_FILE_NAME;
+		/**
+		 * Nombre del archivo que contiene los estilos que se pueden aplicar a los
+		 * titulos del archivo de salida de Excel
+		 */
+		public static String STYLES_FILE_NAME;
 		/**
 		 * Tamaño de las lineas de configuracion que hacen referencia a una columna con
 		 * valores por referencia

@@ -155,6 +155,9 @@ public class TextFiles {
 				if (line.length() > 0) {
 					// Si la linea no comienza con un signo de comentario
 					if (line.charAt(0) != Constants.TF.COMMENT_SIGN) {
+						if (fileName.contains(Constants.TF.INPUT_FILE_NAME)) {
+							
+						}
 						// Si no es comentario ni esta vacia la linea, se aumenta la cantidad porque
 						// signfica que se trata de una linea con cofiguracion
 						fileSize++;
