@@ -222,4 +222,39 @@ public class Style {
 			horizontalAlignment = value;
 		}
 	}
+
+	
+	public void src() {
+		System.out.println("---\n" + styleName);
+		if (isBold) {
+			System.out.println("BOLD is TRUE");
+		}
+		if (isItalic) {
+			System.out.println("ITALIC is TRUE");
+		}
+		if (hasBorderColor) {
+			System.out.println(borderColor);
+			System.out.println(borderColorSide);
+		}
+		if (hasBorderStyle) {
+			System.out.println(borderStyle);
+			System.out.println(borderStyleSide);
+		}
+		if (hasFillColor) {
+			System.out.println(fillColor);
+		}
+		if (hasFontColor) {
+			System.out.println(fontColor);
+		}
+		if (hasFontName) {
+			System.out.println(fontName);
+		}
+		if (hasFontSize) {
+			System.out.println(fontSize);
+		}
+		if (hasHorizontalAlignment) {
+			System.out.println(horizontalAlignment);
+		}
+
+	}
 }

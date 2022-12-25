@@ -47,9 +47,10 @@ public class ExcelFiles {
 	 * @param outputFileDir Direccion del archivo de salida
 	 * @param outputHeaders Especificaciones de las columnas que se exportaran
 	 * @param exConstants   Especificaciones de las constantes que se exportaran
+	 * @param sty
 	 */
 	public void convertExcel(String inputFileDir, String outputFileDir, Header[] outputHeaders,
-			ExcelConstant[] exConstants) {
+			ExcelConstant[] exConstants, Style[] styles) {
 		// Abre el archivo de Excel de entrada y crea uno de salida
 		try (InputStream is = new FileInputStream(inputFileDir);
 				ReadableWorkbook inWb = new ReadableWorkbook(is);
@@ -60,8 +61,8 @@ public class ExcelFiles {
 			Workbook outWb = new Workbook(os, Constants.EF.APPLICATION_NAME, Constants.EF.APPLICATION_VERSION);
 
 			// Escribe la hoja de las tarifas y de constantes
-			writeConstantsWorksheet(outWb, exConstants);
-			writeDataWorksheet(inWb, outWb, outputHeaders);
+			writeConstantsWorksheet(outWb, exConstants, styles);
+			writeDataWorksheet(inWb, outWb, outputHeaders, styles);
 
 			// Se cierra el archivo de entrada y se escriben los cambios al archivo de
 			// salida
@@ -94,7 +95,7 @@ public class ExcelFiles {
 	 * @param outWb         Libro donde se escribiran los datos
 	 * @param outputHeaders Especificaciones de las columnas que se exportaran
 	 */
-	private void writeDataWorksheet(ReadableWorkbook inWb, Workbook outWb, Header[] outputHeaders) throws IOException {
+	private void writeDataWorksheet(ReadableWorkbook inWb, Workbook outWb, Header[] outputHeaders, Style[] styles) throws IOException {
 		// En el libro de Excel previo se crea una hoja de calculo
 		Worksheet outWs = outWb.newWorksheet(Constants.EF.OUTPUT_SHEET_2_NAME);
 
@@ -290,7 +291,7 @@ public class ExcelFiles {
 	 * @param exConstants Especificaciones de las constantes que se exportaran
 	 * @throws IOException
 	 */
-	private void writeConstantsWorksheet(Workbook outWb, ExcelConstant[] exConstants) throws IOException {
+	private void writeConstantsWorksheet(Workbook outWb, ExcelConstant[] exConstants, Style[] styles) throws IOException {
 		// En el libro de Excel se crea una hoja de calculo
 		Worksheet outWs = outWb.newWorksheet(Constants.EF.OUTPUT_SHEET_1_NAME);
 
@@ -299,7 +300,6 @@ public class ExcelFiles {
 			outWs.value(0, col, constant.getColName());
 			outWs.value(1, col, constant.getValue());
 			outWs.range(1, col, 1, col).setName(constant.getConstantName());
-			;
 			col++;
 		}
 

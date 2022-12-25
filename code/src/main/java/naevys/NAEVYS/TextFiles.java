@@ -64,16 +64,14 @@ public class TextFiles {
 						// Si se trata del archivo de estilos, la division en las lineas es distinta, al
 						// igual del conteo de la linea actual
 						if (fileName.contains(Constants.TF.STYLES_FILE_NAME)) {
+							// Eliminar el signo que simboliza que son atributos de 
+							line = line.replaceAll(String.valueOf(Constants.TF.STYLE_SIGN), "");
+							
 							// Divide la linea usando el signo separador. Por ejemplo, si la linea contiene:
 							// "Bold:True" guardaria en el arreglo cada elemento en una casilla por
 							// separado:
 							// lineData[0]="Bold", lineData[1]="True"
 							String[] lineData = line.split(Constants.TF.STYLES_DIVIDER);
-
-							// Manda este arreglo de strings al metodo 'processLine' donde se creara un
-							// objeto de Header/ExcelConstant. Este se agregara al arreglo de objetos
-							// 'headers'/'constants'
-							processLine(fileName, lineData, currentLine);
 
 							// TODO: Hacer una manera para cambiar el current line solo cuando se lee un
 							// nuevo nombre de estilo y no con los atributos
@@ -81,7 +79,11 @@ public class TextFiles {
 								// Aumenta la linea actual que es equivalente a la cantidad de estilos
 								currentLine++;
 							}
-
+							
+							// Manda este arreglo de strings al metodo 'processLine' donde se creara un
+							// objeto de Header/ExcelConstant. Este se agregara al arreglo de objetos
+							// 'headers'/'constants'
+							processLine(fileName, lineData, currentLine);
 						}
 						// En cambio, si son los otros archivos
 						else {
@@ -256,7 +258,7 @@ public class TextFiles {
 		} else if (fileName.contains(Constants.TF.STYLES_FILE_NAME)) {
 			// Se le resta 1 al indce para hacer referencia al arreglo de estilos (que es 0
 			// basado)
-			styles[index] = processStyleLine(lineData, index - 1);
+			styles[index-1] = processStyleLine(lineData, index - 1);
 		}
 	}
 
