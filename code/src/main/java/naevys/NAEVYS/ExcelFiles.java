@@ -47,7 +47,7 @@ public class ExcelFiles {
 	 * @param outputFileDir Direccion del archivo de salida
 	 * @param outputHeaders Especificaciones de las columnas que se exportaran
 	 * @param exConstants   Especificaciones de las constantes que se exportaran
-	 * @param sty
+	 * @param styles        Estilos disponibles para aplicar a las celdas
 	 */
 	public void convertExcel(String inputFileDir, String outputFileDir, Header[] outputHeaders,
 			ExcelConstant[] exConstants, Style[] styles) {
@@ -94,8 +94,10 @@ public class ExcelFiles {
 	 * @param inWb          Libro que se leera para obtener los datos
 	 * @param outWb         Libro donde se escribiran los datos
 	 * @param outputHeaders Especificaciones de las columnas que se exportaran
+	 * @param styles        Estilos disponibles para aplicar a las celdas
 	 */
-	private void writeDataWorksheet(ReadableWorkbook inWb, Workbook outWb, Header[] outputHeaders, Style[] styles) throws IOException {
+	private void writeDataWorksheet(ReadableWorkbook inWb, Workbook outWb, Header[] outputHeaders, Style[] styles)
+			throws IOException {
 		// En el libro de Excel previo se crea una hoja de calculo
 		Worksheet outWs = outWb.newWorksheet(Constants.EF.OUTPUT_SHEET_2_NAME);
 
@@ -289,9 +291,11 @@ public class ExcelFiles {
 	 * 
 	 * @param outWb       Libro donde se escribiran los datos
 	 * @param exConstants Especificaciones de las constantes que se exportaran
+	 * @param styles        Estilos disponibles para aplicar a las celdas
 	 * @throws IOException
 	 */
-	private void writeConstantsWorksheet(Workbook outWb, ExcelConstant[] exConstants, Style[] styles) throws IOException {
+	private void writeConstantsWorksheet(Workbook outWb, ExcelConstant[] exConstants, Style[] styles)
+			throws IOException {
 		// En el libro de Excel se crea una hoja de calculo
 		Worksheet outWs = outWb.newWorksheet(Constants.EF.OUTPUT_SHEET_1_NAME);
 
