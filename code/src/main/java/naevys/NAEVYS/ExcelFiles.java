@@ -125,7 +125,7 @@ public class ExcelFiles {
 						// Se imprime en la columna correspondiente (especificada por colIndex) y en la
 						// primera fila el nombre de la columna especificado por el usuario
 						outWs.value(row, col, outputHeaders[i].getColName());
-						
+
 						styleCell(outWs, row, col, styles[0], "Estilo_1");
 
 						// En caso de que se trate de un valor por referencia, se tendra que determinar
@@ -293,7 +293,7 @@ public class ExcelFiles {
 	 * 
 	 * @param outWb       Libro donde se escribiran los datos
 	 * @param exConstants Especificaciones de las constantes que se exportaran
-	 * @param styles        Estilos disponibles para aplicar a las celdas
+	 * @param styles      Estilos disponibles para aplicar a las celdas
 	 * @throws IOException
 	 */
 	private void writeConstantsWorksheet(Workbook outWb, ExcelConstant[] exConstants, Style[] styles)
@@ -301,11 +301,20 @@ public class ExcelFiles {
 		// En el libro de Excel se crea una hoja de calculo
 		Worksheet outWs = outWb.newWorksheet(Constants.EF.OUTPUT_SHEET_1_NAME);
 
+		// Se restaura el valor de la columna que se actualizara cada iteracion
 		col = 0;
+		// Itera en el arreglo de las constantes
 		for (ExcelConstant constant : exConstants) {
+			// Escribe el nombre de la constante (titulo de la columna)
 			outWs.value(0, col, constant.getColName());
+			// Escribe el valor de la constante
 			outWs.value(1, col, constant.getValue());
+			// A la celda con el valor de la constante se le aplica el nombre para que se
+			// pueda hacer referencia
 			outWs.range(1, col, 1, col).setName(constant.getConstantName());
+			// Aplica estilo a la celda con el titulo de la columna
+			styleCell(outWs, 0, col, styles, constant.getStyleName());
+			// Aumenta el valor de la columna
 			col++;
 		}
 
@@ -313,9 +322,27 @@ public class ExcelFiles {
 		// en otra hoja cuando se hace flush hasta que se llame a finish()
 		outWs.finish();
 	}
-	
-	private void styleCell(Worksheet ws, int r, int c, Style style, String styleName) {
-		ws.style(r, c).bold().set();
+
+	/**
+	 * <h1><i>styleCell</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public styleCell(Worksheet ws, int r, int c, Style[] styles, String styleName)</code>
+	 * </p>
+	 * <p>
+	 * Funcion para aplicar un estilo a la celda especificada por la fila y columna.
+	 * </p>
+	 * 
+	 * @param ws        Hoja de calculo donde se encuentra la celda a la que se
+	 *                  aplicara el estilo
+	 * @param row       Fila donde se encuentra la celda
+	 * @param col       Columna donde se encuentra la celda
+	 * @param styles    Arreglo con los estilos disponibles
+	 * @param styleName Nombre del estilo que se tiene que aplicar a la celda
+	 */
+	private void styleCell(Worksheet ws, int row, int col, Style[] styles, String styleName) {
+		if (!styleName.equals(Constants.S.NONE_STYLE)) {
+			ws.style(row, col).bold().set();
+		}
 	}
 
 	/**
