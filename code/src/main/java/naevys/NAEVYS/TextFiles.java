@@ -292,8 +292,10 @@ public class TextFiles {
 			char id = lineData[2].charAt(0);
 			// Valor que se pondra en la columna (valor estatico o formula)
 			String value = lineData[3];
+			// Nombre del estilo que se aplicara al titulo de la columna
+			String styleName = lineData[4];
 			// Se crea el objeto de Header usando los parametros de la linea
-			return new Header(colName, colIndex, id, value);
+			return new Header(colName, colIndex, id, value, styleName);
 		}
 		// Si se trata de una linea con la configuracion de una columna con valores por
 		// referencia
@@ -309,8 +311,10 @@ public class TextFiles {
 			String value = lineData[3];
 			// Indice de la columna de donde tomara los datos del archivo de entrada
 			int valueIndex = Integer.parseInt(lineData[4]);
+			// Nombre del estilo que se aplicara al titulo de la columna
+			String styleName = lineData[5];
 			// Se crea el objeto de Header usando los parametros de la linea
-			return new Header(colName, colIndex, id, value, valueIndex);
+			return new Header(colName, colIndex, id, value, valueIndex, styleName);
 		}
 
 		// Si llego aqui es que hubo un error y se regresa null
@@ -338,9 +342,11 @@ public class TextFiles {
 		String constantName = lineData[1];
 		// Nombre que tendra la celda con el valor de la constante
 		double value = Double.parseDouble(lineData[2]);
-
+		// Nombre del estilo que se aplicara al titulo de la columna
+		String styleName = lineData[3];
+		
 		// Se crea el objeto de ExcelConstant usando los parametros de la linea
-		return new ExcelConstant(colName, constantName, value);
+		return new ExcelConstant(colName, constantName, value, styleName);
 	}
 
 	/**

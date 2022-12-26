@@ -1,19 +1,28 @@
 #
 # Estructura: 
-# Nombre_columna | nombre_celda | valor
+# 	nombre_columna | nombre_celda | valor
+#
+# nombre_columna:
+# 	Nombre de la columna donde se guardaran las constantes
+# nombre_celda: 
+# 	Nombre que se aplicara a la celda con el valor de la constante para referenciar a esta
+# valor:
+# 	Valor de la constante
+# estilo:
+# 	Nombre del estilo que se aplicara al titulo de la columna
 #
 # Notas: 
 # 	nombre_celda solo puede contener letras | numeros y guiones bajos (_)
 #
 
-TIENDA_Margen_1 | tienda_margen_1 | 0.5
+TIENDA_Margen_1 | tienda_margen_1 | 0.5 | none
 
-MAYORISTA_Margen_2 | mayorista_margen_2 | 0.3
+MAYORISTA_Margen_2 | mayorista_margen_2 | 0.3 | none
 
-TIENDA_Flete_1 | tienda_flete_1 | 0.4
+TIENDA_Flete_1 | tienda_flete_1 | 0.4 | none
 
-MAYORISTA_Flete_2 | mayorista_flete_2 | 0.4
+MAYORISTA_Flete_2 | mayorista_flete_2 | 0.4 | none
 
-Tipo_Cambio_Dolares/Euro | tipo_cambio_dolares_euro | 1.067616
+Tipo_Cambio_Dolares/Euro | tipo_cambio_dolares_euro | 1.067616 | none
 
-Tipo_Cambio_MXN/Dolar | tipo_cambio_mxn_dolar | 20.375394
+Tipo_Cambio_MXN/Dolar | tipo_cambio_mxn_dolar | 20.375394 | none

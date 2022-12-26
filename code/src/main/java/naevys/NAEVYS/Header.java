@@ -34,6 +34,10 @@ public class Header {
 	 * indice
 	 */
 	private int valueIndex;
+	/**
+	 * Nombre del estilo que se aplicara a la celda de titulo de la columna
+	 */
+	private String styleName;
 
 	/**
 	 * @param colName    Nombre de la columna que se imprimira en el archivo de
@@ -48,30 +52,37 @@ public class Header {
 	 * @param valueIndex Indice de la columna que se leera del archivo de entrada.
 	 *                   Toma prioridad el nombre de la columna expresado en 'value'
 	 *                   en caso de que no corresponda el indice
+	 * @param styleName  Nombre del estilo que se aplicara a la celda de titulo de
+	 *                   la columna
 	 */
-	public Header(String colName, int colIndex, char id, String value, int valueIndex) {
+	public Header(String colName, int colIndex, char id, String value, int valueIndex, String styleName) {
 		this.colName = colName;
 		this.colIndex = colIndex - 1;
 		this.id = id;
 		this.value = value;
 		this.valueIndex = valueIndex - 1;
+		this.styleName = styleName;
 	}
 
 	/**
-	 * @param colName  Nombre de la columna que se imprimira en el archivo de salida
-	 * @param colIndex Indice donde se imprimira la columna en el archivo de salida
-	 * @param id       Identificador sobre el tipo de columna de la que se trata
-	 *                 (referencia, formula, estatico)
-	 * @param value    Valor (estatico o formula) o referencia (nombre de la columna
-	 *                 que se leera del archivo de entrada) que se colocara en la
-	 *                 columna
+	 * @param colName   Nombre de la columna que se imprimira en el archivo de
+	 *                  salida
+	 * @param colIndex  Indice donde se imprimira la columna en el archivo de salida
+	 * @param id        Identificador sobre el tipo de columna de la que se trata
+	 *                  (referencia, formula, estatico)
+	 * @param value     Valor (estatico o formula) o referencia (nombre de la
+	 *                  columna que se leera del archivo de entrada) que se colocara
+	 *                  en la columna
+	 * @param styleName Nombre del estilo que se aplicara a la celda de titulo de la
+	 *                  columna
 	 */
-	public Header(String colName, int colIndex, char id, String value) {
+	public Header(String colName, int colIndex, char id, String value, String styleName) {
 		this.colName = colName;
 		this.colIndex = colIndex - 1;
 		this.id = id;
 		this.value = value;
 		this.valueIndex = -1;
+		this.styleName = styleName;
 	}
 
 	/**
@@ -108,9 +119,15 @@ public class Header {
 	}
 
 	/**
-	 * @return <b>ValueIndex</b> Indice de la columna que se leera del archivo de
-	 *         entrada. Toma prioridad el nombre de la columna expresado en 'value'
-	 *         en caso de que no corresponda el indice
+	 * @return <b>styleName</b> Nombre del estilo que se aplicara a la celda de
+	 *         titulo de la columna
+	 */
+	public String getStyleName() {
+		return styleName;
+	}
+
+	/**
+	 * @return <b>styleName</b>
 	 */
 	public int getValueIndex() {
 		return valueIndex;

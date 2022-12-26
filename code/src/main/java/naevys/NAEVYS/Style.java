@@ -222,7 +222,6 @@ public class Style {
 			horizontalAlignment = value;
 		}
 	}
-
 	
 	public void src() {
 		System.out.println("---\n" + styleName);

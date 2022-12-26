@@ -1,7 +1,6 @@
 #
-# OUTPUT
-#
-# nombre_columna | indice_columna (1-basado) | identificador | valor | indice_valor
+# Estructura: 
+# 	nombre_columna | indice_columna (1-basado) | identificador | valor | indice_valor | estilo
 #
 # nombre_columna:
 #	Nombre de la columna donde se guardaran los datos
@@ -13,39 +12,40 @@
 #	F: valor es una formula; ej. "SUM(A1:A10)"
 # indice_valor:
 #	Indice donde se encuentra la columna de referencia. Si el identificador no es R | no se necesita especificar
+# estilo: 
+# 	Nombre del estilo que se aplicara al titulo de la columna
 #
 
+Situacion | 1 | R | SIT | 1 | none
 
-Situacion | 1 | R | SIT | 1
+NIF | 2 | R | NIF | 4 | none
 
-NIF | 2 | R | NIF | 4
+Nombre | 3 | R | NOMBRE | 5 | none
 
-Nombre | 3 | R | NOMBRE | 5
+COD_EAN13 | 4 | R | COD_EAN13 | 7 | none
 
-COD_EAN13 | 4 | R | COD_EAN13 | 7
+Codigo_Proveedor | 5 | R | COD_PROV | 8 | none
 
-Codigo_Proveedor | 5 | R | COD_PROV | 8
+Codigo | 6 | R | CODIGO | 10 | none
 
-Codigo | 6 | R | CODIGO | 10
+Descripcion | 7 | R | DESCRIPCIO | 11 | none
 
-Descripcion | 7 | R | DESCRIPCIO | 11
+Existencia | 8 | R | EXISTENCIA | 12 | none
 
-Existencia | 8 | R | EXISTENCIA | 12
+Costo | 9 | R | COSTE_REPOSICION | 25 | none
 
-Costo | 9 | R | COSTE_REPOSICION | 25
+Precio_Venta | 10 | R | PRECIOV | 14 | none
 
-Precio_Venta | 10 | R | PRECIOV | 14
+Margen_España | 11 | F | 1 - ($I# / $J#) | none
 
-Margen_España | 11 | F | 1 - ($I# / $J#)
+CCM_USD | 12 | F | I# / (1 - @@tienda_margen_1) * @@tipo_cambio_dolares_euro | none
 
-CCM_USD | 12 | F | I# / (1 - @@tienda_margen_1) * @@tipo_cambio_dolares_euro
+CCM2_USD_Mayorista | 13 | F | I# / (1 - @@mayorista_margen_2) * @@tipo_cambio_dolares_euro | none
 
-CCM2_USD_Mayorista | 13 | F | I# / (1 - @@mayorista_margen_2) * @@tipo_cambio_dolares_euro
+CCMF_USD | 14 | F | I# / (1 - @@tienda_margen_1) * (1 + @@tienda_flete_1) * @@tipo_cambio_dolares_euro | none
 
-CCMF_USD | 14 | F | I# / (1 - @@tienda_margen_1) * (1 + @@tienda_flete_1) * @@tipo_cambio_dolares_euro
+CCMF2_USD_Mayorista | 15 | F | I# / (1 - @@mayorista_margen_2) * (1 + @@mayorista_flete_2) * @@tipo_cambio_dolares_euro | none
 
-CCMF2_USD_Mayorista | 15 | F | I# / (1 - @@mayorista_margen_2) * (1 + @@mayorista_flete_2) * @@tipo_cambio_dolares_euro
+May_USD_MrgESP | 16 | F | I# / (1 - $K#) * (1 + @@mayorista_flete_2) * @@tipo_cambio_dolares_euro | none
 
-May_USD_MrgESP | 16 | F | I# / (1 - $K#) * (1 + @@mayorista_flete_2) * @@tipo_cambio_dolares_euro
-
-Tda_USD_MrgESP | 17 | F | P# * (1 + (@@tienda_margen_1 - @@mayorista_margen_2))
+Tda_USD_MrgESP | 17 | F | P# * (1 + (@@tienda_margen_1 - @@mayorista_margen_2)) | none

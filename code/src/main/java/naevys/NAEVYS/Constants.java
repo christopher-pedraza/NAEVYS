@@ -60,7 +60,7 @@ public class Constants {
 		EF.REFERENCE_ID = prop.getProperty("NAEVYS.EF.REFERENCE_ID").charAt(0);
 		EF.FORMULA_ID = prop.getProperty("NAEVYS.EF.FORMULA_ID").charAt(0);
 		EF.STATIC_ID = prop.getProperty("NAEVYS.EF.STATIC_ID").charAt(0);
-		// Constantes de la clase Style	
+		// Constantes de la clase Style
 		S.BOLD = prop.getProperty("NAEVYS.S.BOLD");
 		S.ITALIC = prop.getProperty("NAEVYS.S.ITALIC");
 		S.BORDER_COLOR = prop.getProperty("NAEVYS.S.BORDER_COLOR");
@@ -73,6 +73,7 @@ public class Constants {
 		S.FONT_SIZE = prop.getProperty("NAEVYS.S.FONT_SIZE");
 		S.HORIZONTAL_ALIGNMENT = prop.getProperty("NAEVYS.S.HORIZONTAL_ALIGNMENT");
 		S.TRUE = prop.getProperty("NAEVYS.S.TRUE");
+		S.NONE_STYLE = prop.getProperty("NAEVYS.S.NONE_STYLE");
 	}
 
 	/**
@@ -190,50 +191,54 @@ public class Constants {
 		/**
 		 * Etiqueta para el atributo de estilo bold
 		 */
-		public static String BOLD = "bold";
+		public static String BOLD;
 		/**
 		 * Etiqueta para el atributo de estilo italic
 		 */
-		public static String ITALIC = "italic";
+		public static String ITALIC;
 		/**
 		 * Etiqueta para el atributo de estilo border color
 		 */
-		public static String BORDER_COLOR = "border_color";
+		public static String BORDER_COLOR;
 		/**
 		 * Etiqueta para el atributo de estilo border color side
 		 */
-		public static String BORDER_COLOR_SIDE = "border_color_side";
+		public static String BORDER_COLOR_SIDE;
 		/**
 		 * Etiqueta para el atributo de estilo border style
 		 */
-		public static String BORDER_STYLE = "border_style";
+		public static String BORDER_STYLE;
 		/**
 		 * Etiqueta para el atributo de estilo border style side
 		 */
-		public static String BORDER_STYLE_SIDE = "border_style_side";
+		public static String BORDER_STYLE_SIDE;
 		/**
 		 * Etiqueta para el atributo de estilo fill color
 		 */
-		public static String FILL_COLOR = "fill_color";
+		public static String FILL_COLOR;
 		/**
 		 * Etiqueta para el atributo de estilo font color
 		 */
-		public static String FONT_COLOR = "font_color";
+		public static String FONT_COLOR;
 		/**
 		 * Etiqueta para el atributo de estilo font name
 		 */
-		public static String FONT_NAME = "font_name";
+		public static String FONT_NAME;
 		/**
 		 * Etiqueta para el atributo de estilo font size
 		 */
-		public static String FONT_SIZE = "font_size";
+		public static String FONT_SIZE;
 		/**
 		 * Etiqueta para el atributo de estilo horizontal alignment
 		 */
-		public static String HORIZONTAL_ALIGNMENT = "horizontal_alignment";
+		public static String HORIZONTAL_ALIGNMENT;
 		/**
 		 * Valor verdadero de los atributos
 		 */
-		public static String TRUE = "true";
+		public static String TRUE;
+		/**
+		 * Valor nulo cuando no se desea aplicar ningun estilo al titulo de la columna
+		 */
+		public static String NONE_STYLE;
 	}
 }

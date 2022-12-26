@@ -125,6 +125,8 @@ public class ExcelFiles {
 						// Se imprime en la columna correspondiente (especificada por colIndex) y en la
 						// primera fila el nombre de la columna especificado por el usuario
 						outWs.value(row, col, outputHeaders[i].getColName());
+						
+						styleCell(outWs, row, col, styles[0], "Estilo_1");
 
 						// En caso de que se trate de un valor por referencia, se tendra que determinar
 						// si los indices especificados en el archivo corresponden al nombre
@@ -311,6 +313,10 @@ public class ExcelFiles {
 		// en otra hoja cuando se hace flush hasta que se llame a finish()
 		outWs.finish();
 	}
+	
+	private void styleCell(Worksheet ws, int r, int c, Style style, String styleName) {
+		ws.style(r, c).bold().set();
+	}
 
 	/**
 	 * <h1><i>isNumeric</i></h1>
@@ -325,7 +331,7 @@ public class ExcelFiles {
 	 *            contener punto flotante)
 	 * @return <b>Verdadero/Falso</b> si se puede convertir a un numero
 	 */
-	public static boolean isNumeric(String str) {
+	private static boolean isNumeric(String str) {
 		// Intenta convertir el texto a un numero con punto flotante. Si lo logra,
 		// regresa Verdadero, de lo contrario, regresa Falso
 		try {
