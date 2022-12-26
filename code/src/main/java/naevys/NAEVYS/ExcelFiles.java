@@ -12,6 +12,7 @@ import java.io.OutputStream;
 // Para abrir un flujo de la hoja de calculo de Excel
 import java.util.stream.Stream;
 
+import org.dhatim.fastexcel.BorderSide;
 // Importaciones de FastExcel
 import org.dhatim.fastexcel.Workbook;
 import org.dhatim.fastexcel.Worksheet;
@@ -339,11 +340,61 @@ public class ExcelFiles {
 	 */
 	private void styleCell(Worksheet ws, int row, int col, Style[] styles, String styleName) {
 		if (!styleName.equals(Constants.S.NONE_STYLE)) {
-			int index;
-			for (index = 0; index < styles.length; index++) {
-				
+			// Itera a traves de los estilos y si existe uno con el nombre especificado,
+			// guarda su indice
+			int index = 0;
+			boolean found = false;
+			for (Style s : styles) {
+				// Si los nombres coinciden se sale del ciclo para conservar el indice
+				if (s.getStyleName().equals(styleName)) {
+					found = true;
+					break;
+				}
+				index++;
 			}
-			ws.style(row, col).bold().set();
+
+			// Si se encontro un estilo con el nombre que se especifico para la celda
+			if (found) {
+				// Se declara un objeto de estilo para que sea mas corto hacer referencia al
+				// estilo
+				Style s = styles[index];
+
+				if (s.isBold()) {
+					ws.style(row, col).bold();
+				}
+				if (s.isItalic()) {
+					ws.style(row, col).italic();
+				}
+				if (s.hasBorderColor()) {
+					if (s.hasBorderColorSide()) {
+						ws.style(row, col).borderStyle(s.getBorderColor());
+					} else {
+
+					}
+				}
+				if (s.hasBorderStyle()) {
+					if (s.hasBorderStyleSide()) {
+						ws.style(row, col).borderStyle(s.getBorderStyle());
+					} else {
+
+					}
+				}
+				if (s.hasFillColor()) {
+					ws.style(row, col).fillColor(s.getFillColor());
+				}
+				if (s.hasFontColor()) {
+					ws.style(row, col).fontColor(s.getFontColor());
+				}
+				if (s.hasFontName()) {
+					ws.style(row, col).fontName(s.getFontName());
+				}
+				if (s.hasFontSize()) {
+					ws.style(row, col).fontSize(s.getFontSize());
+				}
+				if (s.hasHorizontalAlignment()) {
+					ws.style(row, col).horizontalAlignment(s.getHorizontalAlignment());
+				}
+			}
 		}
 	}
 

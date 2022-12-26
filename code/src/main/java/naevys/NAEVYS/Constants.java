@@ -240,5 +240,25 @@ public class Constants {
 		 * Valor nulo cuando no se desea aplicar ningun estilo al titulo de la columna
 		 */
 		public static String NONE_STYLE;
+		/**
+		 * Referencia al lado superior de una celda
+		 */
+		public static String SIDE_TOP;
+		/**
+		 * Referencia al lado inferior de una celda
+		 */
+		public static String SIDE_BOTTOM;
+		/**
+		 * Referencia al lado derecho de una celda
+		 */
+		public static String SIDE_RIGHT;
+		/**
+		 * Referencia al lado izquierdo de una celda
+		 */
+		public static String SIDE_LEFT;
+		/**
+		 * Referencia al lado diagonal de una celda
+		 */
+		public static String SIDE_DIAGONAL;
 	}
 }

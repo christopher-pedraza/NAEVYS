@@ -20,9 +20,17 @@ public class Style {
 	 */
 	private boolean hasBorderColor;
 	/**
+	 * Determina si la celda tendra el atributo borderColorSide
+	 */
+	private boolean hasBorderColorSide;
+	/**
 	 * Determina si la celda tendra el atributo borderStyle
 	 */
 	private boolean hasBorderStyle;
+	/**
+	 * Determina si la celda tendra el atributo borderStyleSide
+	 */
+	private boolean hasBorderStyleSide;
 	/**
 	 * Determina si la celda tendra el atributo fillColor
 	 */
@@ -153,7 +161,9 @@ public class Style {
 		this.isBold = false;
 		this.isItalic = false;
 		this.hasBorderColor = false;
+		this.hasBorderColorSide = false;
 		this.hasBorderStyle = false;
+		this.hasBorderStyleSide = false;
 		this.hasFillColor = false;
 		this.hasFontColor = false;
 		this.hasFontName = false;
@@ -192,11 +202,27 @@ public class Style {
 	}
 
 	/**
+	 * @return <b>hasBorderColorSide</b> Determina si la celda tendra el atributo
+	 *         borderColorSide
+	 */
+	public boolean hasBorderColorSide() {
+		return hasBorderColorSide;
+	}
+
+	/**
 	 * @return <b>hasBorderStyle</b> Determina si la celda tendra el atributo
 	 *         borderStyle
 	 */
 	public boolean hasBorderStyle() {
 		return hasBorderStyle;
+	}
+
+	/**
+	 * @return <b>hasBorderStyleSide</b> Determina si la celda tendra el atributo
+	 *         borderStyleSide
+	 */
+	public boolean hasBorderStyleSide() {
+		return hasBorderStyleSide;
 	}
 
 	/**
@@ -391,11 +417,13 @@ public class Style {
 			hasBorderColor = true;
 			borderColor = value;
 		} else if (property.equals(Constants.S.BORDER_COLOR_SIDE)) {
+			hasBorderColorSide = true;
 			borderColorSide = value;
 		} else if (property.equals(Constants.S.BORDER_STYLE)) {
 			hasBorderStyle = true;
 			borderStyle = value;
 		} else if (property.equals(Constants.S.BORDER_STYLE_SIDE)) {
+			hasBorderStyleSide = true;
 			borderStyleSide = value;
 		} else if (property.equals(Constants.S.FILL_COLOR)) {
 			hasFillColor = true;
