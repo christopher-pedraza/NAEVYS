@@ -12,7 +12,6 @@ import java.io.OutputStream;
 // Para abrir un flujo de la hoja de calculo de Excel
 import java.util.stream.Stream;
 
-import org.dhatim.fastexcel.BorderSide;
 // Importaciones de FastExcel
 import org.dhatim.fastexcel.Workbook;
 import org.dhatim.fastexcel.Worksheet;
@@ -361,38 +360,55 @@ public class ExcelFiles {
 				// estilo
 				Style s = styles[index];
 
+				// Dependiendo del estilo definido para la columna, es el estilo que se aplica
+				// al titulo de esta. Se aplican...
+				// ...negritas
 				if (s.isBold()) {
 					ws.style(row, col).bold().set();
 				}
+				// ...italica
 				if (s.isItalic()) {
 					ws.style(row, col).italic().set();
 				}
+				// ...color en...
 				if (s.hasBorderColor()) {
+					// ...todos los bordes
 					if (s.hasBorderColorSide()) {
 						ws.style(row, col).borderColor(s.getBorderColor()).set();
-					} else {
+					}
+					// ...un borde en especifico
+					else {
 						ws.style(row, col).borderColor(s.getBorderColorSide(), s.getBorderColor()).set();
 					}
 				}
+				// ...estilo de borde en...
 				if (s.hasBorderStyle()) {
+					// ...todos los bordes
 					if (s.hasBorderStyleSide()) {
 						ws.style(row, col).borderStyle(s.getBorderStyle()).set();
-					} else {
+					}
+					// ...un borde en especifico
+					else {
 						ws.style(row, col).borderStyle(s.getBorderStyleSide(), s.getBorderStyle()).set();
 					}
 				}
+				// ...color de relleno
 				if (s.hasFillColor()) {
 					ws.style(row, col).fillColor(s.getFillColor()).set();
 				}
+				// ...color de letra
 				if (s.hasFontColor()) {
 					ws.style(row, col).fontColor(s.getFontColor()).set();
 				}
+				// ...nombre de fuente
 				if (s.hasFontName()) {
 					ws.style(row, col).fontName(s.getFontName()).set();
 				}
+				// ...tamaño de fuente
 				if (s.hasFontSize()) {
 					ws.style(row, col).fontSize(s.getFontSize()).set();
 				}
+				// ...alineamiento horizontal
 				if (s.hasHorizontalAlignment()) {
 					ws.style(row, col).horizontalAlignment(s.getHorizontalAlignment()).set();
 				}
