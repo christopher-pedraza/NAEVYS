@@ -15,9 +15,9 @@
 # 	nombre_celda solo puede contener letras | numeros y guiones bajos (_)
 #
 
-TIENDA_Margen_1 | tienda_margen_1 | 0.5 | none
+TIENDA_Margen_1 | tienda_margen_1 | 0.5 | Estilo_1
 
-MAYORISTA_Margen_2 | mayorista_margen_2 | 0.3 | none
+MAYORISTA_Margen_2 | mayorista_margen_2 | 0.3 | Estilo_2
 
 TIENDA_Flete_1 | tienda_flete_1 | 0.4 | none
 

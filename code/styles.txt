@@ -28,7 +28,7 @@ Estilo_1
 
 Estilo_2
 -bold: true
--fill_color: 1a1a1a
+-fill_color: 32cbff
 -font_name: Arial
 -font_size: 16
 -horizontal_alignment: RIGHT

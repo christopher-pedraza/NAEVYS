@@ -360,39 +360,39 @@ public class ExcelFiles {
 				Style s = styles[index];
 
 				if (s.isBold()) {
-					ws.style(row, col).bold();
+					ws.style(row, col).bold().set();
 				}
 				if (s.isItalic()) {
-					ws.style(row, col).italic();
+					ws.style(row, col).italic().set();
 				}
 				if (s.hasBorderColor()) {
 					if (s.hasBorderColorSide()) {
-						ws.style(row, col).borderStyle(s.getBorderColor());
+						ws.style(row, col).borderColor(s.getBorderColor()).set();
 					} else {
-
+						ws.style(row, col).borderColor(s.getBorderColorSide(), s.getBorderColor()).set();
 					}
 				}
 				if (s.hasBorderStyle()) {
 					if (s.hasBorderStyleSide()) {
-						ws.style(row, col).borderStyle(s.getBorderStyle());
+						ws.style(row, col).borderStyle(s.getBorderStyle()).set();
 					} else {
-
+						ws.style(row, col).borderStyle(s.getBorderStyleSide(), s.getBorderStyle()).set();
 					}
 				}
 				if (s.hasFillColor()) {
-					ws.style(row, col).fillColor(s.getFillColor());
+					ws.style(row, col).fillColor(s.getFillColor()).set();
 				}
 				if (s.hasFontColor()) {
-					ws.style(row, col).fontColor(s.getFontColor());
+					ws.style(row, col).fontColor(s.getFontColor()).set();
 				}
 				if (s.hasFontName()) {
-					ws.style(row, col).fontName(s.getFontName());
+					ws.style(row, col).fontName(s.getFontName()).set();
 				}
 				if (s.hasFontSize()) {
-					ws.style(row, col).fontSize(s.getFontSize());
+					ws.style(row, col).fontSize(s.getFontSize()).set();
 				}
 				if (s.hasHorizontalAlignment()) {
-					ws.style(row, col).horizontalAlignment(s.getHorizontalAlignment());
+					ws.style(row, col).horizontalAlignment(s.getHorizontalAlignment()).set();
 				}
 			}
 		}
