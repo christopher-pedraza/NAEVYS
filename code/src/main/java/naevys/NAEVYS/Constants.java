@@ -74,6 +74,12 @@ public class Constants {
 		S.HORIZONTAL_ALIGNMENT = prop.getProperty("NAEVYS.S.HORIZONTAL_ALIGNMENT");
 		S.TRUE = prop.getProperty("NAEVYS.S.TRUE");
 		S.NONE_STYLE = prop.getProperty("NAEVYS.S.NONE_STYLE");
+		S.SIDE_TOP = prop.getProperty("NAEVYS.S.SIDE_TOP");
+		S.SIDE_TOP = prop.getProperty("NAEVYS.S.SIDE_TOP");
+		S.SIDE_BOTTOM = prop.getProperty("NAEVYS.S.SIDE_BOTTOM");
+		S.SIDE_LEFT = prop.getProperty("NAEVYS.S.SIDE_LEFT");
+		S.SIDE_RIGHT = prop.getProperty("NAEVYS.S.SIDE_RIGHT");
+		S.SIDE_DIAGONAL = prop.getProperty("NAEVYS.S.SIDE_DIAGONAL");
 	}
 
 	/**

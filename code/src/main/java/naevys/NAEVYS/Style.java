@@ -1,5 +1,7 @@
 package naevys.NAEVYS;
 
+import org.dhatim.fastexcel.BorderSide;
+
 public class Style {
 	/**
 	 * Nombre con el que se puede referenciar a esta configuracion de propiedades de
@@ -73,7 +75,7 @@ public class Style {
 	 * <code>TOP, BOTTOM, RIGHT, LEFT, DIAGONAL</code>
 	 * </p>
 	 */
-	private String borderColorSide;
+	private BorderSide borderColorSide;
 	/**
 	 * Estilo del borde
 	 * 
@@ -95,7 +97,7 @@ public class Style {
 	 * <code>TOP, BOTTOM, RIGHT, LEFT, DIAGONAL</code>
 	 * </p>
 	 */
-	private String borderStyleSide;
+	private BorderSide borderStyleSide;
 	/**
 	 * Color de relleno de la celda
 	 * 
@@ -287,7 +289,7 @@ public class Style {
 	 *         <code>TOP, BOTTOM, RIGHT, LEFT, DIAGONAL</code>
 	 *         </p>
 	 */
-	public String getBorderColorSide() {
+	public BorderSide getBorderColorSide() {
 		return borderColorSide;
 	}
 
@@ -315,7 +317,7 @@ public class Style {
 	 *         <code>TOP, BOTTOM, RIGHT, LEFT, DIAGONAL</code>
 	 *         </p>
 	 */
-	public String getBorderStyleSide() {
+	public BorderSide getBorderStyleSide() {
 		return borderStyleSide;
 	}
 
@@ -418,13 +420,41 @@ public class Style {
 			borderColor = value;
 		} else if (property.equals(Constants.S.BORDER_COLOR_SIDE)) {
 			hasBorderColorSide = true;
-			borderColorSide = value;
+			if (value.equals(Constants.S.SIDE_TOP)) {
+				borderColorSide = BorderSide.TOP;
+			}
+			if (value.equals(Constants.S.SIDE_BOTTOM)) {
+				borderColorSide = BorderSide.BOTTOM;
+			}
+			if (value.equals(Constants.S.SIDE_LEFT)) {
+				borderColorSide = BorderSide.LEFT;
+			}
+			if (value.equals(Constants.S.SIDE_RIGHT)) {
+				borderColorSide = BorderSide.RIGHT;
+			}
+			if (value.equals(Constants.S.SIDE_DIAGONAL)) {
+				borderColorSide = BorderSide.DIAGONAL;
+			}
 		} else if (property.equals(Constants.S.BORDER_STYLE)) {
 			hasBorderStyle = true;
 			borderStyle = value;
 		} else if (property.equals(Constants.S.BORDER_STYLE_SIDE)) {
 			hasBorderStyleSide = true;
-			borderStyleSide = value;
+			if (value.equals(Constants.S.SIDE_TOP)) {
+				borderStyleSide = BorderSide.TOP;
+			}
+			if (value.equals(Constants.S.SIDE_BOTTOM)) {
+				borderStyleSide = BorderSide.BOTTOM;
+			}
+			if (value.equals(Constants.S.SIDE_LEFT)) {
+				borderStyleSide = BorderSide.LEFT;
+			}
+			if (value.equals(Constants.S.SIDE_RIGHT)) {
+				borderStyleSide = BorderSide.RIGHT;
+			}
+			if (value.equals(Constants.S.SIDE_DIAGONAL)) {
+				borderStyleSide = BorderSide.DIAGONAL;
+			}
 		} else if (property.equals(Constants.S.FILL_COLOR)) {
 			hasFillColor = true;
 			fillColor = value;
