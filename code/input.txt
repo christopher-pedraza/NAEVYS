@@ -18,7 +18,7 @@
 
 Situacion | 1 | R | SIT | 1 | none
 
-NIF | 2 | R | NIF | 4 | none
+NIF | 2 | R | NIF | 4 | Estilo_2
 
 Nombre | 3 | R | NOMBRE | 5 | none
 

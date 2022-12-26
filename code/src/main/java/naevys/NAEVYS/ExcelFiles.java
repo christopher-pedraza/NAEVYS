@@ -126,6 +126,8 @@ public class ExcelFiles {
 						// Se imprime en la columna correspondiente (especificada por colIndex) y en la
 						// primera fila el nombre de la columna especificado por el usuario
 						outWs.value(row, col, outputHeaders[i].getColName());
+						// Aplicar estilo guardado en el objeto a la celda
+						styleCell(outWs, row, col, styles, outputHeaders[i].getStyleName());
 
 						// En caso de que se trate de un valor por referencia, se tendra que determinar
 						// si los indices especificados en el archivo corresponden al nombre
