@@ -126,8 +126,6 @@ public class ExcelFiles {
 						// primera fila el nombre de la columna especificado por el usuario
 						outWs.value(row, col, outputHeaders[i].getColName());
 
-						styleCell(outWs, row, col, styles[0], "Estilo_1");
-
 						// En caso de que se trate de un valor por referencia, se tendra que determinar
 						// si los indices especificados en el archivo corresponden al nombre
 						// especificado en el mismo lugar. Se toma prioridad por el nombre que por el
@@ -341,6 +339,10 @@ public class ExcelFiles {
 	 */
 	private void styleCell(Worksheet ws, int row, int col, Style[] styles, String styleName) {
 		if (!styleName.equals(Constants.S.NONE_STYLE)) {
+			int index;
+			for (index = 0; index < styles.length; index++) {
+				
+			}
 			ws.style(row, col).bold().set();
 		}
 	}

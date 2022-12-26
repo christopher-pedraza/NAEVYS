@@ -162,6 +162,208 @@ public class Style {
 	}
 
 	/**
+	 * @return <b>styleName</b> Nombre con el que se puede referenciar a esta
+	 *         configuracion de propiedades de estilo de celda
+	 */
+	public String getStyleName() {
+		return styleName;
+	}
+
+	/**
+	 * @return <b>isBold</b> Determina si la celda tendra el atributo bold
+	 */
+	public boolean isBold() {
+		return isBold;
+	}
+
+	/**
+	 * @return <b>isItalic</b> Determina si la celda tendra el atributo italic
+	 */
+	public boolean isItalic() {
+		return isItalic;
+	}
+
+	/**
+	 * @return <b>hasBorderColor</b> Determina si la celda tendra el atributo
+	 *         borderColor
+	 */
+	public boolean hasBorderColor() {
+		return hasBorderColor;
+	}
+
+	/**
+	 * @return <b>hasBorderStyle</b> Determina si la celda tendra el atributo
+	 *         borderStyle
+	 */
+	public boolean hasBorderStyle() {
+		return hasBorderStyle;
+	}
+
+	/**
+	 * @return <b>hasFillColor</b> Determina si la celda tendra el atributo
+	 *         fillColor
+	 */
+	public boolean hasFillColor() {
+		return hasFillColor;
+	}
+
+	/**
+	 * @return <b>hasFontColor</b> Determina si la celda tendra el atributo
+	 *         fontColor
+	 */
+	public boolean hasFontColor() {
+		return hasFontColor;
+	}
+
+	/**
+	 * @return <b>hasFontName</b> Determina si la celda tendra el atributo fontName
+	 */
+	public boolean hasFontName() {
+		return hasFontName;
+	}
+
+	/**
+	 * @return <b>hasFontSize</b> Determina si la celda tendra el atributo fontSize
+	 */
+	public boolean hasFontSize() {
+		return hasFontSize;
+	}
+
+	/**
+	 * @return <b>hasHorizontalAlignment</b> Determina si la celda tendra el
+	 *         atributo horizontalAlignment
+	 */
+	public boolean hasHorizontalAlignment() {
+		return hasHorizontalAlignment;
+	}
+
+	/**
+	 * @return <b>borderColor</b> Color del borde en hexadecimal
+	 * 
+	 *         <p>
+	 *         <b>Ejemplo:</b>
+	 *         </p>
+	 *         <p style="margin-left: 10px">
+	 *         <code>1a1a1a</code>
+	 *         </p>
+	 */
+	public String getBorderColor() {
+		return borderColor;
+	}
+
+	/**
+	 * @return <b>borderColorSide</b> Borde al que se le aplicara el color
+	 * 
+	 *         <p>
+	 *         <b>Opciones posibles:</b>
+	 *         </p>
+	 *         <p style="margin-left: 10px">
+	 *         <code>TOP, BOTTOM, RIGHT, LEFT, DIAGONAL</code>
+	 *         </p>
+	 */
+	public String getBorderColorSide() {
+		return borderColorSide;
+	}
+
+	/**
+	 * @return <b>borderStyle</b> Estilo del borde
+	 * 
+	 *         <p>
+	 *         <b>Opciones posibles:</b>
+	 *         </p>
+	 *         <p style="margin-left: 10px">
+	 *         <code>DASH_DOT, DASH_DOT_DOT, DASHED, DOTTED, DOUBLE, HAIR, MEDIUM, MEDIUM_DASH_DOT, MEDIUM_DASH_DOT_DOT, MEDIUM_DASHED, SLANT_DASH_DOT, THICK, THIN, NONE</code>
+	 *         </p>
+	 */
+	public String getBorderStyle() {
+		return borderStyle;
+	}
+
+	/**
+	 * @return <b>borderStyleSide</b> Borde al que se le aplicara el estilo
+	 * 
+	 *         <p>
+	 *         <b>Opciones posibles:</b>
+	 *         </p>
+	 *         <p style="margin-left: 10px">
+	 *         <code>TOP, BOTTOM, RIGHT, LEFT, DIAGONAL</code>
+	 *         </p>
+	 */
+	public String getBorderStyleSide() {
+		return borderStyleSide;
+	}
+
+	/**
+	 * @return <b>fillColor</b> Color de relleno de la celda
+	 * 
+	 *         <p>
+	 *         <b>Ejemplo:</b>
+	 *         </p>
+	 *         <p style="margin-left: 10px">
+	 *         <code>1a1a1a</code>
+	 *         </p>
+	 */
+	public String getFillColor() {
+		return fillColor;
+	}
+
+	/**
+	 * @return <b>fontColor</b> Color de la letra
+	 * 
+	 *         <p>
+	 *         <b>Ejemplo:</b>
+	 *         </p>
+	 *         <p style="margin-left: 10px">
+	 *         <code>1a1a1a</code>
+	 *         </p>
+	 */
+	public String getFontColor() {
+		return fontColor;
+	}
+
+	/**
+	 * @return <b>fontName</b> Nombre del estilo de letra
+	 * 
+	 *         <p>
+	 *         <b>Ejemplo:</b>
+	 *         </p>
+	 *         <p style="margin-left: 10px">
+	 *         <code>Arial</code>
+	 *         </p>
+	 */
+	public String getFontName() {
+		return fontName;
+	}
+
+	/**
+	 * @return <b>fontSize</b> Tamaño de la letra
+	 * 
+	 *         <p>
+	 *         <b>Ejemplo:</b>
+	 *         </p>
+	 *         <p style="margin-left: 10px">
+	 *         <code>12</code>
+	 *         </p>
+	 */
+	public int getFontSize() {
+		return fontSize;
+	}
+
+	/**
+	 * @return <b>horizontalAlignment</b> Alineacion del contenido de la celda
+	 * 
+	 *         <p>
+	 *         <b>Ejemplo:</b>
+	 *         </p>
+	 *         <p style="margin-left: 10px">
+	 *         <code>RIGHT/LEFT/CENTER</code>
+	 *         </p>
+	 */
+	public String getHorizontalAlignment() {
+		return horizontalAlignment;
+	}
+
+	/**
 	 * <h1><i>convertExcel</i></h1>
 	 * <p style="margin-left: 10px">
 	 * <code> public addProperty(String line)</code>
@@ -181,48 +383,38 @@ public class Style {
 			if (value.equals(Constants.S.TRUE)) {
 				isBold = true;
 			}
-		}
-		else if (property.equals(Constants.S.ITALIC)) {
+		} else if (property.equals(Constants.S.ITALIC)) {
 			if (value.equals(Constants.S.TRUE)) {
 				isItalic = true;
 			}
-		}
-		else if (property.equals(Constants.S.BORDER_COLOR)) {
+		} else if (property.equals(Constants.S.BORDER_COLOR)) {
 			hasBorderColor = true;
 			borderColor = value;
-		}
-		else if (property.equals(Constants.S.BORDER_COLOR_SIDE)) {
+		} else if (property.equals(Constants.S.BORDER_COLOR_SIDE)) {
 			borderColorSide = value;
-		}
-		else if (property.equals(Constants.S.BORDER_STYLE)) {
+		} else if (property.equals(Constants.S.BORDER_STYLE)) {
 			hasBorderStyle = true;
 			borderStyle = value;
-		}
-		else if (property.equals(Constants.S.BORDER_STYLE_SIDE)) {
+		} else if (property.equals(Constants.S.BORDER_STYLE_SIDE)) {
 			borderStyleSide = value;
-		}
-		else if (property.equals(Constants.S.FILL_COLOR)) {
+		} else if (property.equals(Constants.S.FILL_COLOR)) {
 			hasFillColor = true;
 			fillColor = value;
-		}
-		else if (property.equals(Constants.S.FONT_COLOR)) {
+		} else if (property.equals(Constants.S.FONT_COLOR)) {
 			hasFontColor = true;
 			fontColor = value;
-		}
-		else if (property.equals(Constants.S.FONT_NAME)) {
+		} else if (property.equals(Constants.S.FONT_NAME)) {
 			hasFontName = true;
 			fontName = value;
-		}
-		else if (property.equals(Constants.S.FONT_SIZE)) {
+		} else if (property.equals(Constants.S.FONT_SIZE)) {
 			hasFontSize = true;
 			fontSize = Integer.parseInt(value);
-		}
-		else if (property.equals(Constants.S.HORIZONTAL_ALIGNMENT)) {
+		} else if (property.equals(Constants.S.HORIZONTAL_ALIGNMENT)) {
 			hasHorizontalAlignment = true;
 			horizontalAlignment = value;
 		}
 	}
-	
+
 	public void src() {
 		System.out.println("---\n" + styleName);
 		if (isBold) {
