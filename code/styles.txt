@@ -10,25 +10,20 @@
 # -font_color: 1a1a1a
 # -font_name: Arial
 # -font_size: 16
-# -horizontal_alignment: RIGHT/LEFT/CENTER
+# -horizontal_alignment: general/left/center/right/fill/justify/centerContinuous/distributed
 #
 
-Estilo_1
+Estilo_Constantes
 -bold: true
--italic: true
--border_color: 1a1a1a
--border_color_side: TOP
--border_style: DASH_DOT
--border_style_side: BOTTOM
--fill_color: 1a1a1a
--font_color: 1a1a1a
--font_name: Arial
--font_size: 16
--horizontal_alignment: CENTER
+-fill_color: 9BC2E6
+-horizontal_alignment: center
 
-Estilo_2
+Estilo_Tarifas_Datos
 -bold: true
--fill_color: 32cbff
--font_name: Arial
--font_size: 16
--horizontal_alignment: RIGHT
+-fill_color: 9BC2E6
+-horizontal_alignment: center
+
+Estilo_Tarifas_Formulas
+-bold: true
+-fill_color: A9D08E
+-horizontal_alignment: center

@@ -149,7 +149,7 @@ public class Style {
 	 * <b>Ejemplo:</b>
 	 * </p>
 	 * <p style="margin-left: 10px">
-	 * <code>RIGHT/LEFT/CENTER</code>
+	 * <code>general/left/center/right/fill/justify/centerContinuous/distributed</code>
 	 * </p>
 	 */
 	private String horizontalAlignment;

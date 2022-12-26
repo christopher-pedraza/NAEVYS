@@ -410,6 +410,7 @@ public class ExcelFiles {
 				}
 				// ...alineamiento horizontal
 				if (s.hasHorizontalAlignment()) {
+					System.out.println("A");
 					ws.style(row, col).horizontalAlignment(s.getHorizontalAlignment()).set();
 				}
 			}
