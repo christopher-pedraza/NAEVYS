@@ -4,7 +4,7 @@
 # -italic: true
 # -border_color: 1a1a1a
 # -border_color_side: TOP/BOTTOM/RIGHT/LEFT/DIAGONAL
-# -border_style: DASH_DOT/DASH_DOT_DOT/DASHED/DOTTED/DOUBLE/HAIR/MEDIUM/MEDIUM_DASH_DOT/MEDIUM_DASH_DOT_DOT/MEDIUM_DASHED/SLANT_DASH_DOT/THICK/THIN/NONE
+# -border_style: none/thin/medium/dashed/dotted/thick/double/hair/mediumDashed/dashDot/mediumDashDot/dashDotDot/mediumDashDotDot/slantDashDot
 # -border_style_side: TOP/BOTTOM/RIGHT/LEFT/DIAGONAL
 # -fill_color: 1a1a1a
 # -font_color: 1a1a1a

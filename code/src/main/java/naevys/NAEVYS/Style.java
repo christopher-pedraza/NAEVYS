@@ -83,7 +83,7 @@ public class Style {
 	 * <b>Opciones posibles:</b>
 	 * </p>
 	 * <p style="margin-left: 10px">
-	 * <code>DASH_DOT, DASH_DOT_DOT, DASHED, DOTTED, DOUBLE, HAIR, MEDIUM, MEDIUM_DASH_DOT, MEDIUM_DASH_DOT_DOT, MEDIUM_DASHED, SLANT_DASH_DOT, THICK, THIN, NONE</code>
+	 * <code>none, thin, medium, dashed, dotted, thick, double, hair, mediumDashed, dashDot, mediumDashDot, dashDotDot, mediumDashDotDot, slantDashDot</code>
 	 * </p>
 	 */
 	private String borderStyle;
