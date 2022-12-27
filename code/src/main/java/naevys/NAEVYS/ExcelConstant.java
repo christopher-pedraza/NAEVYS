@@ -10,7 +10,7 @@ public class ExcelConstant {
 	/**
 	 * Nombre de la columna que contendra el valor de la constante
 	 */
-	private String colName;
+	private String colTitle;
 	/**
 	 * Nombre de la celda que contendra el valor de la constante
 	 */
@@ -25,26 +25,26 @@ public class ExcelConstant {
 	private String styleName;
 
 	/**
-	 * @param colName      Nombre de la columna que contendra el valor de la
+	 * @param colTitle     Nombre de la columna que contendra el valor de la
 	 *                     constante
 	 * @param constantName Nombre de la celda que contendra el valor de la constante
 	 * @param value        Valor de la constante
 	 * @param styleName    Nombre del estilo que se aplicara a la celda de titulo de
 	 *                     la columna
 	 */
-	public ExcelConstant(String colName, String constantName, double value, String styleName) {
-		this.colName = colName;
+	public ExcelConstant(String colTitle, String constantName, double value, String styleName) {
+		this.colTitle = colTitle;
 		this.constantName = cleanName(constantName);
 		this.value = value;
 		this.styleName = styleName;
 	}
 
 	/**
-	 * @return <b>colName</b> Nombre de la columna que contendra el valor de la
+	 * @return <b>colTitle</b> Nombre de la columna que contendra el valor de la
 	 *         constante
 	 */
-	public String getColName() {
-		return colName;
+	public String getColTitle() {
+		return colTitle;
 	}
 
 	/**

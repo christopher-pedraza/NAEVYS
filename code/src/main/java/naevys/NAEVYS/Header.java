@@ -11,7 +11,11 @@ package naevys.NAEVYS;
  */
 public class Header {
 	/**
-	 * Nombre de la columna que se imprimira en el archivo de salida
+	 * Titulo de la columna
+	 */
+	private String colTitle;
+	/**
+	 * Referencia que se le aplicara a toda la columna
 	 */
 	private String colName;
 	/**
@@ -40,8 +44,8 @@ public class Header {
 	private String styleName;
 
 	/**
-	 * @param colName    Nombre de la columna que se imprimira en el archivo de
-	 *                   salida
+	 * @param colTitle   Titulo de la columna
+	 * @param colName    Referencia que se le aplicara a toda la columna
 	 * @param colIndex   Indice donde se imprimira la columna en el archivo de
 	 *                   salida
 	 * @param id         Identificador sobre el tipo de columna de la que se trata
@@ -55,7 +59,9 @@ public class Header {
 	 * @param styleName  Nombre del estilo que se aplicara a la celda de titulo de
 	 *                   la columna
 	 */
-	public Header(String colName, int colIndex, char id, String value, int valueIndex, String styleName) {
+	public Header(String colTitle, String colName, int colIndex, char id, String value, int valueIndex,
+			String styleName) {
+		this.colTitle = colTitle;
 		this.colName = colName;
 		this.colIndex = colIndex - 1;
 		this.id = id;
@@ -65,8 +71,8 @@ public class Header {
 	}
 
 	/**
-	 * @param colName   Nombre de la columna que se imprimira en el archivo de
-	 *                  salida
+	 * @param colTitle  Titulo de la columna
+	 * @param colName   Referencia que se le aplicara a toda la columna
 	 * @param colIndex  Indice donde se imprimira la columna en el archivo de salida
 	 * @param id        Identificador sobre el tipo de columna de la que se trata
 	 *                  (referencia, formula, estatico)
@@ -76,7 +82,8 @@ public class Header {
 	 * @param styleName Nombre del estilo que se aplicara a la celda de titulo de la
 	 *                  columna
 	 */
-	public Header(String colName, int colIndex, char id, String value, String styleName) {
+	public Header(String colTitle, String colName, int colIndex, char id, String value, String styleName) {
+		this.colTitle = colTitle;
 		this.colName = colName;
 		this.colIndex = colIndex - 1;
 		this.id = id;
@@ -94,8 +101,14 @@ public class Header {
 	}
 
 	/**
-	 * @return <b>colName</b> Nombre de la columna que se imprimira en el archivo de
-	 *         salida
+	 * @return <b>colTitle</b> Titulo de la columna
+	 */
+	public String getColTitle() {
+		return colTitle;
+	}
+
+	/**
+	 * @return <b>colName</b> Referencia que se le aplicara a toda la columna
 	 */
 	public String getColName() {
 		return colName;

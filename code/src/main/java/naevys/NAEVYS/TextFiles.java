@@ -285,36 +285,40 @@ public class TextFiles {
 		// valores estaticos
 		if (lineData.length == Constants.TF.NORMAL_LINE_SIZE) {
 			// Nombre de la columna donde se pondran los datos
-			String colName = lineData[0];
+			String colTitle = lineData[0];
+			// Referencia de la columna completa para usar en formulas
+			String colName = lineData[1];
 			// Indice de la columna donde se imprimiran los datos
-			int colIndex = Integer.parseInt(lineData[1]);
+			int colIndex = Integer.parseInt(lineData[2]);
 			// Tipo de columna de la que se trata (estatica o formula)
-			char id = lineData[2].charAt(0);
+			char id = lineData[3].charAt(0);
 			// Valor que se pondra en la columna (valor estatico o formula)
-			String value = lineData[3];
+			String value = lineData[4];
 			// Nombre del estilo que se aplicara al titulo de la columna
-			String styleName = lineData[4];
+			String styleName = lineData[5];
 			// Se crea el objeto de Header usando los parametros de la linea
-			return new Header(colName, colIndex, id, value, styleName);
+			return new Header(colTitle, colName, colIndex, id, value, styleName);
 		}
 		// Si se trata de una linea con la configuracion de una columna con valores por
 		// referencia
 		else if (lineData.length == Constants.TF.REFERENCE_LINE_SIZE) {
 			// Nombre de la columna donde se pondran los datos
-			String colName = lineData[0];
+			String colTitle = lineData[0];
+			// Referencia de la columna completa para usar en formulas
+			String colName = lineData[1];
 			// Indice de la columna donde se imprimiran los datos
-			int colIndex = Integer.parseInt(lineData[1]);
+			int colIndex = Integer.parseInt(lineData[2]);
 			// Tipo de columna de la que se trata (referencia)
-			char id = lineData[2].charAt(0);
+			char id = lineData[3].charAt(0);
 			// Valor que se pondra en la columna (nombre de la columna de donde tomara los
 			// datos del archivo de entrada)
-			String value = lineData[3];
+			String value = lineData[4];
 			// Indice de la columna de donde tomara los datos del archivo de entrada
-			int valueIndex = Integer.parseInt(lineData[4]);
+			int valueIndex = Integer.parseInt(lineData[5]);
 			// Nombre del estilo que se aplicara al titulo de la columna
-			String styleName = lineData[5];
+			String styleName = lineData[6];
 			// Se crea el objeto de Header usando los parametros de la linea
-			return new Header(colName, colIndex, id, value, valueIndex, styleName);
+			return new Header(colTitle, colName, colIndex, id, value, valueIndex, styleName);
 		}
 
 		// Si llego aqui es que hubo un error y se regresa null

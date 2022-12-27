@@ -124,7 +124,7 @@ public class ExcelFiles {
 					if (row == 0) {
 						// Se imprime en la columna correspondiente (especificada por colIndex) y en la
 						// primera fila el nombre de la columna especificado por el usuario
-						outWs.value(row, col, outputHeaders[i].getColName());
+						outWs.value(row, col, outputHeaders[i].getColTitle());
 						// Aplicar estilo guardado en el objeto a la celda
 						styleCell(outWs, row, col, styles, outputHeaders[i].getStyleName());
 
@@ -274,8 +274,11 @@ public class ExcelFiles {
 				}
 			});
 		}
-		// TODO: Dar formato a las celdas antes de cerrar el libro
 
+		for (Header h : outputHeaders) {
+			outWs.range(1, h.getColIndex(), row-1, h.getColIndex()).setName(h.getColName());;
+		}
+		
 		// Cerrar hoja de calculo del libro de salida. No se pueden hacer modificaciones
 		// en otra hoja cuando se hace flush hasta que se llame a finish()
 		outWs.finish();
@@ -306,7 +309,7 @@ public class ExcelFiles {
 		// Itera en el arreglo de las constantes
 		for (ExcelConstant constant : exConstants) {
 			// Escribe el nombre de la constante (titulo de la columna)
-			outWs.value(0, col, constant.getColName());
+			outWs.value(0, col, constant.getColTitle());
 			// Escribe el valor de la constante
 			outWs.value(1, col, constant.getValue());
 			// A la celda con el valor de la constante se le aplica el nombre para que se
