@@ -62,7 +62,8 @@ public class Header {
 	public Header(String colTitle, String colName, int colIndex, char id, String value, int valueIndex,
 			String styleName) {
 		this.colTitle = colTitle;
-		this.colName = colName;
+		// Limpia la referencia a la columna de cualquier caracter invalido
+		this.colName = cleanName(colName);
 		this.colIndex = colIndex - 1;
 		this.id = id;
 		this.value = value;
@@ -84,7 +85,8 @@ public class Header {
 	 */
 	public Header(String colTitle, String colName, int colIndex, char id, String value, String styleName) {
 		this.colTitle = colTitle;
-		this.colName = colName;
+		// Limpia la referencia a la columna de cualquier caracter invalido
+		this.colName = cleanName(colName);
 		this.colIndex = colIndex - 1;
 		this.id = id;
 		this.value = value;
@@ -160,5 +162,21 @@ public class Header {
 	 */
 	public void setValueIndex(int valueIndex) {
 		this.valueIndex = valueIndex - 1;
+	}
+	
+	/**
+	 * <h1><i>cleanName</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public cleanName(String str)</code>
+	 * <p>
+	 * Funcion para remover cualquier caracter invalido (que no sea Alfanumerico o
+	 * guion bajo) para asignar en el nombre de una celda de Excel.
+	 * </p>
+	 * 
+	 * @param str Nombre de la celda que tiene que ser limpiado
+	 * @return Nombre sin caracteres invalidos
+	 */
+	private String cleanName(String str) {
+		return str.replaceAll("[^A-Za-z0-9_]", "");
 	}
 }

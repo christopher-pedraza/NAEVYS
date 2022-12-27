@@ -34,6 +34,7 @@ public class ExcelConstant {
 	 */
 	public ExcelConstant(String colTitle, String constantName, double value, String styleName) {
 		this.colTitle = colTitle;
+		// Limpia la referencia de la constante de cualquier caracter invalido
 		this.constantName = cleanName(constantName);
 		this.value = value;
 		this.styleName = styleName;
@@ -85,5 +86,4 @@ public class ExcelConstant {
 	private String cleanName(String str) {
 		return str.replaceAll("[^A-Za-z0-9_]", "");
 	}
-
 }
