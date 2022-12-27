@@ -16,14 +16,14 @@
 Estilo_Constantes
 -bold: true
 -fill_color: 9BC2E6
--horizontal_alignment: center
+-horizontal_alignment: distributed
 
 Estilo_Tarifas_Datos
 -bold: true
 -fill_color: 9BC2E6
--horizontal_alignment: center
+-horizontal_alignment: distributed
 
 Estilo_Tarifas_Formulas
 -bold: true
 -fill_color: A9D08E
--horizontal_alignment: center
+-horizontal_alignment: distributed

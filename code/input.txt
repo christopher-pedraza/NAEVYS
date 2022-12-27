@@ -16,7 +16,7 @@
 # 	Nombre del estilo que se aplicara al titulo de la columna
 #
 
-Situacion | situacion | 1 | R | SIT | 1 | Estilo_Tarifas_Datos
+Sit | sit | 1 | R | SIT | 1 | Estilo_Tarifas_Datos
 
 NIF | nif | 2 | R | NIF | 4 | Estilo_Tarifas_Datos
 
@@ -34,17 +34,12 @@ Costo_EUR | costo_eur | 8 | R | COSTE_REPOSICION | 25 | Estilo_Tarifas_Datos
 
 P_Vta_EUR | p_vta_eur | 9 | R | PRECIOV | 14 | Estilo_Tarifas_Datos
 
-# Mrg_ESP | mrg_esp | 10 | F | 1 - ($H# / $I#) | Estilo_Tarifas_Formulas
-Mrg_ESP | mrg_esp | 10 | F | 1 - (costo_eur / p_vta_eur) | Estilo_Tarifas_Formulas
+Mrg_ESP | mrg_esp | 10 | F | IF (p_vta_eur = 0, 0, 1 - (costo_eur / p_vta_eur)) | Estilo_Tarifas_Formulas
 
-# May_USD_MF | may_usd_mf | 11 | F | H# / (1 - @@mayorista_margen_2) * (1 + @@mayorista_flete_2) * @@tipo_cambio_dolares_euro | Estilo_Tarifas_Formulas
 May_USD_MF | may_usd_mf | 11 | F | costo_eur / (1 - @@mayorista_margen_2) * (1 + @@mayorista_flete_2) * @@tipo_cambio_dolares_euro | Estilo_Tarifas_Formulas
 
-# Tda_USD_MF | tda_usd_mf | 12 | F | H# / (1 - @@tienda_margen_1) * (1 + @@tienda_flete_1) * @@tipo_cambio_dolares_euro | Estilo_Tarifas_Formulas
 Tda_USD_MF | tda_usd_mf | 12 | F | costo_eur / (1 - @@tienda_margen_1) * (1 + @@tienda_flete_1) * @@tipo_cambio_dolares_euro | Estilo_Tarifas_Formulas
 
-# May_USD_MF_ESP | may_usd_mf_esp | 13 | F | IF ((1 - $J#) = 0, 0, (H# / (1 - $J#)) * (1 + @@mayorista_flete_2) * @@tipo_cambio_dolares_euro) | Estilo_Tarifas_Formulas
 May_USD_MF_ESP | may_usd_mf_esp | 13 | F | IF ((1 - mrg_esp) = 0, 0, (costo_eur / (1 - mrg_esp)) * (1 + @@mayorista_flete_2) * @@tipo_cambio_dolares_euro) | Estilo_Tarifas_Formulas
 
-# Tda_USD_MF_ESP | tda_usd_mf_esp | 14 | F | IF ((1 - $J#) = 0, 0, (H# / (1 - $J#)) * (1 + @@tienda_flete_1) * @@tipo_cambio_dolares_euro * (1 + (@@tienda_margen_1 - @@mayorista_margen_2))) | Estilo_Tarifas_Formulas
 Tda_USD_MF_ESP | tda_usd_mf_esp | 14 | F | IF ((1 - mrg_esp) = 0, 0, (costo_eur / (1 - mrg_esp)) * (1 + @@tienda_flete_1) * @@tipo_cambio_dolares_euro * (1 + (@@tienda_margen_1 - @@mayorista_margen_2))) | Estilo_Tarifas_Formulas
