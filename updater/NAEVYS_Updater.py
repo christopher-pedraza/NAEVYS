@@ -19,7 +19,7 @@ response = requests.get("https://api.github.com/repos/christopher-pedraza/NAEVYS
 list = response["assets"]
 
 # Especifica al usuario la version que se esta actualizando
-print(CYAN + "\n\n\t~~~ Version '" + response["name"] + "' ~~~\n" + NORMAL)
+print(CYAN + "\n\n   ~~~ NAEVYS Version '" + response["name"] + "' ~~~\n" + NORMAL)
 
 # Recorre la lista de los assets
 for asset in list:
