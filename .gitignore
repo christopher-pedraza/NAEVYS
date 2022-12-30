@@ -1,4 +1,4 @@
-/target/
+code/target/
 *.xlsx
 updater/build/
 updater/NAEVYS_Updater.spec
