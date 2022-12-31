@@ -3,6 +3,9 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/christopher-pedraza/NAEVYS?color=489c5e)
 ![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/christopher-pedraza/NAEVYS/latest?color=338f86)
 
+**NAEVYS Updater Version:** 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/christopher-pedraza/NAEVYS-updater)
+
 # NAEVYS
 
 (temporal: ) Desarrollado con jre1.8.0_351
