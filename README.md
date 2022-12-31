@@ -8,7 +8,7 @@
 (temporal: ) Desarrollado con jre1.8.0_351
 
 ## Descargar programa para actualizar NAEVYS
-[NAEVYS Updater](https://github.com/christopher-pedraza/NAEVYS/raw/main/updater/NAEVYS_Updater.exe)
+[NAEVYS Updater](https://github.com/christopher-pedraza/NAEVYS-updater/releases/latest)
 
 
 ## Descargar archivos de configuración
