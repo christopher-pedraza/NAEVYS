@@ -107,6 +107,10 @@ public class ExcelFiles {
 
 		// Separa la hoja de calculo en filas para poder desplazarse por ellas
 		try (Stream<Row> rows = sheet.openStream()) {
+			// Reiniciar el valor de row para permitir exportar multiples archivos de excel
+			// sin dejar lineas en blanco
+			row = 0;
+			
 			// Se itera por cada una de las filas del Excel de entrada. Cada fila es
 			// guardada en cada iteracion en la variable 'r'
 			rows.forEach(r -> {
@@ -276,9 +280,10 @@ public class ExcelFiles {
 		}
 
 		for (Header h : outputHeaders) {
-			outWs.range(1, h.getColIndex(), row-1, h.getColIndex()).setName(h.getColName());;
+			outWs.range(1, h.getColIndex(), row - 1, h.getColIndex()).setName(h.getColName());
+			;
 		}
-		
+
 		// Cerrar hoja de calculo del libro de salida. No se pueden hacer modificaciones
 		// en otra hoja cuando se hace flush hasta que se llame a finish()
 		outWs.finish();
