@@ -1,5 +1,9 @@
 package naevys.NAEVYS;
 
+// TODO: AGREGAR COMENTARIOS
+
+// TODO: git commit -m "Agregar comentarios a clase GUI y corregir comentarios de otras clases"
+
 public class Main {
 
 	public static void main(String[] args) {

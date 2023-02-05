@@ -1,6 +1,6 @@
 package naevys.NAEVYS;
 
-// TODO: agregar archivo de Style.txt donde se puedan crear estilos para aplicar a celdas y agregar atributo a header para que cada columna sepa que estilo tiene que aplicar
+// TODO: Modificar comentarios Header de los objetos (agregar el formato completo como las demas funciones)
 
 /**
  * Clase utilizada para guardar los datos de las columnas que seran leidas del
@@ -163,11 +163,11 @@ public class Header {
 	public void setValueIndex(int valueIndex) {
 		this.valueIndex = valueIndex - 1;
 	}
-	
+
 	/**
 	 * <h1><i>cleanName</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public cleanName(String str)</code>
+	 * <code> private cleanName(String str)</code>
 	 * <p>
 	 * Funcion para remover cualquier caracter invalido (que no sea Alfanumerico o
 	 * guion bajo) para asignar en el nombre de una celda de Excel.

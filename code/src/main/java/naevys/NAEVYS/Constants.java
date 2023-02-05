@@ -267,4 +267,19 @@ public class Constants {
 		 */
 		public static String SIDE_DIAGONAL;
 	}
+	
+	/**
+	 * Constantes de la clase GUI
+	 * 
+	 * @author Christopher Gabriel Pedraza Pohlenz
+	 */
+	public static class GUI {
+		public static String FILE_NAME_SUFFIX = "_ex2";
+		public static String DEFAULT_FILE_NAME = "output";
+		public static String LOG_FILE_NAME = "log.txt";
+		public static String LOG_DATE_PATTERN = "yyyy-MM-dd-HH:mm:ss";
+		public static String FILE_DATE_PATTERN = "yyMMdd-HHmmss";
+		public static boolean INCLUDE_DATE = true;
+		public static boolean CONSERVE_FILE_NAME = true;
+	}
 }

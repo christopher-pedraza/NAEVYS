@@ -167,7 +167,7 @@ public class TextFiles {
 	/**
 	 * <h1><i>getFileSize</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public getFileSize(String fileName)</code>
+	 * <code> private getFileSize(String fileName)</code>
 	 * </p>
 	 * <p>
 	 * Funcion para obtener el tamaño del archivo de configuraciones quitando los
@@ -237,7 +237,7 @@ public class TextFiles {
 	/**
 	 * <h1><i>processLine</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public processLine(String fileName, String[] lineData)</code>
+	 * <code> private processLine(String fileName, String[] lineData)</code>
 	 * </p>
 	 * <p>
 	 * Funcion que decide con que funcion procesar la linea. Dependiendo del nombre
@@ -265,7 +265,7 @@ public class TextFiles {
 	/**
 	 * <h1><i>processHeaderLine</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public processHeaderLine(String[] lineData)</code>
+	 * <code> private processHeaderLine(String[] lineData)</code>
 	 * </p>
 	 * <p>
 	 * Funcion para crear un objeto de Header usando la configuracion de 1 linea del
@@ -328,7 +328,7 @@ public class TextFiles {
 	/**
 	 * <h1><i>processConstantLine</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public processConstantLine(String[] lineData)</code>
+	 * <code> private processConstantLine(String[] lineData)</code>
 	 * </p>
 	 * <p>
 	 * Funcion para crear un objeto de ExcelConstant usando los datos de la
@@ -356,7 +356,7 @@ public class TextFiles {
 	/**
 	 * <h1><i>processStyleLine</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public processStyleLine(String[] lineData)</code>
+	 * <code> private processStyleLine(String[] lineData)</code>
 	 * </p>
 	 * <p>
 	 * Funcion para crear un objeto de Style usando los datos de estilo del archivo
@@ -380,6 +380,7 @@ public class TextFiles {
 		}
 	}
 
+	// TODO: Agregar Header Comments!!
 	private void initializeArray(String fileName) {
 		// Obtiene la cantidad de lineas con datos de configuracion en el archivo
 		int fileSize = getFileSize(fileName);

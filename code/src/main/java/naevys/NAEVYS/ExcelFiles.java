@@ -83,7 +83,7 @@ public class ExcelFiles {
 	/**
 	 * <h1><i>writeDataWorksheet</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public writeDataWorksheet(ReadableWorkbook inWb, Workbook outWb, Header[] outputHeaders)</code>
+	 * <code> private writeDataWorksheet(ReadableWorkbook inWb, Workbook outWb, Header[] outputHeaders)</code>
 	 * </p>
 	 * <p>
 	 * Funcion para abrir un archivo de Excel de entrada, leer las columnas
@@ -292,7 +292,7 @@ public class ExcelFiles {
 	/**
 	 * <h1><i>writeConstantsWorksheet</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public writeConstantsWorksheet(Workbook outWb, ExcelConstant[] exConstants)</code>
+	 * <code> private writeConstantsWorksheet(Workbook outWb, ExcelConstant[] exConstants)</code>
 	 * </p>
 	 * <p>
 	 * Funcion para imprimir los valores de las constantes en una nueva hoja del
@@ -334,7 +334,7 @@ public class ExcelFiles {
 	/**
 	 * <h1><i>styleCell</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public styleCell(Worksheet ws, int r, int c, Style[] styles, String styleName)</code>
+	 * <code> private styleCell(Worksheet ws, int r, int c, Style[] styles, String styleName)</code>
 	 * </p>
 	 * <p>
 	 * Funcion para aplicar un estilo a la celda especificada por la fila y columna.
@@ -427,7 +427,7 @@ public class ExcelFiles {
 	/**
 	 * <h1><i>isNumeric</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public isNumeric(String str)</code>
+	 * <code> private isNumeric(String str)</code>
 	 * </p>
 	 * <p>
 	 * Funcion para determinar si el string recibido se puede convertir a un numero.
