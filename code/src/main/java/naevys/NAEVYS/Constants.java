@@ -29,7 +29,11 @@ public class Constants {
 		try (FileInputStream fis = new FileInputStream(configFileName)) {
 			prop.load(fis);
 		} catch (FileNotFoundException ex) {
+			// Si encuentra un error, mostrar mensaje descriptivo
+			GUI.showMessageError(ex);
 		} catch (IOException ex) {
+			// Si encuentra un error, mostrar mensaje descriptivo
+			GUI.showMessageError(ex);
 		}
 
 		// Toma la propiedad del archivo de configuracion y se la asigna a cada
@@ -273,7 +277,7 @@ public class Constants {
 	 * 
 	 * @author Christopher Gabriel Pedraza Pohlenz
 	 */
-	public static class GUI {
+	public static class G {
 		public static String FILE_NAME_SUFFIX = "_ex";
 		public static String DEFAULT_FILE_NAME = "output";
 		public static String LOG_FILE_NAME = "log.txt";

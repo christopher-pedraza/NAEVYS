@@ -2,9 +2,12 @@ package naevys.NAEVYS;
 
 // Para leer archivos de texto
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 // Para manejar excepciones correspondientes al manejo de archivos de texto
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * Clase que lee los archivos de configuracion en archivos de texto y obtiene
@@ -64,22 +67,25 @@ public class TextFiles {
 						// Si se trata del archivo de estilos, la division en las lineas es distinta, al
 						// igual del conteo de la linea actual
 						if (fileName.contains(Constants.TF.STYLES_FILE_NAME)) {
-							// Eliminar el signo que simboliza que son atributos de 
+							// Eliminar el signo que simboliza que son atributos de
 							line = line.replaceAll(String.valueOf(Constants.TF.STYLE_SIGN), "");
-							
+
 							// Divide la linea usando el signo separador. Por ejemplo, si la linea contiene:
 							// "Bold:True" guardaria en el arreglo cada elemento en una casilla por
 							// separado:
 							// lineData[0]="Bold", lineData[1]="True"
 							String[] lineData = line.split(Constants.TF.STYLES_DIVIDER);
 
-							// TODO: Hacer una manera para cambiar el current line solo cuando se lee un
-							// nuevo nombre de estilo y no con los atributos
+							// Si al intentar dividir el texto, el arreglo termina solo teniendo 1 elemento,
+							// significa que se trata del nombre de estilo (debido a que no tiene ningun
+							// divisor "nombre_estilo"), en cambio, si fuera un atributo, serian 2 porque
+							// tiene un divisor ("bold:true")
 							if (lineData.length == 1) {
-								// Aumenta la linea actual que es equivalente a la cantidad de estilos
+								// Aumenta la linea actual que es equivalente a la cantidad de estilos solo si
+								// se trata de un nuevo nombre de estilo y no un atributo
 								currentLine++;
 							}
-							
+
 							// Manda este arreglo de strings al metodo 'processLine' donde se creara un
 							// objeto de Header/ExcelConstant. Este se agregara al arreglo de objetos
 							// 'headers'/'constants'
@@ -109,10 +115,9 @@ public class TextFiles {
 			// Cierra el archivo
 			br.close();
 		}
-		// TODO: Resolucion de errores
 		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Si encuentra un error, mostrar mensaje descriptivo
+			GUI.showMessageError(e);
 		}
 	}
 
@@ -224,10 +229,9 @@ public class TextFiles {
 			// Cierra el archivo
 			br.close();
 		}
-		// TODO: Resolucion de errores
 		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Si encuentra un error, mostrar mensaje descriptivo
+			GUI.showMessageError(e);
 		}
 
 		// Regresa la cantidad de lineas con datos de configuracion
@@ -258,7 +262,7 @@ public class TextFiles {
 		} else if (fileName.contains(Constants.TF.STYLES_FILE_NAME)) {
 			// Se le resta 1 al indce para hacer referencia al arreglo de estilos (que es 0
 			// basado)
-			styles[index-1] = processStyleLine(lineData, index - 1);
+			styles[index - 1] = processStyleLine(lineData, index - 1);
 		}
 	}
 
@@ -348,7 +352,7 @@ public class TextFiles {
 		double value = Double.parseDouble(lineData[2]);
 		// Nombre del estilo que se aplicara al titulo de la columna
 		String styleName = lineData[3];
-		
+
 		// Se crea el objeto de ExcelConstant usando los parametros de la linea
 		return new ExcelConstant(colName, constantName, value, styleName);
 	}
@@ -380,7 +384,20 @@ public class TextFiles {
 		}
 	}
 
-	// TODO: Agregar Header Comments!!
+	/**
+	 * <h1><i>initializeArray</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> private initializeArray(String fileName)</code>
+	 * </p>
+	 * <p>
+	 * Funcion que permite que la clase sea usada para archivos de texto distintos
+	 * sin necesidad de sobrecargar funciones. Dependiendo del archivo recibido es
+	 * el tamaño con el que se inicializara el arreglo correspondiente a este
+	 * archivo.
+	 * </p>
+	 * 
+	 * @param fileName Direccion del archivo de texto que sera leido
+	 */
 	private void initializeArray(String fileName) {
 		// Obtiene la cantidad de lineas con datos de configuracion en el archivo
 		int fileSize = getFileSize(fileName);
@@ -397,5 +414,27 @@ public class TextFiles {
 			// Se inicializa el arreglo con las constantes
 			styles = new Style[fileSize];
 		}
+	}
+
+	/**
+	 * <h1><i>logErrorMessage</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public logErrorMessage(String message)</code>
+	 * </p>
+	 * <p>
+	 * Funcion para guardar registro de los errores con los que se encuentra el
+	 * programa.
+	 * </p>
+	 * 
+	 * @param message Mensaje que se imprimira en el archivo de texto
+	 */
+	public static void logErrorMessage(String message) throws IOException {
+		// Crea una instancia para poder escribir en un archivo de texto sin
+		// sobreescribir su contenido actual
+		PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(Constants.G.LOG_FILE_NAME, true)));
+		// Imprime en el archivo una nueva linea con la fecha y el mensaje de error
+		pw.println(message);
+		// Lo cierra para liberar los recursos
+		pw.close();
 	}
 }

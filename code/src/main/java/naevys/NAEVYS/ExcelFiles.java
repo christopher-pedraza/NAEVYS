@@ -69,14 +69,12 @@ public class ExcelFiles {
 			inWb.close();
 			outWb.finish();
 		}
-
-		// TODO: Resolucion de errores
 		catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Si encuentra un error, mostrar mensaje descriptivo
+			GUI.showMessageError(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Si encuentra un error, mostrar mensaje descriptivo
+			GUI.showMessageError(e);
 		}
 	}
 
@@ -273,8 +271,8 @@ public class ExcelFiles {
 				try {
 					outWs.flush();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					// Si encuentra un error, mostrar mensaje descriptivo
+					GUI.showMessageError(e);
 				}
 			});
 		}

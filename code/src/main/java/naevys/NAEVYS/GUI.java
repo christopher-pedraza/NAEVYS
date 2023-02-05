@@ -11,12 +11,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.BufferedWriter;
 // Abrir archivos y sus excepciones
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -191,7 +189,7 @@ public class GUI implements ActionListener {
 		// Se define un texto como placeholder. Este texto se modificara por el nombre
 		// del archivo fuente importado + un texto diferenciador por si el usuario
 		// quiere exportar un excel con un nombre similar
-		tfOutput.setText(Constants.GUI.DEFAULT_FILE_NAME + ".xlsx");
+		tfOutput.setText(Constants.G.DEFAULT_FILE_NAME + ".xlsx");
 		// Cambiar el color del cursor a blanco
 		tfOutput.setCaretColor(WHITE);
 		// Agregar un mensaje cuando se coloque el cursor sobre el area
@@ -479,7 +477,7 @@ public class GUI implements ActionListener {
 			// Si el campo esta vacio o carece de la extension del archivo, se le agrega o
 			// reemplaza por un nombre por defecto
 			if (OUTPUT_FILE.isEmpty()) {
-				OUTPUT_FILE = Constants.GUI.DEFAULT_FILE_NAME + ".xlsx";
+				OUTPUT_FILE = Constants.G.DEFAULT_FILE_NAME + ".xlsx";
 			} else if (!OUTPUT_FILE.contains(".xlsx")) {
 				OUTPUT_FILE += ".xlsx";
 			}
@@ -507,22 +505,22 @@ public class GUI implements ActionListener {
 				// Modificaciones autogeneradas (pero pueden ser luego editadas antes de la
 				// exportacion) al nombre del archivo de salida
 				// Si el usuario lo desea, se utiliza el nombre del archivo de entrada como base
-				if (Constants.GUI.USE_INPUT_FILE_NAME) {
+				if (Constants.G.USE_INPUT_FILE_NAME) {
 					// Se toma el nombre del archivo leido
 					OUTPUT_FILE = file.getName();
 				} else {
 					// De lo contrario, se utiliza el valor por defecto
-					OUTPUT_FILE = Constants.GUI.DEFAULT_FILE_NAME + ".xlsx";
+					OUTPUT_FILE = Constants.G.DEFAULT_FILE_NAME + ".xlsx";
 				}
 				// Si el usuario lo especifica, le agrega la fecha al nombre del archivo
-				if (Constants.GUI.INCLUDE_DATE_IN_FILE_NAME) {
+				if (Constants.G.INCLUDE_DATE_IN_FILE_NAME) {
 					// Agrega despues del nombre del archivo la fecha usando el formato especificado
 					// por el usuario
 					OUTPUT_FILE = OUTPUT_FILE.replace(".xlsx",
-							"_" + getDate(Constants.GUI.FILE_DATE_PATTERN) + ".xlsx");
+							"_" + getDate(Constants.G.FILE_DATE_PATTERN) + ".xlsx");
 				}
 				// Le agrega un texto para diferenciar al nombre del archivo de salida
-				OUTPUT_FILE = OUTPUT_FILE.replace(".xlsx", Constants.GUI.FILE_NAME_SUFFIX + ".xlsx");
+				OUTPUT_FILE = OUTPUT_FILE.replace(".xlsx", Constants.G.FILE_NAME_SUFFIX + ".xlsx");
 
 				// Habilita el boton para exportar un excel y el campo de texto con el nombre
 				// del archivo de salida
@@ -551,11 +549,10 @@ public class GUI implements ActionListener {
 		// Muestra un mensaje en la interfaz desplegando el mensaje del error
 		JOptionPane.showMessageDialog(frame, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
 
-		// Escribe una nueva linea en el registro de errores con el mensaje de error y
-		// su fecha
-		try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(Constants.GUI.LOG_FILE_NAME, true)))) {
-			// Imprime en el archivo una nueva linea con la fecha y el mensaje de error
-			pw.println("[" + getDate(Constants.GUI.LOG_DATE_PATTERN) + "] " + ex.getMessage());
+		// Agrega una linea al registro de errores con el error encontrado
+		try {
+			TextFiles
+					.logErrorMessage("[" + getDate(Constants.G.LOG_DATE_PATTERN) + "] " + ex.getMessage());
 		} catch (IOException writerException) {
 			// Si llega a suceder un error al intentar manejar el error, cerrar el programa
 			frame.dispose();
@@ -577,11 +574,10 @@ public class GUI implements ActionListener {
 		// Muestra un mensaje en la interfaz desplegando el mensaje del error
 		JOptionPane.showMessageDialog(frame, "Unexpected error encountered", "Error", JOptionPane.ERROR_MESSAGE);
 
-		// Escribe una nueva linea en el registro de errores con el mensaje de error y
-		// su fecha
-		try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(Constants.GUI.LOG_FILE_NAME, true)))) {
-			// Imprime en el archivo una nueva linea con la fecha y el mensaje de error
-			pw.println("[" + getDate(Constants.GUI.LOG_DATE_PATTERN) + "] Unexpected error encountered.");
+		// Agrega una linea al registro de errores con el error encontrado
+		try {
+			TextFiles
+					.logErrorMessage("[" + getDate(Constants.G.LOG_DATE_PATTERN) + "] Unexpected error encountered.");
 		} catch (IOException writerException) {
 			// Si llega a suceder un error al intentar manejar el error, cerrar el programa
 			frame.dispose();

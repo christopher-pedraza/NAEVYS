@@ -44,6 +44,14 @@ public class Header {
 	private String styleName;
 
 	/**
+	 * <h1><i>Header</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public Header(String colTitle, String colName, int colIndex, char id, String value, int valueIndex, String styleName)</code>
+	 * </p>
+	 * <p>
+	 * Constructor de la clase Header.
+	 * </p>
+	 * 
 	 * @param colTitle   Titulo de la columna
 	 * @param colName    Referencia que se le aplicara a toda la columna
 	 * @param colIndex   Indice donde se imprimira la columna en el archivo de
@@ -72,6 +80,14 @@ public class Header {
 	}
 
 	/**
+	 * <h1><i>Header</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public Header(String colTitle, String colName, int colIndex, char id, String value, String styleName)</code>
+	 * </p>
+	 * <p>
+	 * Constructor de la clase Header.
+	 * </p>
+	 * 
 	 * @param colTitle  Titulo de la columna
 	 * @param colName   Referencia que se le aplicara a toda la columna
 	 * @param colIndex  Indice donde se imprimira la columna en el archivo de salida
