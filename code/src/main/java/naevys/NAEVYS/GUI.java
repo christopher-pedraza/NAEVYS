@@ -578,14 +578,21 @@ public class GUI implements ActionListener {
 	 * igual que guardarlo junto con la fecha en el que ocurrio en un archivo de
 	 * registro.
 	 * </p>
+	 * <p>
+	 * Esta funcion se llama cuando se presenta un error en la inicializacion del
+	 * programa. La causa puede ser que un archivo de configuracion tiene algun
+	 * error.
+	 * </p>
 	 */
 	public static void showErrorMessage() {
 		// Muestra un mensaje en la interfaz desplegando el mensaje del error
-		JOptionPane.showMessageDialog(frame, "Unexpected error encountered", "Error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(frame, "The program couldn't initialize properly.", "Initialization Error",
+				JOptionPane.ERROR_MESSAGE);
 
 		// Agrega una linea al registro de errores con el error encontrado
 		try {
-			TextFiles.logErrorMessage("[" + getDate(Constants.G.LOG_DATE_PATTERN) + "] Unexpected error encountered.");
+			TextFiles.logErrorMessage("[" + getDate(Constants.G.LOG_DATE_PATTERN)
+					+ "] The program couldn't initialize properly. Validation error.");
 		} catch (IOException writerException) {
 			// Si llega a suceder un error al intentar manejar el error, cerrar el programa
 			frame.dispose();
@@ -619,7 +626,7 @@ public class GUI implements ActionListener {
 		// Regresa la fecha
 		return date;
 	}
-	
+
 	public static void end() {
 		frame.dispose();
 	}

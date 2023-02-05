@@ -68,8 +68,7 @@ public class ExcelFiles {
 			// salida
 			inWb.close();
 			outWb.finish();
-		}
-		catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			// Si encuentra un error, mostrar mensaje descriptivo
 			GUI.showErrorMessage(e);
 		} catch (IOException e) {
@@ -109,7 +108,7 @@ public class ExcelFiles {
 			// Reiniciar el valor de row para permitir exportar multiples archivos de excel
 			// sin dejar lineas en blanco
 			row = 0;
-			
+
 			// Se itera por cada una de las filas del Excel de entrada. Cada fila es
 			// guardada en cada iteracion en la variable 'r'
 			rows.forEach(r -> {

@@ -29,18 +29,29 @@ public class Main {
 			// Clase que maneja la lectura de los archivos de texto
 			TextFiles tf = new TextFiles();
 
+			// Se leen los archivos de configuracion y guardan sus datos en arreglos de
+			// objetos
 			tf.readFile(Constants.TF.INPUT_FILE_NAME);
 			Header[] headers = tf.getHeaderArray();
-
 			tf.readFile(Constants.TF.CONSTANTS_FILE_NAME);
 			ExcelConstant[] constants = tf.getConstantsArray();
-
 			tf.readFile(Constants.TF.STYLES_FILE_NAME);
 			Style[] styles = tf.getStylesArray();
 
+			// Se inicializa la interfaz grafica
 			GUI gui = new GUI();
 			gui.init(headers, constants, styles);
-		} catch (Exception e) {
+
+			// Si surgio algun error durante la inicializacion del programa, se termina y
+			// muestra un mensaje de error
+			if (Constants.V.VALIDATION != 1) {
+				GUI.showErrorMessage();
+				GUI.end();
+			}
+		}
+		// Si surgio algun error durante la inicializacion del programa, se termina y
+		// muestra un mensaje de error
+		catch (Exception e) {
 			GUI.showErrorMessage(e);
 			GUI.end();
 		}

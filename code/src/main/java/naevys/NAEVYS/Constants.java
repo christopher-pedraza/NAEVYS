@@ -103,6 +103,8 @@ public class Constants {
 				G.USE_INPUT_FILE_NAME = false;
 			}
 			G.FILE_CHOOSER_STARTING_DIR = prop.getProperty("NAEVYS.G.FILE_CHOOSER_STARTING_DIR");
+			// Constante de la clase Validation
+			V.VALIDATION = Integer.parseInt(prop.getProperty("NAEVYS.V.VALIDATION"));
 		} catch (Exception e) {
 			GUI.showErrorMessage(e);
 		}
@@ -340,5 +342,20 @@ public class Constants {
 		 * se abra en el directorio del programa)
 		 */
 		public static String FILE_CHOOSER_STARTING_DIR;
+	}
+
+	/**
+	 * Clase con variable que sirve para validar que todas las demas constantes se
+	 * pudieron leer exitosamente
+	 * 
+	 * @author Christopher Gabriel Pedraza Pohlenz
+	 */
+	public static class V {
+		/**
+		 * Constante que se lee hasta el final de todas las demas constantes, si el
+		 * valor de esta constante no cambia de su valor por defecto, el programa
+		 * termina debido a que podria haber datos corruptos.
+		 */
+		public static int VALIDATION = -1;
 	}
 }
