@@ -21,23 +21,27 @@ public class Main {
 	 * @param args Argumentos que se pueden pasar cuando se ejecuta la aplicacion
 	 */
 	public static void main(String[] args) {
-		// Clase que contiene todas las constantes usadas a lo largo de la aplicacion
-		// Inicializa las constantes leyendo el archivo de configuracion
-		Constants.initConstants();
-		
-		// Clase que maneja la lectura de los archivos de texto
-		TextFiles tf = new TextFiles();
+		try {
+			// Clase que contiene todas las constantes usadas a lo largo de la aplicacion
+			// Inicializa las constantes leyendo el archivo de configuracion
+			Constants.initConstants();
 
-		tf.readFile(Constants.TF.INPUT_FILE_NAME);
-		Header[] headers = tf.getHeaderArray();
+			// Clase que maneja la lectura de los archivos de texto
+			TextFiles tf = new TextFiles();
 
-		tf.readFile(Constants.TF.CONSTANTS_FILE_NAME);
-		ExcelConstant[] constants = tf.getConstantsArray();
+			tf.readFile(Constants.TF.INPUT_FILE_NAME);
+			Header[] headers = tf.getHeaderArray();
 
-		tf.readFile(Constants.TF.STYLES_FILE_NAME);
-		Style[] styles = tf.getStylesArray();
+			tf.readFile(Constants.TF.CONSTANTS_FILE_NAME);
+			ExcelConstant[] constants = tf.getConstantsArray();
 
-		GUI gui = new GUI();
-		gui.init(headers, constants, styles);
+			tf.readFile(Constants.TF.STYLES_FILE_NAME);
+			Style[] styles = tf.getStylesArray();
+
+			GUI gui = new GUI();
+			gui.init(headers, constants, styles);
+		} catch (Exception e) {
+			GUI.showErrorMessage(e);
+		}
 	}
 }

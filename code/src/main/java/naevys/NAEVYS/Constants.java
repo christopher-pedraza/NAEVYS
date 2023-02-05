@@ -101,6 +101,7 @@ public class Constants {
 			} else {
 				G.USE_INPUT_FILE_NAME = false;
 			}
+			G.FILE_CHOOSER_STARTING_DIR = prop.getProperty("NAEVYS.G.FILE_CHOOSER_STARTING_DIR");
 		} catch (Exception e) {
 			GUI.showErrorMessage(e);
 		}
@@ -328,5 +329,10 @@ public class Constants {
 		 * exportado
 		 */
 		public static boolean USE_INPUT_FILE_NAME;
+		/**
+		 * Directorio donde se abrira por defecto el filechooser (Dejar vacio para que
+		 * se abra en el directorio del programa)
+		 */
+		public static String FILE_CHOOSER_STARTING_DIR;
 	}
 }
