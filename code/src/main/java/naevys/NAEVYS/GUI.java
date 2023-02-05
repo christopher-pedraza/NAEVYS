@@ -28,6 +28,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * Clase que construye la interfaz grafica del programa
@@ -492,6 +494,9 @@ public class GUI implements ActionListener {
 			// Crea una instancia de un selector de archivos que se abre en la direccion del
 			// programa
 			final JFileChooser fc = new JFileChooser(Paths.get("").toAbsolutePath().toString());
+			fc.setAcceptAllFileFilterUsed(false);
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel Workbook (*.xlsx)", "xlsx");
+			fc.addChoosableFileFilter(filter);
 			// Abre el selector de archivos obteniendo como entero si se da clic en
 			// confirmar o no
 			int returnVal = fc.showOpenDialog(frame);
