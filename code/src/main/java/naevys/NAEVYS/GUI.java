@@ -191,11 +191,11 @@ public class GUI implements ActionListener {
 		// Se define un texto como placeholder. Este texto se modificara por el nombre
 		// del archivo fuente importado + un texto diferenciador por si el usuario
 		// quiere exportar un excel con un nombre similar
-		tfOutput.setText("output.xlsx");
+		tfOutput.setText(Constants.GUI.DEFAULT_FILE_NAME + ".xlsx");
 		// Cambiar el color del cursor a blanco
 		tfOutput.setCaretColor(WHITE);
 		// Agregar un mensaje cuando se coloque el cursor sobre el area
-		tfOutput.setToolTipText("Introduce el nombre del archivo que se exportará.");
+		tfOutput.setToolTipText("Write the output filename.");
 		// Se regresa el campo de texto
 		return tfOutput;
 	}
@@ -458,6 +458,7 @@ public class GUI implements ActionListener {
 		// globales. Si coinciden, se realiza cierta funcion
 		// El boton de configuracion abre el directorio donde se encuentra el programa
 		if (source == btnConfig) {
+			showMessageError();
 			// Intenta abrir el directorio del programa
 			try {
 				// Obtiene la direccion absoluta del programa
@@ -502,10 +503,27 @@ public class GUI implements ActionListener {
 				File file = fc.getSelectedFile();
 				// De la direccion separa el nombre del archivo
 				INPUT_FILE = file.toString();
-				// TODO: Agregar el "ex" como una constante que el usuario puede modificar en el
-				// archivo de configuracion
+
+				// Modificaciones autogeneradas (pero pueden ser luego editadas antes de la
+				// exportacion) al nombre del archivo de salida
+				// Si el usuario lo desea, se utiliza el nombre del archivo de entrada como base
+				if (Constants.GUI.USE_INPUT_FILE_NAME) {
+					// Se toma el nombre del archivo leido
+					OUTPUT_FILE = file.getName();
+				} else {
+					// De lo contrario, se utiliza el valor por defecto
+					OUTPUT_FILE = Constants.GUI.DEFAULT_FILE_NAME + ".xlsx";
+				}
+				// Si el usuario lo especifica, le agrega la fecha al nombre del archivo
+				if (Constants.GUI.INCLUDE_DATE_IN_FILE_NAME) {
+					// Agrega despues del nombre del archivo la fecha usando el formato especificado
+					// por el usuario
+					OUTPUT_FILE = OUTPUT_FILE.replace(".xlsx",
+							"_" + getDate(Constants.GUI.FILE_DATE_PATTERN) + ".xlsx");
+				}
 				// Le agrega un texto para diferenciar al nombre del archivo de salida
-				OUTPUT_FILE = file.getName().replace(".xlsx", Constants.GUI.FILE_NAME_SUFFIX + ".xlsx");
+				OUTPUT_FILE = OUTPUT_FILE.replace(".xlsx", Constants.GUI.FILE_NAME_SUFFIX + ".xlsx");
+
 				// Habilita el boton para exportar un excel y el campo de texto con el nombre
 				// del archivo de salida
 				btnConfirm.setEnabled(true);
@@ -536,11 +554,8 @@ public class GUI implements ActionListener {
 		// Escribe una nueva linea en el registro de errores con el mensaje de error y
 		// su fecha
 		try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(Constants.GUI.LOG_FILE_NAME, true)))) {
-			// Obtiene la fecha actual y le da un formato especifico
-			DateTimeFormatter dtf = DateTimeFormatter.ofPattern(Constants.GUI.LOG_DATE_PATTERN);
-			LocalDateTime now = LocalDateTime.now();
 			// Imprime en el archivo una nueva linea con la fecha y el mensaje de error
-			pw.println("[" + dtf.format(now) + "] " + ex.getMessage());
+			pw.println("[" + getDate(Constants.GUI.LOG_DATE_PATTERN) + "] " + ex.getMessage());
 		} catch (IOException writerException) {
 			// Si llega a suceder un error al intentar manejar el error, cerrar el programa
 			frame.dispose();
@@ -560,20 +575,38 @@ public class GUI implements ActionListener {
 	 */
 	public static void showMessageError() {
 		// Muestra un mensaje en la interfaz desplegando el mensaje del error
-		JOptionPane.showMessageDialog(frame, "Error encountered", "Error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(frame, "Unexpected error encountered", "Error", JOptionPane.ERROR_MESSAGE);
 
 		// Escribe una nueva linea en el registro de errores con el mensaje de error y
 		// su fecha
 		try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(Constants.GUI.LOG_FILE_NAME, true)))) {
-			// Obtiene la fecha actual y le da un formato especifico
-			DateTimeFormatter dtf = DateTimeFormatter.ofPattern(Constants.GUI.LOG_DATE_PATTERN);
-			LocalDateTime now = LocalDateTime.now();
 			// Imprime en el archivo una nueva linea con la fecha y el mensaje de error
-			pw.println("[" + dtf.format(now) + "] Error encountered.");
+			pw.println("[" + getDate(Constants.GUI.LOG_DATE_PATTERN) + "] Unexpected error encountered.");
 		} catch (IOException writerException) {
 			// Si llega a suceder un error al intentar manejar el error, cerrar el programa
 			frame.dispose();
 		}
+	}
+
+	/**
+	 * <h1><i>getDate</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public getDate(String pattern)</code>
+	 * </p>
+	 * <p>
+	 * Funcion que regresa un String con una fecha usando el patron recibido.
+	 * </p>
+	 * 
+	 * @param pattern Patron usado para darle formato a la fecha
+	 * @return <b>date</b> Fecha usando el patron recibido
+	 */
+	private static String getDate(String pattern) {
+		// Obtiene la fecha actual y le da un formato especifico
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(pattern);
+		LocalDateTime now = LocalDateTime.now();
+		String date = dtf.format(now);
+		// Regresa la fecha
+		return date;
 	}
 
 }

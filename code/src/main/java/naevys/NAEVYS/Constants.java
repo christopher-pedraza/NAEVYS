@@ -274,7 +274,7 @@ public class Constants {
 	 * @author Christopher Gabriel Pedraza Pohlenz
 	 */
 	public static class GUI {
-		public static String FILE_NAME_SUFFIX = "_ex2";
+		public static String FILE_NAME_SUFFIX = "_ex";
 		public static String DEFAULT_FILE_NAME = "output";
 		public static String LOG_FILE_NAME = "log.txt";
 		public static String LOG_DATE_PATTERN = "yyyy-MM-dd-HH:mm:ss";
