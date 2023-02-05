@@ -25,6 +25,8 @@ public class TextFiles {
 	// Declara un arreglo de objetos Style para guardar los estilos que se pueden
 	// aplicar en el archivo de salida
 	private Style[] styles;
+	// Valor por defecto del nombre del archivo de registro de errores
+	private static final String LOGS_DEFAULT_FILE_NAME = "error_log.txt";
 
 	/**
 	 * <h1><i>readHeaderFile</i></h1>
@@ -114,10 +116,9 @@ public class TextFiles {
 			}
 			// Cierra el archivo
 			br.close();
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			// Si encuentra un error, mostrar mensaje descriptivo
-			GUI.showMessageError(e);
+			GUI.showErrorMessage(e);
 		}
 	}
 
@@ -228,10 +229,9 @@ public class TextFiles {
 			}
 			// Cierra el archivo
 			br.close();
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			// Si encuentra un error, mostrar mensaje descriptivo
-			GUI.showMessageError(e);
+			GUI.showErrorMessage(e);
 		}
 
 		// Regresa la cantidad de lineas con datos de configuracion
@@ -429,6 +429,13 @@ public class TextFiles {
 	 * @param message Mensaje que se imprimira en el archivo de texto
 	 */
 	public static void logErrorMessage(String message) throws IOException {
+		// Proteccion en contra de que suceda un error antes de poder leer el archivo de
+		// configuracion. Asigna un valor por defecto.
+		if (Constants.G.LOG_FILE_NAME == null) {
+			Constants.G.LOG_FILE_NAME = LOGS_DEFAULT_FILE_NAME;
+		} else if (Constants.G.LOG_FILE_NAME.isEmpty()) {
+			Constants.G.LOG_FILE_NAME = LOGS_DEFAULT_FILE_NAME;
+		}
 		// Crea una instancia para poder escribir en un archivo de texto sin
 		// sobreescribir su contenido actual
 		PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(Constants.G.LOG_FILE_NAME, true)));

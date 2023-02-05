@@ -1,0 +1,2 @@
+[2023-02-05-13:39:08] java.lang.NumberFormatException: For input string: "6a"
+[2023-02-05-13:40:39] java.util.zip.ZipException: Archive is not a ZIP archive

@@ -13,7 +13,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 // Abrir archivos y sus excepciones
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
@@ -36,13 +35,16 @@ import javax.swing.JTextField;
  * @author Christopher Gabriel Pedraza Pohlenz
  */
 public class GUI implements ActionListener {
+	// Valor por defecto del patron de fecha para el registro de errores en caso de
+	// que haya un error antes de poder leer el archivo de configuracion
+	private static final String DEFAULT_LOG_DATE_PATTERN = "yyyy-MM-dd-HH:mm:ss";
 	// Constantes necesarias para la interfaz grafica. Estas constantes no se
 	// agregaron a la clase Constants debido a que no se espera que el usuario las
 	// modifique
-	private static Color GREY_54 = new Color(54, 54, 54);
-	private static Color GREY_48 = new Color(48, 48, 48);
-	private static Color GREY_31 = new Color(31, 31, 31);
-	private static Color WHITE = Color.WHITE;
+	private static final Color GREY_54 = new Color(54, 54, 54);
+	private static final Color GREY_48 = new Color(48, 48, 48);
+	private static final Color GREY_31 = new Color(31, 31, 31);
+	private static final Color WHITE = Color.WHITE;
 	// Variables globales necesarias para poder se modificadas desde multiples
 	// funciones
 	// Arreglos recibidos desde la clase Main que seran enviados a la clase
@@ -456,7 +458,6 @@ public class GUI implements ActionListener {
 		// globales. Si coinciden, se realiza cierta funcion
 		// El boton de configuracion abre el directorio donde se encuentra el programa
 		if (source == btnConfig) {
-			showMessageError();
 			// Intenta abrir el directorio del programa
 			try {
 				// Obtiene la direccion absoluta del programa
@@ -465,7 +466,7 @@ public class GUI implements ActionListener {
 				Desktop.getDesktop().open(file);
 			} catch (IllegalArgumentException | IOException e) {
 				// Si encuentra un error, mostrar mensaje descriptivo
-				showMessageError(e);
+				showErrorMessage(e);
 			}
 		}
 		// El boton de confirmar llama a la funcion para exportar el Excel
@@ -516,8 +517,7 @@ public class GUI implements ActionListener {
 				if (Constants.G.INCLUDE_DATE_IN_FILE_NAME) {
 					// Agrega despues del nombre del archivo la fecha usando el formato especificado
 					// por el usuario
-					OUTPUT_FILE = OUTPUT_FILE.replace(".xlsx",
-							"_" + getDate(Constants.G.FILE_DATE_PATTERN) + ".xlsx");
+					OUTPUT_FILE = OUTPUT_FILE.replace(".xlsx", "_" + getDate(Constants.G.FILE_DATE_PATTERN) + ".xlsx");
 				}
 				// Le agrega un texto para diferenciar al nombre del archivo de salida
 				OUTPUT_FILE = OUTPUT_FILE.replace(".xlsx", Constants.G.FILE_NAME_SUFFIX + ".xlsx");
@@ -533,9 +533,9 @@ public class GUI implements ActionListener {
 	}
 
 	/**
-	 * <h1><i>showMessageError</i></h1>
+	 * <h1><i>showErrorMessage</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public showMessageError(Exception ex)</code>
+	 * <code> public showErrorMessage(Exception ex)</code>
 	 * </p>
 	 * <p>
 	 * Funcion para mostrar un mensaje grafico al usuario cuando sucede un error al
@@ -545,14 +545,13 @@ public class GUI implements ActionListener {
 	 * 
 	 * @param ex Excepcion o error encontrado por el programa
 	 */
-	public static void showMessageError(Exception ex) {
+	public static void showErrorMessage(Exception ex) {
 		// Muestra un mensaje en la interfaz desplegando el mensaje del error
-		JOptionPane.showMessageDialog(frame, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(frame, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
 		// Agrega una linea al registro de errores con el error encontrado
 		try {
-			TextFiles
-					.logErrorMessage("[" + getDate(Constants.G.LOG_DATE_PATTERN) + "] " + ex.getMessage());
+			TextFiles.logErrorMessage("[" + getDate(Constants.G.LOG_DATE_PATTERN) + "] " + ex.toString());
 		} catch (IOException writerException) {
 			// Si llega a suceder un error al intentar manejar el error, cerrar el programa
 			frame.dispose();
@@ -560,9 +559,9 @@ public class GUI implements ActionListener {
 	}
 
 	/**
-	 * <h1><i>showMessageError</i></h1>
+	 * <h1><i>showErrorMessage</i></h1>
 	 * <p style="margin-left: 10px">
-	 * <code> public showMessageError()</code>
+	 * <code> public showErrorMessage()</code>
 	 * </p>
 	 * <p>
 	 * Funcion para mostrar un mensaje grafico al usuario cuando sucede un error al
@@ -570,14 +569,13 @@ public class GUI implements ActionListener {
 	 * registro.
 	 * </p>
 	 */
-	public static void showMessageError() {
+	public static void showErrorMessage() {
 		// Muestra un mensaje en la interfaz desplegando el mensaje del error
 		JOptionPane.showMessageDialog(frame, "Unexpected error encountered", "Error", JOptionPane.ERROR_MESSAGE);
 
 		// Agrega una linea al registro de errores con el error encontrado
 		try {
-			TextFiles
-					.logErrorMessage("[" + getDate(Constants.G.LOG_DATE_PATTERN) + "] Unexpected error encountered.");
+			TextFiles.logErrorMessage("[" + getDate(Constants.G.LOG_DATE_PATTERN) + "] Unexpected error encountered.");
 		} catch (IOException writerException) {
 			// Si llega a suceder un error al intentar manejar el error, cerrar el programa
 			frame.dispose();
@@ -597,6 +595,13 @@ public class GUI implements ActionListener {
 	 * @return <b>date</b> Fecha usando el patron recibido
 	 */
 	private static String getDate(String pattern) {
+		// Proteccion en contra de que suceda un error antes de poder leer el archivo de
+		// configuracion. Asigna un valor por defecto.
+		if (pattern == null) {
+			pattern = DEFAULT_LOG_DATE_PATTERN;
+		} else if (pattern.isEmpty()) {
+			pattern = DEFAULT_LOG_DATE_PATTERN;
+		}
 		// Obtiene la fecha actual y le da un formato especifico
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(pattern);
 		LocalDateTime now = LocalDateTime.now();

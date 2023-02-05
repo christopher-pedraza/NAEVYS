@@ -30,60 +30,80 @@ public class Constants {
 			prop.load(fis);
 		} catch (FileNotFoundException ex) {
 			// Si encuentra un error, mostrar mensaje descriptivo
-			GUI.showMessageError(ex);
+			GUI.showErrorMessage(ex);
 		} catch (IOException ex) {
 			// Si encuentra un error, mostrar mensaje descriptivo
-			GUI.showMessageError(ex);
+			GUI.showErrorMessage(ex);
 		}
 
-		// Toma la propiedad del archivo de configuracion y se la asigna a cada
-		// constante del programa. Las propedades las toma como String, por lo que las
-		// constantes que son caracteres se tienen que convertir a char usando la
-		// funcion de la clase Integer: parseInt. Con esta funcion se convierte el
-		// string a un valor entero.
-		// funcion charAt(0) que toma el caracter en la primera posicion del string.
-		// Para los enteros, se utiliza la
-		// Constantes de la clase TextFiles
-		TF.COMMENT_SIGN = prop.getProperty("NAEVYS.TF.COMMENT_SIGN").charAt(0);
-		TF.STYLE_SIGN = prop.getProperty("NAEVYS.TF.STYLE_SIGN").charAt(0);
-		TF.CONFIG_DIVIDER = prop.getProperty("NAEVYS.TF.CONFIG_DIVIDER");
-		TF.STYLES_DIVIDER = prop.getProperty("NAEVYS.TF.STYLES_DIVIDER");
-		TF.INPUT_FILE_NAME = prop.getProperty("NAEVYS.TF.INPUT_FILE_NAME");
-		TF.CONSTANTS_FILE_NAME = prop.getProperty("NAEVYS.TF.CONSTANTS_FILE_NAME");
-		TF.STYLES_FILE_NAME = prop.getProperty("NAEVYS.TF.STYLES_FILE_NAME");
-		TF.REFERENCE_LINE_SIZE = Integer.parseInt(prop.getProperty("NAEVYS.TF.REFERENCE_LINE_SIZE"));
-		TF.NORMAL_LINE_SIZE = Integer.parseInt(prop.getProperty("NAEVYS.TF.NORMAL_LINE_SIZE"));
-		// Constantes de la clase ExcelFiles
-		EF.OUTPUT_SHEET_2_NAME = prop.getProperty("NAEVYS.EF.OUTPUT_SHEET_2_NAME");
-		EF.OUTPUT_SHEET_1_NAME = prop.getProperty("NAEVYS.EF.OUTPUT_SHEET_1_NAME");
-		EF.APPLICATION_NAME = prop.getProperty("NAEVYS.EF.APPLICATION_NAME");
-		EF.APPLICATION_VERSION = prop.getProperty("NAEVYS.EF.APPLICATION_VERSION");
-		EF.FORMULA_CURRENT_ROW_PLACEHOLDER = prop.getProperty("NAEVYS.EF.FORMULA_CURRENT_ROW_PLACEHOLDER");
-		EF.FORMULA_CONSTANTS_PLACEHOLDER = prop.getProperty("NAEVYS.EF.FORMULA_CONSTANTS_PLACEHOLDER");
-		EF.DEFAULT_CELL_PLACEHOLDER = prop.getProperty("NAEVYS.EF.DEFAULT_CELL_PLACEHOLDER");
-		EF.REFERENCE_ID = prop.getProperty("NAEVYS.EF.REFERENCE_ID").charAt(0);
-		EF.FORMULA_ID = prop.getProperty("NAEVYS.EF.FORMULA_ID").charAt(0);
-		EF.STATIC_ID = prop.getProperty("NAEVYS.EF.STATIC_ID").charAt(0);
-		// Constantes de la clase Style
-		S.BOLD = prop.getProperty("NAEVYS.S.BOLD");
-		S.ITALIC = prop.getProperty("NAEVYS.S.ITALIC");
-		S.BORDER_COLOR = prop.getProperty("NAEVYS.S.BORDER_COLOR");
-		S.BORDER_COLOR_SIDE = prop.getProperty("NAEVYS.S.BORDER_COLOR_SIDE");
-		S.BORDER_STYLE = prop.getProperty("NAEVYS.S.BORDER_STYLE");
-		S.BORDER_STYLE_SIDE = prop.getProperty("NAEVYS.S.BORDER_STYLE_SIDE");
-		S.FILL_COLOR = prop.getProperty("NAEVYS.S.FILL_COLOR");
-		S.FONT_COLOR = prop.getProperty("NAEVYS.S.FONT_COLOR");
-		S.FONT_NAME = prop.getProperty("NAEVYS.S.FONT_NAME");
-		S.FONT_SIZE = prop.getProperty("NAEVYS.S.FONT_SIZE");
-		S.HORIZONTAL_ALIGNMENT = prop.getProperty("NAEVYS.S.HORIZONTAL_ALIGNMENT");
-		S.TRUE = prop.getProperty("NAEVYS.S.TRUE");
-		S.NONE_STYLE = prop.getProperty("NAEVYS.S.NONE_STYLE");
-		S.SIDE_TOP = prop.getProperty("NAEVYS.S.SIDE_TOP");
-		S.SIDE_TOP = prop.getProperty("NAEVYS.S.SIDE_TOP");
-		S.SIDE_BOTTOM = prop.getProperty("NAEVYS.S.SIDE_BOTTOM");
-		S.SIDE_LEFT = prop.getProperty("NAEVYS.S.SIDE_LEFT");
-		S.SIDE_RIGHT = prop.getProperty("NAEVYS.S.SIDE_RIGHT");
-		S.SIDE_DIAGONAL = prop.getProperty("NAEVYS.S.SIDE_DIAGONAL");
+		try {
+			// Toma la propiedad del archivo de configuracion y se la asigna a cada
+			// constante del programa. Las propedades las toma como String, por lo que las
+			// constantes que son caracteres se tienen que convertir a char usando la
+			// funcion de la clase Integer: parseInt. Con esta funcion se convierte el
+			// string a un valor entero.
+			// funcion charAt(0) que toma el caracter en la primera posicion del string.
+			// Para los enteros, se utiliza la
+			// Constantes de la clase TextFiles
+			TF.COMMENT_SIGN = prop.getProperty("NAEVYS.TF.COMMENT_SIGN").charAt(0);
+			TF.STYLE_SIGN = prop.getProperty("NAEVYS.TF.STYLE_SIGN").charAt(0);
+			TF.CONFIG_DIVIDER = prop.getProperty("NAEVYS.TF.CONFIG_DIVIDER");
+			TF.STYLES_DIVIDER = prop.getProperty("NAEVYS.TF.STYLES_DIVIDER");
+			TF.INPUT_FILE_NAME = prop.getProperty("NAEVYS.TF.INPUT_FILE_NAME");
+			TF.CONSTANTS_FILE_NAME = prop.getProperty("NAEVYS.TF.CONSTANTS_FILE_NAME");
+			TF.STYLES_FILE_NAME = prop.getProperty("NAEVYS.TF.STYLES_FILE_NAME");
+			TF.REFERENCE_LINE_SIZE = Integer.parseInt(prop.getProperty("NAEVYS.TF.REFERENCE_LINE_SIZE"));
+			TF.NORMAL_LINE_SIZE = Integer.parseInt(prop.getProperty("NAEVYS.TF.NORMAL_LINE_SIZE"));
+			// Constantes de la clase ExcelFiles
+			EF.OUTPUT_SHEET_2_NAME = prop.getProperty("NAEVYS.EF.OUTPUT_SHEET_2_NAME");
+			EF.OUTPUT_SHEET_1_NAME = prop.getProperty("NAEVYS.EF.OUTPUT_SHEET_1_NAME");
+			EF.APPLICATION_NAME = prop.getProperty("NAEVYS.EF.APPLICATION_NAME");
+			EF.APPLICATION_VERSION = prop.getProperty("NAEVYS.EF.APPLICATION_VERSION");
+			EF.FORMULA_CURRENT_ROW_PLACEHOLDER = prop.getProperty("NAEVYS.EF.FORMULA_CURRENT_ROW_PLACEHOLDER");
+			EF.FORMULA_CONSTANTS_PLACEHOLDER = prop.getProperty("NAEVYS.EF.FORMULA_CONSTANTS_PLACEHOLDER");
+			EF.DEFAULT_CELL_PLACEHOLDER = prop.getProperty("NAEVYS.EF.DEFAULT_CELL_PLACEHOLDER");
+			EF.REFERENCE_ID = prop.getProperty("NAEVYS.EF.REFERENCE_ID").charAt(0);
+			EF.FORMULA_ID = prop.getProperty("NAEVYS.EF.FORMULA_ID").charAt(0);
+			EF.STATIC_ID = prop.getProperty("NAEVYS.EF.STATIC_ID").charAt(0);
+			// Constantes de la clase Style
+			S.BOLD = prop.getProperty("NAEVYS.S.BOLD");
+			S.ITALIC = prop.getProperty("NAEVYS.S.ITALIC");
+			S.BORDER_COLOR = prop.getProperty("NAEVYS.S.BORDER_COLOR");
+			S.BORDER_COLOR_SIDE = prop.getProperty("NAEVYS.S.BORDER_COLOR_SIDE");
+			S.BORDER_STYLE = prop.getProperty("NAEVYS.S.BORDER_STYLE");
+			S.BORDER_STYLE_SIDE = prop.getProperty("NAEVYS.S.BORDER_STYLE_SIDE");
+			S.FILL_COLOR = prop.getProperty("NAEVYS.S.FILL_COLOR");
+			S.FONT_COLOR = prop.getProperty("NAEVYS.S.FONT_COLOR");
+			S.FONT_NAME = prop.getProperty("NAEVYS.S.FONT_NAME");
+			S.FONT_SIZE = prop.getProperty("NAEVYS.S.FONT_SIZE");
+			S.HORIZONTAL_ALIGNMENT = prop.getProperty("NAEVYS.S.HORIZONTAL_ALIGNMENT");
+			S.TRUE = prop.getProperty("NAEVYS.S.TRUE");
+			S.NONE_STYLE = prop.getProperty("NAEVYS.S.NONE_STYLE");
+			S.SIDE_TOP = prop.getProperty("NAEVYS.S.SIDE_TOP");
+			S.SIDE_TOP = prop.getProperty("NAEVYS.S.SIDE_TOP");
+			S.SIDE_BOTTOM = prop.getProperty("NAEVYS.S.SIDE_BOTTOM");
+			S.SIDE_LEFT = prop.getProperty("NAEVYS.S.SIDE_LEFT");
+			S.SIDE_RIGHT = prop.getProperty("NAEVYS.S.SIDE_RIGHT");
+			S.SIDE_DIAGONAL = prop.getProperty("NAEVYS.S.SIDE_DIAGONAL");
+			// Constantes de la clase GUI
+			G.FILE_NAME_SUFFIX = prop.getProperty("NAEVYS.G.FILE_NAME_SUFFIX");
+			G.DEFAULT_FILE_NAME = prop.getProperty("NAEVYS.G.DEFAULT_FILE_NAME");
+			G.LOG_FILE_NAME = prop.getProperty("NAEVYS.G.LOG_FILE_NAME");
+			G.LOG_DATE_PATTERN = prop.getProperty("NAEVYS.G.LOG_DATE_PATTERN");
+			G.FILE_DATE_PATTERN = prop.getProperty("NAEVYS.G.FILE_DATE_PATTERN");
+			if (prop.getProperty("NAEVYS.G.INCLUDE_DATE_IN_FILE_NAME").toLowerCase().equals("true")) {
+				G.INCLUDE_DATE_IN_FILE_NAME = true;
+			} else {
+				G.INCLUDE_DATE_IN_FILE_NAME = false;
+			}
+			if (prop.getProperty("NAEVYS.G.USE_INPUT_FILE_NAME").toLowerCase().equals("true")) {
+				G.USE_INPUT_FILE_NAME = true;
+			} else {
+				G.USE_INPUT_FILE_NAME = false;
+			}
+		} catch (Exception e) {
+			GUI.showErrorMessage(e);
+		}
 	}
 
 	/**
@@ -271,7 +291,7 @@ public class Constants {
 		 */
 		public static String SIDE_DIAGONAL;
 	}
-	
+
 	/**
 	 * Constantes de la clase GUI
 	 * 
@@ -281,30 +301,32 @@ public class Constants {
 		/**
 		 * Sufijo que se puede agregar al final del nombre de archivo que se exportara
 		 */
-		public static String FILE_NAME_SUFFIX = "_ex";
+		public static String FILE_NAME_SUFFIX;
 		/**
 		 * Nombre por defecto que se usara de ser necesario para exportar el archivo
 		 */
-		public static String DEFAULT_FILE_NAME = "output";
+		public static String DEFAULT_FILE_NAME;
 		/**
 		 * Nombre del archivo de texto que contiene todos los registros de error
 		 */
-		public static String LOG_FILE_NAME = "log.txt";
+		public static String LOG_FILE_NAME;
 		/**
 		 * Patron usado para la fecha que se imprime en los registros de error
 		 */
-		public static String LOG_DATE_PATTERN = "yyyy-MM-dd-HH:mm:ss";
+		public static String LOG_DATE_PATTERN;
 		/**
-		 * Patron usado para la fecha que se agrega en el nombre del archivo exportado en caso de que el usuario lo desee
+		 * Patron usado para la fecha que se agrega en el nombre del archivo exportado
+		 * en caso de que el usuario lo desee
 		 */
-		public static String FILE_DATE_PATTERN = "yyMMdd-HHmmss";
+		public static String FILE_DATE_PATTERN;
 		/**
 		 * Determina si se agregara la fecha en el nombre del archivo que se exporta
 		 */
-		public static boolean INCLUDE_DATE_IN_FILE_NAME = true;
+		public static boolean INCLUDE_DATE_IN_FILE_NAME;
 		/**
-		 * Determina si se usara el nombre del archivo fuente como base para el archivo exportado
+		 * Determina si se usara el nombre del archivo fuente como base para el archivo
+		 * exportado
 		 */
-		public static boolean USE_INPUT_FILE_NAME = true;
+		public static boolean USE_INPUT_FILE_NAME;
 	}
 }

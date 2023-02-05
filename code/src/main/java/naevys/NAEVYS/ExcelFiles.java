@@ -71,10 +71,10 @@ public class ExcelFiles {
 		}
 		catch (FileNotFoundException e) {
 			// Si encuentra un error, mostrar mensaje descriptivo
-			GUI.showMessageError(e);
+			GUI.showErrorMessage(e);
 		} catch (IOException e) {
 			// Si encuentra un error, mostrar mensaje descriptivo
-			GUI.showMessageError(e);
+			GUI.showErrorMessage(e);
 		}
 	}
 
@@ -272,7 +272,7 @@ public class ExcelFiles {
 					outWs.flush();
 				} catch (IOException e) {
 					// Si encuentra un error, mostrar mensaje descriptivo
-					GUI.showMessageError(e);
+					GUI.showErrorMessage(e);
 				}
 			});
 		}
