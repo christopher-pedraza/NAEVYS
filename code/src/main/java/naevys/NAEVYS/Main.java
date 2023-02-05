@@ -42,6 +42,7 @@ public class Main {
 			gui.init(headers, constants, styles);
 		} catch (Exception e) {
 			GUI.showErrorMessage(e);
+			GUI.end();
 		}
 	}
 }

@@ -57,6 +57,7 @@ public class Constants {
 			// Constantes de la clase ExcelFiles
 			EF.OUTPUT_SHEET_2_NAME = prop.getProperty("NAEVYS.EF.OUTPUT_SHEET_2_NAME");
 			EF.OUTPUT_SHEET_1_NAME = prop.getProperty("NAEVYS.EF.OUTPUT_SHEET_1_NAME");
+			EF.INPUT_SHEET_INDEX = Integer.parseInt(prop.getProperty("NAEVYS.EF.INPUT_SHEET_INDEX"));
 			EF.APPLICATION_NAME = prop.getProperty("NAEVYS.EF.APPLICATION_NAME");
 			EF.APPLICATION_VERSION = prop.getProperty("NAEVYS.EF.APPLICATION_VERSION");
 			EF.FORMULA_CURRENT_ROW_PLACEHOLDER = prop.getProperty("NAEVYS.EF.FORMULA_CURRENT_ROW_PLACEHOLDER");
@@ -174,6 +175,11 @@ public class Constants {
 		 * salida
 		 */
 		public static String OUTPUT_SHEET_1_NAME;
+		/**
+		 * Indice de la hoja de calculo que se va a leer cuando se importe un archivo de
+		 * Excel
+		 */
+		public static int INPUT_SHEET_INDEX;
 		/**
 		 * Nombre de la aplicacion que genero el archivo de Excel de salida
 		 */

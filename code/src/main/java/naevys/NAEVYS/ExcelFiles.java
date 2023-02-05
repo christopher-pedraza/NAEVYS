@@ -101,7 +101,8 @@ public class ExcelFiles {
 
 		// Input workbook
 		// Obtiene la primer hoja del archivo de Excel especificado por inputFileDir
-		Sheet sheet = inWb.getFirstSheet();
+		// Sheet sheet = inWb.getFirstSheet();
+		Sheet sheet = inWb.getSheet(Constants.EF.INPUT_SHEET_INDEX).get();
 
 		// Separa la hoja de calculo en filas para poder desplazarse por ellas
 		try (Stream<Row> rows = sheet.openStream()) {

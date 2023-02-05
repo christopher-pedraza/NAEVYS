@@ -619,5 +619,9 @@ public class GUI implements ActionListener {
 		// Regresa la fecha
 		return date;
 	}
+	
+	public static void end() {
+		frame.dispose();
+	}
 
 }
