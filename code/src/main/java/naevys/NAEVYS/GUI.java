@@ -4,6 +4,7 @@ package naevys.NAEVYS;
 // Utilidades para la interfaz
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -457,14 +458,16 @@ public class GUI implements ActionListener {
 		// globales. Si coinciden, se realiza cierta funcion
 		// El boton de configuracion abre el directorio donde se encuentra el programa
 		if (source == btnConfig) {
-			showMessageError();
-			/*
-			 * // Intenta abrir el directorio del programa try { // Obtiene la direccion
-			 * absoluta del programa File file = new
-			 * File(Paths.get("").toAbsolutePath().toString()); // Abre la direccion
-			 * Desktop.getDesktop().open(file); } catch (IllegalArgumentException |
-			 * IOException e) { // TODO: Resolucion de errores showMessageError(e); }
-			 */
+			// Intenta abrir el directorio del programa
+			try {
+				// Obtiene la direccion absoluta del programa
+				File file = new File(Paths.get("").toAbsolutePath().toString());
+				// Abre la direccion
+				Desktop.getDesktop().open(file);
+			} catch (IllegalArgumentException | IOException e) {
+				// Si encuentra un error, mostrar mensaje descriptivo
+				showMessageError(e);
+			}
 		}
 		// El boton de confirmar llama a la funcion para exportar el Excel
 		if (source == btnConfirm) {
@@ -513,25 +516,63 @@ public class GUI implements ActionListener {
 		}
 	}
 
+	/**
+	 * <h1><i>showMessageError</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public showMessageError(Exception ex)</code>
+	 * </p>
+	 * <p>
+	 * Funcion para mostrar un mensaje grafico al usuario cuando sucede un error al
+	 * igual que guardarlo junto con la fecha en el que ocurrio en un archivo de
+	 * registro.
+	 * </p>
+	 * 
+	 * @param ex Excepcion o error encontrado por el programa
+	 */
 	public static void showMessageError(Exception ex) {
+		// Muestra un mensaje en la interfaz desplegando el mensaje del error
 		JOptionPane.showMessageDialog(frame, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
 
+		// Escribe una nueva linea en el registro de errores con el mensaje de error y
+		// su fecha
 		try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(Constants.GUI.LOG_FILE_NAME, true)))) {
+			// Obtiene la fecha actual y le da un formato especifico
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern(Constants.GUI.LOG_DATE_PATTERN);
 			LocalDateTime now = LocalDateTime.now();
+			// Imprime en el archivo una nueva linea con la fecha y el mensaje de error
 			pw.println("[" + dtf.format(now) + "] " + ex.getMessage());
 		} catch (IOException writerException) {
+			// Si llega a suceder un error al intentar manejar el error, cerrar el programa
+			frame.dispose();
 		}
 	}
 
+	/**
+	 * <h1><i>showMessageError</i></h1>
+	 * <p style="margin-left: 10px">
+	 * <code> public showMessageError()</code>
+	 * </p>
+	 * <p>
+	 * Funcion para mostrar un mensaje grafico al usuario cuando sucede un error al
+	 * igual que guardarlo junto con la fecha en el que ocurrio en un archivo de
+	 * registro.
+	 * </p>
+	 */
 	public static void showMessageError() {
+		// Muestra un mensaje en la interfaz desplegando el mensaje del error
 		JOptionPane.showMessageDialog(frame, "Error encountered", "Error", JOptionPane.ERROR_MESSAGE);
 
+		// Escribe una nueva linea en el registro de errores con el mensaje de error y
+		// su fecha
 		try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(Constants.GUI.LOG_FILE_NAME, true)))) {
+			// Obtiene la fecha actual y le da un formato especifico
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern(Constants.GUI.LOG_DATE_PATTERN);
 			LocalDateTime now = LocalDateTime.now();
+			// Imprime en el archivo una nueva linea con la fecha y el mensaje de error
 			pw.println("[" + dtf.format(now) + "] Error encountered.");
 		} catch (IOException writerException) {
+			// Si llega a suceder un error al intentar manejar el error, cerrar el programa
+			frame.dispose();
 		}
 	}
 
