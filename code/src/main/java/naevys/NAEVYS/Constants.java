@@ -278,12 +278,33 @@ public class Constants {
 	 * @author Christopher Gabriel Pedraza Pohlenz
 	 */
 	public static class G {
+		/**
+		 * Sufijo que se puede agregar al final del nombre de archivo que se exportara
+		 */
 		public static String FILE_NAME_SUFFIX = "_ex";
+		/**
+		 * Nombre por defecto que se usara de ser necesario para exportar el archivo
+		 */
 		public static String DEFAULT_FILE_NAME = "output";
+		/**
+		 * Nombre del archivo de texto que contiene todos los registros de error
+		 */
 		public static String LOG_FILE_NAME = "log.txt";
+		/**
+		 * Patron usado para la fecha que se imprime en los registros de error
+		 */
 		public static String LOG_DATE_PATTERN = "yyyy-MM-dd-HH:mm:ss";
+		/**
+		 * Patron usado para la fecha que se agrega en el nombre del archivo exportado en caso de que el usuario lo desee
+		 */
 		public static String FILE_DATE_PATTERN = "yyMMdd-HHmmss";
+		/**
+		 * Determina si se agregara la fecha en el nombre del archivo que se exporta
+		 */
 		public static boolean INCLUDE_DATE_IN_FILE_NAME = true;
+		/**
+		 * Determina si se usara el nombre del archivo fuente como base para el archivo exportado
+		 */
 		public static boolean USE_INPUT_FILE_NAME = true;
 	}
 }
