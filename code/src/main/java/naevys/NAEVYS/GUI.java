@@ -592,7 +592,7 @@ public class GUI implements ActionListener {
 		// Agrega una linea al registro de errores con el error encontrado
 		try {
 			TextFiles.logErrorMessage("[" + getDate(Constants.G.LOG_DATE_PATTERN)
-					+ "] The program couldn't initialize properly. Validation error.");
+					+ "] Validation error: The program couldn't initialize properly.");
 		} catch (IOException writerException) {
 			// Si llega a suceder un error al intentar manejar el error, cerrar el programa
 			frame.dispose();
