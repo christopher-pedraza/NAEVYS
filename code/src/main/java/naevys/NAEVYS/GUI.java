@@ -5,8 +5,10 @@ package naevys.NAEVYS;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Desktop;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -430,10 +432,16 @@ public class GUI implements ActionListener {
 		frame.setTitle("NAEVYS");
 		// Configura que cuando se cierre la aplicacion se liberen los recursos
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		// TODO: Obtener las dimensiones de la pantalla donde se corre la aplicacion y
-		// usando un factor de reduccion asignar el tamaño de la ventana
-		// Asigna un tamaño a la ventana
-		frame.setSize(800, 600);
+		// Obtiene las dimensiones de la pantalla donde se esta abriendo el programa
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		// Las dimensiones se separan en dos variables para el alto y ancho y se
+		// multiplican por un factor. De esta manera con el factor se puede reducir un
+		// cierto porcentaje el tamaño de la ventana del programa con respecto al tamaño
+		// de la pantalla
+		int width = (int) (screenSize.getWidth() * Constants.G.WINDOW_DIMENSIONS_FACTOR);
+		int height = (int) (screenSize.getHeight() * Constants.G.WINDOW_DIMENSIONS_FACTOR);
+		// Se le aplican las dimensiones a la ventana
+		frame.setSize(width, height);
 		// Coloca la ventana en el centro de la pantalla
 		frame.setLocationRelativeTo(null);
 	}

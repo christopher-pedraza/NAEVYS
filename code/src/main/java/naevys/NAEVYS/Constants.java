@@ -103,6 +103,7 @@ public class Constants {
 				G.USE_INPUT_FILE_NAME = false;
 			}
 			G.FILE_CHOOSER_STARTING_DIR = prop.getProperty("NAEVYS.G.FILE_CHOOSER_STARTING_DIR");
+			G.WINDOW_DIMENSIONS_FACTOR = Double.parseDouble(prop.getProperty("NAEVYS.G.WINDOW_DIMENSIONS_FACTOR"));
 			// Constante de la clase Validation
 			V.VALIDATION = Integer.parseInt(prop.getProperty("NAEVYS.V.VALIDATION"));
 		} catch (Exception e) {
@@ -342,6 +343,11 @@ public class Constants {
 		 * se abra en el directorio del programa)
 		 */
 		public static String FILE_CHOOSER_STARTING_DIR;
+		/**
+		 * Factor por el que se multiplican las dimensiones de la pantalla para
+		 * determinar el tamaño inicial del programa cuando se abre
+		 */
+		public static double WINDOW_DIMENSIONS_FACTOR;
 	}
 
 	/**
