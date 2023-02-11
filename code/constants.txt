@@ -23,6 +23,6 @@ TIENDA_Flete_1 | tienda_flete_1 | 0.4 | Estilo_Constantes
 
 MAYORISTA_Flete_2 | mayorista_flete_2 | 0.4 | Estilo_Constantes
 
-Tipo_Cambio_Dolares/Euro | tipo_cambio_dolares_euro | 1.067616 | Estilo_Constantes
+Tipo_Cambio_Dolares/Euro | tipo_cambio_dolares_euro | 1.101289 | Estilo_Constantes
 
-Tipo_Cambio_MXN/Dolar | tipo_cambio_mxn_dolar | 20.375394 | Estilo_Constantes
+Tipo_Cambio_MXN/Dolar | tipo_cambio_mxn_dolar | 19.862267 | Estilo_Constantes
